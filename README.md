@@ -1,13 +1,21 @@
-# Predição de falhas em Fechaduras Eletrônicas
+# Robótica: UnBeatables e EMA
 
-**Descrição:**A BRISA produz e entrega fechaduras eletrônicas para clientes especiais (normalmente AirBnB nos EUA) e elas apresentam poucas falhas, mas quando ocorrem podem deixar o usuário em situação complicada por ter dificuldade para entrar na residência. O projeto consiste em treinar uma IA para prever falhas nesses dispositivos baseado no ciclo de operação condições ambientais, tecnologia adotada etc.
+**Descrição:**
 
-**Resultados esperados:** Uma IA (preferencialmente em Python) pronta para ser treinada com as falhas das fechaduras
+A UnB possui os seguintes projetos de robótica: UnBeatables e EMA. A UnBeatables é uma equipe de competição de futebol de robôs humanoides que trabalha com o robô NAO (v6 e v4) para competições. Já o EMA (Empoderando Mobilidade e Autonomia), é um projeto voltado à melhoria da qualidade de vida de pessoas com deficiência através da tecnologia. Ambos os projetos são carentes de documentações e tutoriais relevantes para novos integrantes dos projetos, o que dificulta a ocorrência da produtividade desejada do integrante em tempo hábil. 
 
-**Habilidades necessárias/preferenciais:** Programação em python, conhecimento machine learning, habilidade para selecionar casos de treinamento
+**Resultados esperados:**
 
-**Mentores:** Brisa
+Documentação de instalação do ROS1, ROS2, Robot Settings (robôs NAO), Coreograph, NAOQi (2.1 e 2.8) e do OpenCV. Documentação de primeiro contato com as ferramentas de robótica para programação do robô NAO, criação de demonstração do NAO usando visão computacional e princípios de robótica.
 
-**Tamanho do projeto:** Médio/Grande
+**Habilidades necessárias/preferenciais:**
+
+Programação em Python, C++ e Shell. Conhecimento em documentação, fundamentos de sistemas operacionais, visão computacional e compiladores.
+
+**Mentores:** 
+
+Coordenadores dos projetos UnBeatables e EMA.
+
+**Tamanho do projeto:** Médio
 
 **Dificuldade:** Médio
