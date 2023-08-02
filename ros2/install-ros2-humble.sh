@@ -38,7 +38,7 @@ sudo apt install --yes ros-dev-tools
 
 # Create a workspace and clone all repos
 # as other user
-mkdir -p ros2_humble/src
+mkdir -pv ros2_humble/src
 cd ros2_humble
 vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos src
 
@@ -46,8 +46,11 @@ vcs import --input https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
 # as root
 sudo rosdep init
 # as other user
-echo '#!/bin/bash' > ros2-humble-packages.sh
-perl -ne 'print "apt install --yes $1\n" if /apt\s(?<package>.+)/' <<< "$(rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" 2>/dev/null)" >> ros2-humble-packages.sh
+rosdep update
+rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
+printf '#!/bin/bash\n' > ros2-humble-packages.sh
+printf 'apt install --yes' >> ros2-humble-packages.sh
+perl -ne 'print " $+{package}" if /apt\s(?<package>.+)/' <<< "$(rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" 2>/dev/null)" >> ros2-humble-packages.sh
 chmod +x ros2-humble-packages.sh
 # as root
 sudo ./ros2-humble-packages.sh
@@ -56,7 +59,7 @@ sudo ./ros2-humble-packages.sh
 # Colcon needs pty devices or it will die before compiling anything
 # If you're building in a chrooted environment, you must bind mount the required devices
 # as other user
-rosdep fix-permissions
+# rosdep fix-permissions
 rosdep update
 rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 colcon build
