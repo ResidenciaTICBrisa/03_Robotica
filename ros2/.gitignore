@@ -1,0 +1,9 @@
+# Vim files
+*.swp
+
+# Chroot directories
+cache/
+jammy-armhf/
+jammy-arm64/
+bookworm-arm64/
+bookworm-arm64/
