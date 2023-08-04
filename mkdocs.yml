@@ -10,3 +10,6 @@ theme: readthedocs
 
 nav:
   - Home: index.md
+  - Instruções:
+    - ROS: Instruções/ROS1.md
+    - Robot Settings: Instruções/Robot_Settings.md
