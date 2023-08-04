@@ -1,0 +1,18 @@
+# INformações - Site
+site_name: RoboConnection #Connecting the Robo Journey
+#site_url: https://example.com
+
+# Informações - Repositório
+repo_name: '03_Robotica'
+repo_url: https://github.com/ResidenciaTICBrisa/03_Robotica
+
+plugins: 
+  - search:
+      lang: pt-BR
+
+theme: 
+  name: null
+  custom_dir: 'cinder'
+
+nav:
+  - Home: index.md
