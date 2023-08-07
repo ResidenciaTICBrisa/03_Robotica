@@ -17,8 +17,8 @@ libguestfs-tools
 `bootstrap-chroot-64.sh`, depending on the Operating System installed on your
 Single Board Computer. This step will be successfull if Git can be successfully
 installed after authorising uts installation.
-2. Run, with administrator priviledges,the script `install-ros-32.sh` or
-`install-ros-64.sh`, depending on the Operating System installed on your
+2. Run, with administrator priviledges,the script `install-ros2-32.sh` or
+`install-ros2-64.sh`, depending on the Operating System installed on your
 Single Board Computer.
 3. Authorise the operations inside the *chrooted* environment using the
 `CHROOTED_USER`'s password defined in the `chroot-env-vars.sh` script.
