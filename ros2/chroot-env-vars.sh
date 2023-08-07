@@ -10,9 +10,14 @@ readonly DEBIAN_ARM64_KERNEL_PACKAGE='linux-image-arm64'
 
 readonly UBUNTU_MAIN_MIRROR='http://archive.ubuntu.com/ubuntu'
 readonly UBUNTU_PORT_MIRROR='http://ports.ubuntu.com/ubuntu-ports'
+readonly UBUNTU_2004_SUITE='focal'
 readonly UBUNTU_2204_SUITE='jammy'
-readonly UBUNTU_ARM32_KERNEL_PACKAGE='linux-generic-hwe-22.04'
-readonly UBUNTU_ARM64_KERNEL_PACKAGE='linux-generic-hwe-22.04'
+readonly UBUNTU_2004_ARM32_KERNEL_PACKAGE='linux-generic-hwe-20.04'
+readonly UBUNTU_2004_ARM64_KERNEL_PACKAGE='linux-generic-hwe-20.04'
+readonly UBUNTU_2204_ARM32_KERNEL_PACKAGE='linux-generic-hwe-22.04'
+readonly UBUNTU_2204_ARM64_KERNEL_PACKAGE='linux-generic-hwe-22.04'
+readonly UBUNTU_ARM32_KERNEL_PACKAGE="${UBUNTU_2204_ARM32_KERNEL_PACKAGE}"
+readonly UBUNTU_ARM64_KERNEL_PACKAGE="${UBUNTU_2204_ARM64_KERNEL_PACKAGE}"
 
 readonly DEBOOTSTRAP_MIRROR="${UBUNTU_PORT_MIRROR}"
 readonly DEBOOTSTRAP_SUITE="${UBUNTU_2204_SUITE}"
