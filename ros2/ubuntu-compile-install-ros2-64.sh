@@ -2,7 +2,7 @@
 
 source './chroot-env-vars.sh'
 
-readonly INSTALLATION_SCRIPT='install-ros2-humble.sh'
+readonly INSTALLATION_SCRIPT='ubuntu-compile-install-ros2-humble.sh'
 
 cp "${INSTALLATION_SCRIPT}" "${ARM64_CHROOT}/home/${CHROOTED_USER}"
 chmod 755 "${ARM64_CHROOT}/home/${CHROOTED_USER}/${INSTALLATION_SCRIPT}"

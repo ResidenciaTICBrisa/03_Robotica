@@ -13,16 +13,28 @@ libguestfs-tools
 
 ## Instructions
 
+### Bootstraping a chroot
+
+This step is required if you wish to compile and install ROS2 on a ARM-based
+SBC.
+
 1. Run, with administrator priviledges,the script `bootstrap-chroot-32.sh` or
 `bootstrap-chroot-64.sh`, depending on the Operating System installed on your
 Single Board Computer. This step will be successfull if Git can be successfully
 installed after authorising uts installation.
-2. Run, with administrator priviledges,the script `install-ros2-32.sh` or
-`install-ros2-64.sh`, depending on the Operating System installed on your
-Single Board Computer.
-3. Authorise the operations inside the *chrooted* environment using the
+
+### Compiling and installing on Ubuntu-based Systems
+
+After setting the `chroot` up, you must run one of the compilation and
+installation scripts. The version will depend on the architecture and the
+operating system on your SBC.
+
+1. Run, with administrator priviledges,the script
+`ubuntu-compile-install-ros2-32.sh` or `ubuntu-compile-install-ros2-64.sh`,
+depending on the Operating System installed on your Single Board Computer.
+2. Authorise the operations inside the *chrooted* environment using the
 `CHROOTED_USER`'s password defined in the `chroot-env-vars.sh` script.
-4. ROS will be installed on the `CHROOTED_USER`'s home directory. Depending on
+3. ROS will be installed on the `CHROOTED_USER`'s home directory. Depending on
 your operating system, you may need to install `ros-dev-tools` or a similar
 package.
 
