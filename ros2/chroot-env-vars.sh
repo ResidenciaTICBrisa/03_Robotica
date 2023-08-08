@@ -4,14 +4,20 @@
 [ -z "${SOURCED_CHROOT_ENV_VARS_SH}" ] || return
 
 readonly DEBIAN_MIRROR='http://deb.debian.org/debian'
+readonly DEBIAN_SECURITY_MIRROR='http://security.debian.org/debian-security'
 readonly DEBIAN_12_SUITE='bookworm'
+readonly DEBIAN_12_SECURITY_SUITE="${DEBIAN_12_SUITE}-security"
 readonly DEBIAN_ARM32_KERNEL_PACKAGE='linux-image-armmp'
 readonly DEBIAN_ARM64_KERNEL_PACKAGE='linux-image-arm64'
 
 readonly UBUNTU_MAIN_MIRROR='http://archive.ubuntu.com/ubuntu'
+readonly UBUNTU_MAIN_SECURITY_MIRROR='http://security.ubuntu.com/ubuntu'
 readonly UBUNTU_PORT_MIRROR='http://ports.ubuntu.com/ubuntu-ports'
+readonly UBUNTU_PORT_SECURITY_MIRROR="${UBUNTU_PORT_MIRROR}"
 readonly UBUNTU_2004_SUITE='focal'
+readonly UBUNTU_2004_SECURITY_SUITE="${UBUNTU_2004_SUITE}-security"
 readonly UBUNTU_2204_SUITE='jammy'
+readonly UBUNTU_2204_SECURITY_SUITE="${UBUNTU_2204_SUITE}-security"
 readonly UBUNTU_2004_ARM32_KERNEL_PACKAGE='linux-generic-hwe-20.04'
 readonly UBUNTU_2004_ARM64_KERNEL_PACKAGE='linux-generic-hwe-20.04'
 readonly UBUNTU_2204_ARM32_KERNEL_PACKAGE='linux-generic-hwe-22.04'
@@ -20,7 +26,9 @@ readonly UBUNTU_ARM32_KERNEL_PACKAGE="${UBUNTU_2204_ARM32_KERNEL_PACKAGE}"
 readonly UBUNTU_ARM64_KERNEL_PACKAGE="${UBUNTU_2204_ARM64_KERNEL_PACKAGE}"
 
 readonly DEBOOTSTRAP_MIRROR="${UBUNTU_PORT_MIRROR}"
+readonly DEBOOTSTRAP_SECURITY_MIRROR="${UBUNTU_PORT_SECURITY_MIRROR}"
 readonly DEBOOTSTRAP_SUITE="${UBUNTU_2204_SUITE}"
+readonly DEBOOTSTRAP_SECURITY_SUITE="${UBUNTU_2204_SECURITY_SUITE}"
 
 readonly ARM32_KERNEL_PACKAGE="${UBUNTU_ARM32_KERNEL_PACKAGE}"
 readonly ARM64_KERNEL_PACKAGE="${UBUNTU_ARM64_KERNEL_PACKAGE}"
@@ -187,6 +195,17 @@ create_chrooted_user() {
 	chmod 744 "${CHROOT_LOCATION}/set-${NEW_USER}-password.sh"
 	run_on_chroot "${CHROOT_LOCATION}" 'root' "./set-${NEW_USER}-password.sh"
 	rm "${CHROOT_LOCATION}/set-${NEW_USER}-password.sh"
+}
+
+add_security_repo() {
+	local -r CHROOT_LOCATION="$1"
+	local -r SECURITY_MIRROR="$2"
+	local -r SECURITY_SUITE="$3"
+
+	printf "deb %s %s main" "${SECURITY_MIRROR}" "${SECURITY_SUITE}" >> "${CHROOT_LOCATION}/etc/apt/sources.list"
+
+	run_on_chroot "${CHROOT_LOCATION}" 'root' apt update
+	run_on_chroot "${CHROOT_LOCATION}" 'root' apt full-upgrade --yes
 }
 
 readonly SOURCED_CHROOT_ENV_VARS_SH=1

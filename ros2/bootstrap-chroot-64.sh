@@ -14,3 +14,6 @@ create_chrooted_user "${ARM64_CHROOT}" 'softex' 1000 'softex'
 run_on_chroot "${ARM64_CHROOT}" 'root' apt install --yes git
 run_on_chroot "${ARM64_CHROOT}" '1000' bash -c "cd /home/${CHROOTED_USER} && env USER=${CHROOTED_USER} HOME=/home/${CHROOTED_USER} git config --global init.defaultBranch main"
 run_on_chroot "${ARM64_CHROOT}" '1000' bash -c "cd /home/${CHROOTED_USER} && USER=${CHROOTED_USER} HOME=/home/${CHROOTED_USER} git config --list --show-origin"
+
+# add security repo and update
+add_security_repo "${ARM64_CHROOT}" "${DEBOOTSTRAP_SECURITY_MIRROR}" "${DEBOOTSTRAP_SECURITY_SUITE}"

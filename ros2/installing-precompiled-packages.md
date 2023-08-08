@@ -7,9 +7,10 @@ able to install precompiled binary packages from ROS2 repositories.
 
 ROS2 currently packages the ROS ecosystem for the following combinations of
 operating systems and architectures:
+
 - Ubuntu 22.04 LTS (Jammy)
-  - amd64
-  - arm64
+    - amd64
+    - arm64
 
 If you're on a unsopported operating system or architecture, it will be
 necessary to compile the ROS2 ecosystem.
@@ -19,6 +20,16 @@ necessary to compile the ROS2 ecosystem.
 ROS2 precompiled packages are notorious for breaking systems when installed
 without upgrading the system [1][1] [2][2]! Although the installation scripts
 follow the recommended procedures, the risk remains!
+
+You **MUST** have the security repository enabled, as ROS2 packages are not
+tested on a standard Debian packaging environment and assume that this
+repository will be enabled and that the system is up to date. Please note that
+the security repository is different for `amd64` or `armhf`/`arm64`:
+
+- Security repository for `amd64`:
+`deb http://security.ubuntu.com/ubuntu jammy-security main`
+- Security repository for `arm64` and `armhf`:
+`deb http://ports.ubuntu.com/ubuntu-ports jammy-security main`
 
 The precompiled packages also have chronic problems with dependencies even when
 installed on the supported Ubuntu configuration [3][3] [4][4]. If the
@@ -52,7 +63,7 @@ Due to limited support of ROS2, this repository only supports 64-bit based ARM
 or AMD64, although the scripts can be easily modified to support other
 architectures and operating systems as soon as they are available.
 
-1. If you are in a **chroot**, please run, with administrator priviledges, the
+1. If you are in a *chroot*, please run, with administrator priviledges, the
 scripts `ubuntu-install-ros2-64-base.sh` or `ubuntu-install-ros2-64-desktop.sh`
 depending on the ROS2 packages you wish to install. If you are in a regular
 installation, please run the scripts `ubuntu-install-ros2-humble-base.sh` or
