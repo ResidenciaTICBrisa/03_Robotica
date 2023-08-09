@@ -119,4 +119,4 @@ rosdep update
 dpkg -s ros-noetic-ros
 ```
 
-Com este turotial, o ROS 1 - Noetic estará instalado ma sua máquina.
+Com este tutorial, o ROS 1 - Noetic estará instalado em sua máquina.
