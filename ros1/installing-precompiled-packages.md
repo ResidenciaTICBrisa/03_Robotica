@@ -7,18 +7,27 @@ able to install precompiled binary packages from ROS1 repositories.
 
 ROS1 currently packages the ROS ecosystem for the following combinations of
 operating systems and architectures:
+
 - Ubuntu 20.04 LTS (focal)
-  - amd64
-    - ros-noetic-ros-base
-    - ros-noetic-desktop
-    - ros-noetic-desktop-full
-  - arm64
-    - ros-noetic-ros-base
-    - ros-noetic-desktop
-    - ros-noetic-desktop-full
-  - armhf
-    - ros-noetic-ros-base
-    - ros-noetic-desktop
+    - amd64
+        - ros-noetic-ros-base
+        - ros-noetic-desktop
+        - ros-noetic-desktop-full
+    - arm64
+        - ros-noetic-ros-base
+        - ros-noetic-desktop
+        - ros-noetic-desktop-full
+    - armhf
+        - ros-noetic-ros-base
+        - ros-noetic-desktop
+- Debian 10 (buster)
+    - amd64
+        - ros-noetic-ros-base
+        - ros-noetic-desktop
+        - ros-noetic-desktop-full
+    - arm64
+        - ros-noetic-ros-base
+        - ros-noetic-desktop
 
 If you're on a unsopported operating system or architecture, it will be
 necessary to compile the ROS1 ecosystem.
