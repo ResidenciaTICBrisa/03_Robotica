@@ -32,6 +32,38 @@ operating systems and architectures:
 If you're on a unsopported operating system or architecture, it will be
 necessary to compile the ROS1 ecosystem.
 
+### WARNING!
+
+ROS2 precompiled packages are notorious for breaking systems when installed
+without upgrading the system [1][1] [2][2]! Although the installation scripts
+follow the recommended procedures, and ROS1 does not cite that the same problem
+exists for their packages, the risk remains!
+
+You **MUST** have the security repository enabled, as ROS packages are not
+tested on a standard Debian packaging environment and assume that this
+repository will be enabled and that the system is up to date. Please note that
+for Ubuntu, the security repository is different for `amd64` or `armhf`/`arm64`:
+
+- Ubuntu Focal
+    - Security repository for `amd64`:
+`deb http://security.ubuntu.com/ubuntu focal-security main`
+    - Security repository for `arm64` and `armhf`:
+`deb http://ports.ubuntu.com/ubuntu-ports focal-security main`
+- Debian Buster
+    - Security repository for `amd64`, `i386`, `arm64` and `armhf`:
+`deb https://security.debian.org/debian-security buster/updates main`
+
+The precompiled packages also have chronic problems with dependencies even when
+installed on the supported configurations [3][3] [4][4]. If the
+installation fails due to dependency problems, it is advised to compile ROS1
+from source or, if possible, installing the distribution's native packages
+instead of trying to fight the unsatisfiable dependencies.
+
+[1]: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+[2]: https://github.com/ros2/ros2/issues/1272
+[3]: https://github.com/ros2/ros2/issues/1433
+[4]: https://github.com/ros2/ros2/issues/1287
+
 ## Instructions for supported systems
 
 ### Bootstraping a chroot
