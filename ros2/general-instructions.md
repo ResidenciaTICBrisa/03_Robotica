@@ -68,7 +68,7 @@ rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext
 # Colcon needs pty devices or it will die before compiling anything
 # If you're building in a chrooted environment, you must bind mount the required devices
 cd ros2_humble/
-colcon build --symlink-install
+colcon build
 
 # Source the build script
 # Replace ".bash" with your shell if you're not using bash
@@ -159,7 +159,7 @@ rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext
 cd /home/softex/ros2_humble
 rosdep fix-permissions
 rosdep update
-colcon build --symlink-install
+colcon build
 
 # Source the build script
 # Replace ".bash" with your shell if you're not using bash
@@ -263,7 +263,6 @@ cd /home/softex/ros2_humble
 rosdep fix-permissions
 rosdep update
 rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
-#colcon build --symlink-install
 colcon build
 
 # Source the build script
