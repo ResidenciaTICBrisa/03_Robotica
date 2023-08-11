@@ -146,12 +146,15 @@ vcs import src < ros2.repos
 
 # Install even more dependencies
 rosdep update
-# as root
-cd /home/softex/ros2_humble
-rosdep update
+rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
+printf '#!/bin/bash\n' > ros2-humble-packages.sh
+printf 'apt install --yes' >> ros2-humble-packages.sh
+perl -ne 'print " $+{package}" if /apt\s(?<package>.+)/' <<< "$(rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers" 2>/dev/null)" >> ros2-humble-packages.sh
+chmod +x ros2-humble-packages.sh
 
 # as root
-rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
+cd /home/softex/ros2_humble
+./ros2-humble-packages.sh
 
 # Build the code
 # Colcon needs pty devices or it will die before compiling anything
@@ -160,6 +163,7 @@ rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext
 cd /home/softex/ros2_humble
 rosdep fix-permissions
 rosdep update
+rosdep check --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 colcon build
 
 # Source the build script
