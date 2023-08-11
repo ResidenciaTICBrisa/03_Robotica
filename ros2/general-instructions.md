@@ -1,9 +1,25 @@
-# Manually compiling and installing ROS2
+# Manually compiling and installing ROS2 on Debian-based systems
 
-How to manually compile and install ROS2 from its source code. We recommend
-adapting the compilation scripts instead of doing everything manually.
+How to manually compile and install ROS2 from its source code on Debian-based
+GNU/Linux distributions. This guide uses Debian 12 Bookworm as the *chrooted*
+distribution and requires some experience with GNU/Linux, Debian-based systems
+administration and shell scripts.
 
-## Regular installation instructions
+Ubuntu 22.04 is the officially supported distribution for ROS2 Humble. It will
+be easier to follow our specific guides using compilation scripts instead of
+doing everything manually:
+
+- if you wish to install precompiled ROS2 packages on `arm64` and `amd64`
+machines, please follow our
+[precompiled installation guide](./installing-precompiled-packages.md)
+- if you wish to compile ROS2:
+    - for `amd64` please follow our
+    [amd64 compilation guide](./compiling-for-amd64-based-systems.md)
+    - for `arm64` or `armhf` SBCs (Single Board Computers), like Raspberry and
+    Orange Pi, Beaglebone, please follow our
+    [SBC compilation guide](compiling-for-arm-based-systems.md)
+
+## ROS2 Wiki's approach
 
 As stated in the ROS2 Humble
 [source installation documentation](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html). This approach compiles software that already exists on
@@ -13,6 +29,10 @@ Due to ROS insisting on using packages from their repositories, even when Debian
 or Ubuntu builds the same package from the same source, this approach requires
 uninstalling the native version to allow `rosdep` to install some renamed
 dependencies.
+
+This approach is recommended for Ubuntu and its derivatives as long as the
+distribution codename is correctly replaced on the `debootstrap` and the ROS2
+repositories.
 
 ### Generating the chroot
 
@@ -83,7 +103,7 @@ ros2 run demo_nodes_cpp talker
 ros2 run demo_nodes_py listener
 ```
 
-## Instructions based on those from Debian Wiki
+## Debian Wiki's approach
 
 Instructions adapted from
 [Debian's Wiki](https://wiki.debian.org/DebianScience/Robotics/ROS2) and the
@@ -92,7 +112,11 @@ current ROS LTS release,
 
 This approach removes unnecessary artifacts from the build phase, as most of
 them are already compiled in Debian or are not relevant for compiling and
-installing ROS2 in the system.
+installing ROS2 Humble or Rolling in the system.
+
+It is recommended to follow this approach when compiling on Debian 12, although
+Ubuntu-based distributions newer than 23.04 are likely to have packaged the same
+dependencies.
 
 ### Generating the chroot
 
