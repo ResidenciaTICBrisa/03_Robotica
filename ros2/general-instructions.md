@@ -26,6 +26,9 @@ chroot bookworm-chroot
 
 ### Deactivating the bound mounts
 
+When you leave the *chroot*, do not forget to unmount the directories that were
+bind-mounted to it.
+
 ```
 for i in /dev/pts /proc /sys /run; do umount $(pwd)/bookworm-chroot$i; done
 ```
@@ -104,6 +107,9 @@ adduser softex
 ```
 
 ### Deactivating the bound mounts
+
+When you leave the *chroot*, do not forget to unmount the directories that were
+bind-mounted to it.
 
 ```
 for i in /dev/pts /proc /sys /run; do umount $(pwd)/bookworm-chroot-wiki$i; done
@@ -185,6 +191,9 @@ useradd --home-dir '/home/softex' --skel '/etc/skel' --create-home --password 's
 ```
 
 ### Deactivating the bound mounts
+
+When you leave the *chroot*, do not forget to unmount the directories that were
+bind-mounted to it.
 
 ```
 for i in /dev/pts /proc /sys; do umount $(pwd)/ubuntu-jammy-chroot-wiki$i; done
@@ -286,6 +295,9 @@ chpasswd <<< 'softex:softex'
 ```
 
 ### Deactivating the bound mounts
+
+When you leave the *chroot*, do not forget to unmount the directories that were
+bind-mounted to it.
 
 ```
 for i in /dev/pts /proc /sys; do umount $(pwd)/ubuntu-jammy-chroot-wiki$i; done
