@@ -82,7 +82,14 @@ ros2 run demo_nodes_py listener
 
 ## Instructions based on those from Debian Wiki
 
-Instructions adapted from [Debian's Wiki](https://wiki.debian.org/DebianScience/Robotics/ROS2) and the current ROS LTS release, [Humble Hawksbill](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html).
+Instructions adapted from
+[Debian's Wiki](https://wiki.debian.org/DebianScience/Robotics/ROS2) and the
+current ROS LTS release,
+[Humble Hawksbill](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html).
+
+This approach removes unnecessary artifacts from the build phase, as most of
+them are already compiled in Debian or are not relevant for compiling and
+installing ROS2 in the system.
 
 ### Generating the chroot
 
@@ -101,7 +108,6 @@ adduser softex
 ```
 for i in /dev/pts /proc /sys /run; do umount $(pwd)/bookworm-chroot-wiki$i; done
 ```
-
 
 ### Compiling
 
@@ -137,8 +143,6 @@ rosdep update
 cd /home/softex/ros2_humble
 rosdep update
 
-# Broken python3-vcstools (rosdep thinks it is  python3-vcstool)
-# apt remove vcstool
 # as root
 rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext-dds-6.0.1 urdfdom_headers"
 
@@ -149,7 +153,6 @@ rosdep install --from-paths src --ignore-src -y --skip-keys "fastcdr rti-connext
 cd /home/softex/ros2_humble
 rosdep fix-permissions
 rosdep update
-#cd ros2_humble/
 colcon build --symlink-install
 
 # Source the build script
