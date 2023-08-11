@@ -1,4 +1,4 @@
-# Compile ROS for Ubuntu AMD64-based machines
+# Compile ROS for Ubuntu 22.04 Jammy AMD64-based machines
 
 ## Instructions
 
