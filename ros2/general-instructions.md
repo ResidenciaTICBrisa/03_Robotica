@@ -1,10 +1,18 @@
-# Installation instructions for ROS
+# Manually compiling and installing ROS2
 
-How to install ROS from its source code
+How to manually compile and install ROS2 from its source code. We recommend
+adapting the compilation scripts instead of doing everything manually.
 
 ## Regular installation instructions
 
-As stated in the ROS Humble source installation documentation.
+As stated in the ROS2 Humble
+[source installation documentation](https://docs.ros.org/en/humble/Installation/Alternatives/Ubuntu-Development-Setup.html). This approach compiles software that already exists on
+Debian repositories or that is not relevant to the system.
+
+Due to ROS insisting on using packages from their repositories, even when Debian
+or Ubuntu builds the same package from the same source, this approach requires
+uninstalling the native version to allow `rosdep` to install some renamed
+dependencies.
 
 ### Generating the chroot
 
