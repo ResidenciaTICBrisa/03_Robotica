@@ -103,7 +103,8 @@ debootstrap bookworm ./bookworm-chroot-wiki http://deb.debian.org/debian
 for i in /dev/pts /proc /sys /run; do sudo mount -B $i $(pwd)/bookworm-chroot-wiki$i; done
 chroot bookworm-chroot-wiki
 # Create softex user with softex as a password
-adduser softex
+useradd --home-dir '/home/softex' --skel '/etc/skel' --create-home --shell '/bin/bash' softex
+chpasswd <<< 'softex:softex'
 ```
 
 ### Deactivating the bound mounts
@@ -186,8 +187,8 @@ debootstrap jammy ./ubuntu-jammy-chroot-wiki http://archive.ubuntu.com/ubuntu/
 for i in /dev/pts /proc /sys; do mount -B $i $(pwd)/ubuntu-jammy-chroot-wiki$i; done
 chroot ubuntu-jammy-chroot-wiki
 # Create softex user with softex as a password
-# adduser softex
-useradd --home-dir '/home/softex' --skel '/etc/skel' --create-home --password 'softex' --shell '/bin/bash' softex
+useradd --home-dir '/home/softex' --skel '/etc/skel' --create-home --shell '/bin/bash' --groups 'sudo' softex
+chpasswd <<< 'softex:softex'
 ```
 
 ### Deactivating the bound mounts
@@ -288,7 +289,6 @@ debootstrap jammy ./ubuntu-jammy-chroot-wiki http://archive.ubuntu.com/ubuntu/
 for i in /dev/pts /proc /sys; do mount -B $i $(pwd)/ubuntu-jammy-chroot-wiki$i; done
 chroot ubuntu-jammy-chroot-wiki
 # Create softex user with softex as a password
-# adduser softex
 useradd --home-dir '/home/softex' --skel '/etc/skel' --create-home --shell '/bin/bash' --groups 'sudo' softex
 chpasswd <<< 'softex:softex'
 ```
