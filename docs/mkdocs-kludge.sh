@@ -6,7 +6,7 @@ for docdir in "${DOCDIRS[@]}"; do
 	# Create directory inside the current one
 	mkdir -pv "${docdir}"
 
-	for f in ../"${docdir}"/*.md; do
+	for f in ../scripts/"${docdir}"/*.md; do
 		# Link relative to the new directory with the same file name
 		ln -sv "../$f" "${docdir}/$(basename "$f")"
 	done

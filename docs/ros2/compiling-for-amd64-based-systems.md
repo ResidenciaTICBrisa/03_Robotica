@@ -1,1 +1,1 @@
-../../ros2/compiling-for-amd64-based-systems.md
+../../scripts/ros2/compiling-for-amd64-based-systems.md
