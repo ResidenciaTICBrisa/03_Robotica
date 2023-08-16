@@ -1,6 +1,6 @@
-# Instalação do SDK de C++
+# Instalação do SDK de C++ para o NAO v6 (NAOqi 2.8)
 
-Para que seja possível desenvolver programas que controlem os robôs, é necessário instalar o SDK (Software Development Kit - Kit de Desenvolvimento de Software) do NAOqi para C++.
+Para que seja possível desenvolver programas que controlem os robôs, é necessário instalar o SDK (Software Development Kit - Kit de Desenvolvimento de Software) de C++ para o NAO v6 (com NAOqi 2.8).
 
 Esse SDK possui APIs e pacotes importantes para o desenvolvimento de tais programas. 
 
@@ -9,6 +9,7 @@ Esse SDK possui APIs e pacotes importantes para o desenvolvimento de tais progra
 - Linux Ubuntu 16.04 (Xenial Xerus);
 - Compilador GCC - versão 4.8.2 ou superior;
 - Uma IDE de C++ de sua preferência (vide Visual Studio).
+- Python 2.7
  
 Para verificar a versão do compilador GCC instalado na sua máquina, execute o comando:
 
@@ -21,8 +22,11 @@ Caso o GCC não esteja instalado no seu sistema, execute:
 ```
 sudo apt update
 sudo apt install build-essential
+```
 
 # Verifique novamente a versão do GCC
+
+```
 gcc --version
 ```
 
@@ -36,11 +40,14 @@ Dependências são pacotes necessários para rodar um programa específico. No c
 
 - **build-essential**, que contém as ferramentas necessárias para compilar códigos-fonte;
 - **Cmake**, ferramenta para simplificar a compilação entre diversos sistemas operacionais;
-- **pip**, gerenciador de instalação de pacotes do python3;
+- **Python-pip**, gerenciador de instalação de pacotes do Python 2;
 
 ```
 sudo apt update
-sudo apt install build-essential cmake python3-pip
+sudo apt install build-essential cmake python-pip
+
+# Atualizando versão do pip para última versão de suporte ao Python 2.7
+pip install 'pip==20.3.4'
 ```
 
 ### Instalação do qiBuild
@@ -48,16 +55,11 @@ sudo apt install build-essential cmake python3-pip
 Para instalar o qiBuild, execute o seguinte código no terminal:
 
 ```
-pip3 install qibuild --user
+pip2 install qibuild --user
 ```
 
-> Obs.: **NÃO ATUALIZAR PIP** (o suporte do pip ao Python 2 chegou ao fim, sua atualização corrompe o Python 2 do sistema);
+> Obs.: **NÃO ATUALIZAR PIP AUTOMATICAMENTE (COMO SUGERE O PIP no TERMINAL)** (o suporte do pip ao Python 2 chegou ao fim, sua atualização automática corrompe o Python 2 do sistema);
 
-É necessário adicionar HOME/.local/bin no seu &PATH:
-
-```
-PATH=$PATH:$HOME/.local/bin
-```
 
 ### Configuração do qiBuild
 
@@ -67,7 +69,7 @@ Digite o seguinte código. Você deverá escolher o gerador (recomendado usar o 
 qibuild config --wizard
 ```
 
-Resultado: um arquivo é criado em ~/.config/qi/qibuild.xml. Ele será compartilhado por todas as worktrees que você criar.
+Resultado: um arquivo é criado em `~/.config/qi/qibuild.xml`. Ele será compartilhado por todas as worktrees que você criar.
 
 > Obs.: **worktrees** são ambientes de trabalho, nesse caso, do qiBuild.
 
@@ -135,7 +137,7 @@ E execute:
 
 > Se a mensagem "Hello, world" aparecer no terminal, a instalação do qiBuild foi concluída com sucesso.
 
-## SDK C++
+## SDK C++ para NAO v6
 
 ### Download
 

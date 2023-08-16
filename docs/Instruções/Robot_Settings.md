@@ -1,13 +1,13 @@
-# Instalação do Robot Settings no Ubuntu 16.04 
+# Instalação do Robot Settings 2.8.6 (NAO v6) no Ubuntu 16.04 
 
-O Robot Settings é um programa usado para configurar e gerenciar robôs da Softbank Robotics.
+O Robot Settings 2.8.6 é um programa usado para configurar e gerenciar robôs NAO v6 da Softbank Robotics.
 
-Entretanto, até o momento da criação desse tutorial, o Robot Settings é compatível (em distribuições Ubuntu) apenas na versão **16.04 (Xenial Xerus)**.
+Entretanto, até o momento da criação desse tutorial, o Robot Settings 2.8.6 é compatível (em distribuições Ubuntu) apenas na versão **16.04 (Xenial Xerus)**.
 
 ## Requisitos
 
 - Ubuntu 16.04 (Xenial Xerus)
-- Ao menos 1GB de espaço livre no disco rígido
+- Ao menos 1 GB de espaço livre no disco rígido
 
 ## Instalando Robot Settings
 
@@ -38,4 +38,4 @@ Prosseguindo com a instalação:
 
 Com a realização dos passos acima, o Robot Settings estará instalado e operante, podendo ser encontrado no menu de navegação do Ubuntu ou na área de trabalho.
 
-> Cabe ressaltar que, como o Robot Settings **não é compatível com o Ubuntu 22.04**, deve-se sempre acessá-lo através da máquina virtual (com Ubuntu 16.04) gerenciada pelo Virt Manager, para garantir a compatibilidade do sistema.
+> Cabe ressaltar que, como o Robot Settings **não é compatível com o Ubuntu 22.04**, deve-se sempre acessá-lo através da máquina virtual (com Ubuntu 16.04) gerenciada pelo Virt Manager, ou por uma máquina com Ubuntu 16.04 nativo para garantir a compatibilidade do sistema.

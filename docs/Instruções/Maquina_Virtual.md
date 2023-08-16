@@ -4,13 +4,18 @@ Os robôs NAO utilizam diversos programas para configuração, programação e m
 
 Para que não seja necessário utilizar muitas máquinas, utilizaremos apenas uma máquina com diversas máquinas virtuais (VMs) disponíveis para rodar no sistema com o gerenciador Virt Manager (cada máquina virtual com um sistema operacional diferente, para que sejam acessados os diversos programas em uma mesma máquina física).
 
+Para ilustrar a diferença dos sistemas operacionais necessários na operação dos NAOs, observe a tabela abaixo, onde são mostrados programas comuns usados na programação dos NAO v6.
+
 | Programa | Sistema Compatível |
 |---|---|
-| Robot Settings | Ubuntu 16.04 |
-| Coreograph | Ubuntu 16.04 |
-| NAOqi SDK | Ubuntu 16.04 |
+| Robot Settings 2.8.6 | Ubuntu 16.04 |
+| Choregraphe 2.8.6 | Ubuntu 16.04 |
+| NAOqi SDK 2.8.6 (Python)| Ubuntu 16.04 |
+| NAOqi SDK 2.8.5 (C++)| Ubuntu 16.04 |
 | ROS1 | Ubuntu 20.04 |
 | ROS2 | Ubuntu 22.04 |
+
+> O NAO v4 utiliza diferentes versões desses programas, com sistemas operacionais também diferentes, em alguns casos. Para mais informações, consulte o [Developer Center da Aldebaran Robotics](https://www.aldebaran.com/developer-center/index.html).
 
 O Virt Manager é o programa no qual as VMs estarão acessíveis, tornando possível criar, excluir e modificar VMs. Além disso, o Virt Manager permite o compartilhamento de portas USB entre máquina real e virtual e a criação de _snapshots_ (pontos de controle), que funcionam como um recurso de back-up caso estejamos testando diferentes funcionalidades que podem corromper o sistema das VMs.
 
