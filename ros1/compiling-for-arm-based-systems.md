@@ -53,7 +53,7 @@ the target system.
 3. Run the dependency script `ros1-noetic-packages.sh` to install the full list
 of dependencies.
 
-#### Installing the basic dependencies on Ubuntu 20.04 LTS (Jammy)
+#### Installing the basic dependencies on Ubuntu 20.04 LTS (Focal)
 
 The following script will install the basic dependencies and run the dependency
 script.
