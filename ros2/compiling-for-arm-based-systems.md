@@ -13,6 +13,13 @@ libguestfs-tools
 
 ## Instructions
 
+The scripts are configured by default to compile and create *chroots* based on
+ROS2's expected Ubuntu installation: a Ubuntu 22.04 LTS system up-to-date with
+its security repository.
+
+There are variables that enable the modification to compile and generate
+*chroots* for all GNU/Linux distributions supported by `debootstrap`. 
+
 ### Bootstraping a chroot
 
 This step is required if you wish to compile and install ROS2 on a ARM-based
