@@ -6,6 +6,8 @@ Para que não seja necessário utilizar muitas máquinas, utilizaremos apenas um
 
 Para ilustrar a diferença dos sistemas operacionais necessários na operação dos NAOs, observe a tabela abaixo, onde são mostrados programas comuns usados na programação dos NAO v6.
 
+<center>
+
 | Programa | Sistema Compatível |
 |---|---|
 | Robot Settings 2.8.6 | Ubuntu 16.04 |
@@ -14,6 +16,8 @@ Para ilustrar a diferença dos sistemas operacionais necessários na operação 
 | NAOqi SDK 2.8.5 (C++)| Ubuntu 16.04 |
 | ROS1 | Ubuntu 20.04 |
 | ROS2 | Ubuntu 22.04 |
+
+</center>
 
 > O NAO v4 utiliza diferentes versões desses programas, com sistemas operacionais também diferentes, em alguns casos. Para mais informações, consulte o [Developer Center da Aldebaran Robotics](https://www.aldebaran.com/developer-center/index.html).
 
