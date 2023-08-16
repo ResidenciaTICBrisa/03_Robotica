@@ -1,1 +1,1 @@
-../../ros2/installing-precompiled-packages.md
+../../scripts/ros2/installing-precompiled-packages.md

@@ -1,1 +1,1 @@
-../../ros1/general-instructions.md
+../../scripts/ros1/general-instructions.md

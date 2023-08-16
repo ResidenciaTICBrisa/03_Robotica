@@ -1,1 +1,1 @@
-../../ros1/installing-native-packages.md
+../../scripts/ros1/installing-native-packages.md
