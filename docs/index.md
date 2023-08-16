@@ -34,8 +34,8 @@ Para essa tarefa de suporte aos dois projetos, a equipe conta com 5 menbros, ond
 | Menbro | Designação | GitHub |
 |--------|------------|--------|
 | Daniel dos Santos | Community Manager | [Daniel dos Santos](https://github.com/daniel-de-sousa) |
-| Davi Antônio | Devops/Arquitetura | [Davi Antônio](https://github.com/DaviAntonio) |
 | Damarcones Porto | Product Manager | [Damarcones Porto](https://github.com/damarcones) |
+| Davi Antônio | Devops/Arquitetura | [Davi Antônio](https://github.com/DaviAntonio) |
 | Gustavo Macedo | Scrum Master | [Gustavo Macedo](https://github.com/Gustavo-Macedo1) |
 | Matheus Rodrigues | Líder Técnico | [Matheus Rodrigues](https://github.com/mrodrigues14) |
 
