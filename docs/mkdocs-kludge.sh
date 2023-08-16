@@ -1,9 +1,13 @@
 #!/bin/bash
 
-# Create ros2 directory inside the current one
-mkdir -p ros2
-# Look for markdown files inside ros2 directory
-for f in ../ros2/*.md; do
-	# Link relative to the new ros2 directory with the same file name
-	ln -s "../$f" "ros2/$(basename "$f")"
+readonly DOCDIRS=(ros1 ros2)
+
+for docdir in "${DOCDIRS[@]}"; do
+	# Create directory inside the current one
+	mkdir -pv "${docdir}"
+
+	for f in ../"${docdir}"/*.md; do
+		# Link relative to the new directory with the same file name
+		ln -sv "../$f" "${docdir}/$(basename "$f")"
+	done
 done
