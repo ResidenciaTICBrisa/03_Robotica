@@ -4,3 +4,4 @@
 # QEMU disks
 *.qcow2
 *.qcow
+*.iso

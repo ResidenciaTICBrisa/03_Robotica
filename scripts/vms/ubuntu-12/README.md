@@ -11,10 +11,10 @@ These scripts need the following packages to be installed on the host's system
 
 |Package         |Version|
 |----------------|-------|
-|qemu-system-x86 |7.2.0  |
-|qemu-utils      |7.2.0  |
-|qemu-system-gui |7.2.0  |
-|qemu-block-extra|7.2.0  |
+|qemu-system-x86 |6.2.0  |
+|qemu-utils      |6.2.0  |
+|qemu-system-gui |6.2.0  |
+|qemu-block-extra|6.2.0  |
 |ovmf            |2022.11|
 |libguestfs-tools|1.48.6 |
 
