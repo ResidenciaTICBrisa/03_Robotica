@@ -24,7 +24,7 @@ qemu-system-x86_64 \
 -device qemu-xhci \
 -device usb-host hostbus="${USB_HOST_BUS}",host_addr="${USB_HOST_ADDRESS}" \
 -rtc base=localtime,clock=vm \
--device qxl-vga \
--display gtk \
+-device "${DISPLAY_DEVICE}" \
+-display "${DISPLAY_BACKEND}" \
 -monitor stdio \
 -name "${VM_NAME}"

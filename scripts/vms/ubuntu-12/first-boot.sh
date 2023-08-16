@@ -25,7 +25,7 @@ qemu-system-x86_64 \
 -netdev user,id=net0,net="${IPV4_NETWORK}",dhcpstart="${IPV4_DHCP_FIRST_ADDR}",hostfwd=tcp::"${P22_FWD}"-:22 \
 -device virtio-net-pci,netdev=net0 \
 -rtc base=localtime,clock=vm \
--device qxl-vga \
--display gtk \
+-device "${DISPLAY_DEVICE}" \
+-display "${DISPLAY_BACKEND}" \
 -monitor stdio \
 -name "${VM_INITIAL_NAME}"

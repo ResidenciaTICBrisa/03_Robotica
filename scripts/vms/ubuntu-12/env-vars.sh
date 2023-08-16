@@ -19,6 +19,8 @@ readonly MACHINE_CFG="type=${MACHINE_TYPE},accel=kvm"
 readonly CPU_MODEL="Nehalem-v2"
 readonly CPU_NUMBER="4"
 readonly MACHINE_MEMORY_SIZE="4G"
+readonly DISPLAY_DEVICE="qxl-vga"
+readonly DISPLAY_BACKEND="gtk"
 
 readonly USB_HOST_BUS=""
 readonly USB_HOST_ADDRESS=""
