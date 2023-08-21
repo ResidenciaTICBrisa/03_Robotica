@@ -79,5 +79,7 @@ nav:
       - Precompiled: ros2/installing-precompiled-packages.md
       - Compiling: ros2/compiling-for-amd64-based-systems.md
       - Compiling for SBCs: ros2/compiling-for-arm-based-systems.md
+    - NAOv4:
+      - VM Ubuntu 12: vms/ubuntu-12/README.md
     - Robot Settings: Instruções/Robot_Settings.md
     - SDK C++: Instruções/CPP_SDK.md
