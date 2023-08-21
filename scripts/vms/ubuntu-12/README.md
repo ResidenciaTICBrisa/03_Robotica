@@ -50,6 +50,7 @@ Ubuntu 12.04 LTS installation:
 - Language and keyboard layout: Português Brasileiro
 - Erase disk and install Ubuntu
 - Timezone: Sao Paulo
+- User: softex
 
 ```
 ./first-boot
