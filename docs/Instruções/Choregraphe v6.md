@@ -1,4 +1,4 @@
-# Guia de instalação do Choregraphe
+# Guia de instalação do Choregraphe 2.8.6 (NAO v6)
 ---
 
 ## O que é o Choregraphe?
@@ -32,28 +32,28 @@ Ainda que o Choregraphe seja multiplataforma, recomenda-se a instalação no **U
 
 ## Download
 
-Para baixar o Choregraphe, acesse o [site da Aldebaran Robotics](https://www.aldebaran.com/en/support/nao-6/downloads-softwares).
+Para baixar o Choregraphe 2.8.6, acesse o [site da Aldebaran Robotics](https://www.aldebaran.com/en/support/nao-6/downloads-softwares).
 
 Desça até o sub-menu Choregraphe, e na seção "LINUX (2.8.6 and later)", selecione `Choregraphe 2.8.6 - Binaries`.
 
-Quando o download for concluído, **EXTRAIA** o arquivo _**tar.gz**_ no diretório de sua escolha.
+Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório de sua escolha.
 
 > Obs.: O setup está com arquivos corrompidos. É altamente recomendado que você baixe os binários.
-> Obs.: O arquivo de binários dispensa uma instalação formal, sendo necessário apenas executar o _launcher_ do programa, conforme será explicado no seguimento do presente guia. 
+> Obs.: O arquivo de binários dispensa uma instalação formal, sendo necessário apenas executar o _launcher_ do programa, conforme explicado abaixo.
 
 ## Execução do programa
 
-**Executando o Choregraphe** 
+**Executando o Choregraphe 2.8.6** 
 
-Acesse o terminal e execute o Choregraphe diretamente.
+- Acesse o terminal e execute o Choregraphe diretamente.
 
-Exemplo: se o arquivo extraído (`choregraphe-suite-2.8.6.23-linux64`) está em "/meu/diretorio", execute o Choregraphe com:
+**Exemplo**: se o arquivo extraído (`choregraphe-suite-2.8.6.23-linux64`) está em "/meu/diretorio", execute o Choregraphe com:
 
 ```
 "/meu/diretorio/choregraphe-suite-2.8.6.23-linux64/bin/choregraphe_launcher"
 ```
 
-> IMPORTANTE: lembre-se de alterar o caminho no código acima de acordo com o local de extração do tar.gz dos binários baixados!
+> **IMPORTANTE**: lembre-se de alterar o caminho no código acima de acordo com o local de extração do tar.gz dos binários baixados!
 
 **Selecionando o robô virtual NAO**
 
