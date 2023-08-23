@@ -1,0 +1,8 @@
+# Vim files
+*.swp
+
+# Chroot directories
+# cache is a symbolic link
+cache
+focal-armhf/
+focal-arm64/

@@ -1,15 +1,85 @@
-# INformações - Site
+# Informações - Site
 site_name: RoboConnection #Connecting the Robo Journey
 site_url: https://residenciaticbrisa.github.io/03_Robotica/
 
 # Informações - Repositório
-repo_name: '03_Robotica'
+repo_name: 'RoboConnection'
 repo_url: https://github.com/ResidenciaTICBrisa/03_Robotica
 
-theme: readthedocs
+copyright: Copyright &copy; 2023 BRISA
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    #- navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - search.share
+
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: pt-BR
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: switch to dark mode
+      primary: deep purple
+      accent: cyan
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: switch to light mode
+      primary: deep purple
+      accent: cyan
+  icon:
+    logo: material/robot-industrial
+    repo: material/robot-industrial-outline
+  favicon: assets/images/robo.png
+
+plugins:
+  - search:
+      lang:
+        - pt
+        - en
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - git-revision-date-localized:
+      type: timeago
+      enable_creation_date: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 nav:
   - Home: index.md
   - Instruções:
-    - ROS: Instruções/ROS1.md
+    - Maquina Virtual: Instruções/Maquina_Virtual.md
+    - ROS1:
+      - Instruções: Instruções/ROS1.md
+      - General: ros1/general-instructions.md
+      - Precompiled: ros1/installing-precompiled-packages.md
+      - Compiling: ros1/compiling-for-amd64-based-systems.md
+      - Compiling for SBCs: ros1/compiling-for-arm-based-systems.md
+    - ROS2:
+      - General: ros2/general-instructions.md
+      - Precompiled: ros2/installing-precompiled-packages.md
+      - Compiling: ros2/compiling-for-amd64-based-systems.md
+      - Compiling for SBCs: ros2/compiling-for-arm-based-systems.md
+    - NAOv4:
+      - VM Ubuntu 12: vms/ubuntu-12/README.md
     - Robot Settings: Instruções/Robot_Settings.md
+    - SDK C++: Instruções/CPP_SDK.md
