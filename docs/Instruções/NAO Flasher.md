@@ -3,7 +3,6 @@
 
 O NAO Flasher é uma ferramenta que permite a realização de updates no sistema do NAO v4, além do reset de fábrica e outras possibilidades.
 
-
 > Recomendação: usar no **Linux Ubuntu 16.04 (Xenial Xerus)**.
 
 ## Download
