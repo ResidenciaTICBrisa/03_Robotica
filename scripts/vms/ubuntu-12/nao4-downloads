@@ -1,0 +1,14 @@
+# Aldebaran Documentation for NAOqi 2.1
+http://doc.aldebaran.com/download/aldeb-doc-2.1.4.13.zip
+# Choreographe binaries for Linux amd64
+https://community-static.aldebaran.com/resources/2.1.4.13/choregraphe/choregraphe-suite-2.1.4.13-linux64.tar.gz
+# Choreographe setup for Linux amd64
+https://community-static.aldebaran.com/resources/2.1.4.13/choregraphe/choregraphe-suite-2.1.4.13-linux64-setup.run
+# Cross toolchain for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/cross+toolchain/ctc-linux64-atom-2.8.7.4-20210818_162500.zip
+# NAOqi C++ SDK for amd64
+https://community-static.aldebaran.com/resources/2.1.4.13/sdk-c%2B%2B/naoqi-sdk-2.1.4.13-linux64.tar.gz
+# NAOqi Python 2.7 for Linux amd64
+https://community-static.aldebaran.com/resources/2.1.4.13/sdk-python/pynaoqi-python2.7-2.1.4.13-linux64.tar.gz
+# NAOqi Python 2.7 for Linux i386
+https://community-static.aldebaran.com/resources/2.1.4.13/sdk-python/pynaoqi-python2.7-2.1.4.13-linux32.tar.gz

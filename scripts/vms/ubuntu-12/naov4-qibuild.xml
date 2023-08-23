@@ -1,0 +1,7 @@
+<!-- Place me at ${HOME}/.config/qi/qibuild.xml -->
+<qibuild version="1">
+	<defaults>
+		<env />
+		<cmake generator="Unix Makefiles" />
+	</defaults>
+</qibuild>

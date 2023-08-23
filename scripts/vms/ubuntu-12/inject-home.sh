@@ -11,6 +11,10 @@ mount '/dev/sda1' '/'
 
 <!. ./env-vars.sh > /dev/null; echo "copy-in 'prepare-naoqi-requirements.sh' '/home/${VM_USER}'"
 
+<!. ./env-vars.sh > /dev/null; echo "copy-in 'install-naov4.sh' '/home/${VM_USER}'"
+<!. ./env-vars.sh > /dev/null; echo "copy-in 'naov4-config.cmake' '/home/${VM_USER}'"
+<!. ./env-vars.sh > /dev/null; echo "copy-in 'naov4-qibuild.xml' '/home/${VM_USER}'"
+
 echo ""
 
 echo "Unmounting..."
