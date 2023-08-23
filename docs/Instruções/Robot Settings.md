@@ -1,4 +1,5 @@
-# Instalação do Robot Settings no Ubuntu 16.04 
+# Instalação do Robot Settings no Ubuntu 16.04
+---
 
 O Robot Settings é um programa usado para configurar e gerenciar robôs da Softbank Robotics.
 

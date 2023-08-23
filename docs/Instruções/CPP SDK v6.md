@@ -1,4 +1,5 @@
 # Instalação do SDK de C++ 2.8.5 (NAOqi 2.8)
+---
 
 Para que seja possível desenvolver programas que controlem os robôs, é necessário instalar o SDK (Software Development Kit - Kit de Desenvolvimento de Software) de C++ para o NAO v6 (com NAOqi 2.8).
 
