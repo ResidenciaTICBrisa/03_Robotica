@@ -7,7 +7,7 @@ hide:
 
 ## Introdução
 
-Bem-vindo à Equipe RoboConnection! Somos colaboradores dos projetos UnBeatables e EMA da Universidade de Brasília (UnB). Como equipe contratada, nosso objetivo é fornecer suporte técnico e soluções para atender às demandas exclusivas desses projetos para garantir que ambos projetos alcancem seus objetivos com sucesso, fazendo isso através de nossas documentações abrangentes para ajudar novos integrantes e até mesmo veteranos a se envolverem de maneira produtiva e eficiente nos projetos.
+Bem-vindo à Equipe RoboConnection! Somos colaboradores dos projetos UnBeatables e EMA da Universidade de Brasília (UnB). Como equipe contratada, nosso objetivo é fornecer suporte técnico e soluções para atender às demandas exclusivas desses projetos para garantir que ambos projetos alcancem seus objetivos com sucesso, fazendo isso através de documentações abrangentes para ajudar novos integrantes e até mesmo veteranos a se envolverem de maneira produtiva e eficiente nos projetos.
 
 ## Sobre os Projetos
 
@@ -31,7 +31,7 @@ Para essa tarefa de suporte aos dois projetos, a equipe conta com 5 menbros, ond
 
 <center>
 
-| Menbro | Designação | GitHub |
+| Membro | Designação | GitHub |
 |--------|------------|--------|
 | Daniel dos Santos | Community Manager | [Daniel dos Santos](https://github.com/daniel-de-sousa) |
 | Damarcones Porto | Product Manager | [Damarcones Porto](https://github.com/damarcones) |
