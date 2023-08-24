@@ -62,6 +62,12 @@ No wizard que se abre, aceite as permissões, selecione a opção **Quick instal
 
 - Deixe marcada a opção de iniciar (launch) o Choregraphe para testar se a instalação foi feita com sucesso.
 
+> Obs.: Como alternativa ao processo de instalação manual, pode-se executar o seguinte código:
+
+```
+sudo ./choregraphe-suite-2.1.4.13-linux64-setup.run --mode unattended --installdir '/my/destination_directory' --licenseKeyMode licenseKey --licenseKey '654e-4564-153c-6518-2f44-7562-206e-4c60-5f47-5f45'
+```
+
 ## Execução do programa
 
 **Executando o Choregraphe 2.1.4** 
