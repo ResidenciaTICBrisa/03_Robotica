@@ -128,13 +128,11 @@ echo '# NAOv4 Python SDK' >> "${HOME}/.bashrc"
 echo "readonly NAO4_PYTHON_SDK_PATH=\"${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}\"" >> "${HOME}/.bashrc"
 echo 'export PYTHONPATH="${PYTHONPATH}:${NAO4_PYTHON_SDK_PATH}"' >> "${HOME}/.bashrc"
 
-#echo 'Installing Choreographe'
-#chmod +x "${NAO_DOWNLOADS_DIR}/${CHOREGRAPHE_SETUP_FILE}"
-#"${NAO_DOWNLOADS_DIR}/${CHOREGRAPHE_SETUP_FILE}" \
-#	--mode unattended \
-#	--installdir "${NAO_CHOREGRAPHE_DIR}" \
-#	--licenseKeyMode licenseKey \
-#	--licenseKey "${CHOREGRAPHE_KEY}"
+echo 'Installing Choreographe'
+echo '# Choregraphe path' >> "${HOME}/.bashrc"
+echo "readonly CHOREGRAPHE_PATH=\"${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}\"" >> "${HOME}/.bashrc"
+echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
+echo "Choregraphe key: '${CHOREGRAPHE_KEY}'"
 
 echo 'Installing CPP library'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
