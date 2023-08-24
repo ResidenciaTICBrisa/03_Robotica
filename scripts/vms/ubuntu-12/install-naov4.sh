@@ -13,6 +13,8 @@ readonly NAO_DOCS_DIR="${HOME}/NAO4/docs"
 readonly NAO_CHOREGRAPHE_DIR="${NAO_PROGRAMS_DIR}/choregraphe"
 readonly CHOREGRAPHE_KEY='562a-750a-252e-143c-0f2a-4550-505e-4f40-5f48-504c'
 
+readonly NAO_FLASHER_DIR="${NAO_PROGRAMS_DIR}/flasher"
+
 readonly NAOQI_CPP_QIBUILD_TOOLCHAIN='naov4-toolchain'
 readonly NAOQI_CPP_QIBUILD_CONFIG="${NAOQI_CPP_QIBUILD_TOOLCHAIN}-config"
 
@@ -24,23 +26,27 @@ readonly CHOREGRAPHE_SETUP_URL='https://community-static.aldebaran.com/resources
 readonly CHOREGRAPHE_BINARIES_URL='https://community-static.aldebaran.com/resources/2.1.4.13/choregraphe/choregraphe-suite-2.1.4.13-linux64.tar.gz'
 readonly NAOQI_CPP_URL='https://community-static.aldebaran.com/resources/2.1.4.13/sdk-c%2B%2B/naoqi-sdk-2.1.4.13-linux64.tar.gz'
 readonly NAOQI_PYTHON_URL='https://community-static.aldebaran.com/resources/2.1.4.13/sdk-python/pynaoqi-python2.7-2.1.4.13-linux64.tar.gz'
+readonly NAO_FLASHER_URL='https://community-static.aldebaran.com/resources/2.1.0.19/flasher-2.1.0.19-linux64.tar.gz'
 
 readonly NAOQI_DOCS_FILE="${NAOQI_DOCS_URL##*/}"
 readonly CHOREGRAPHE_SETUP_FILE="${CHOREGRAPHE_SETUP_URL##*/}"
 readonly CHOREGRAPHE_BINARIES_FILE="${CHOREGRAPHE_BINARIES_URL##*/}"
 readonly NAOQI_CPP_FILE="${NAOQI_CPP_URL##*/}"
 readonly NAOQI_PYTHON_FILE="${NAOQI_PYTHON_URL##*/}"
+readonly NAO_FLASHER_FILE="${NAO_FLASHER_URL##*/}"
 
 readonly NAOQI_DOCS="${NAOQI_DOCS_FILE%*.zip}"
 readonly CHOREGRAPHE_BINARIES="${CHOREGRAPHE_BINARIES_FILE%*.tar.*}"
 readonly NAOQI_CPP="${NAOQI_CPP_FILE%*.tar.*}"
 readonly NAOQI_PYTHON="${NAOQI_PYTHON_FILE%*.tar.*}"
+readonly NAO_FLASHER="${NAO_FLASHER_FILE%*.tar.*}"
 
 readonly DOWNLOAD_URLS=(
 	"${CHOREGRAPHE_BINARIES_URL}"
 	"${NAOQI_CPP_URL}"
 	"${NAOQI_PYTHON_URL}"
 	"${NAOQI_DOCS_URL}"
+	"${NAO_FLASHER_URL}"
 )
 
 readonly ARIA2_JOBS=2
@@ -58,6 +64,7 @@ mkdir -pv "${NAO_DOWNLOADS_DIR}"
 mkdir -pv "${NAO_PROGRAMS_DIR}"
 mkdir -pv "${NAO_DOCS_DIR}"
 mkdir -pv "${NAO_CHOREGRAPHE_DIR}"
+mkdir -pv "${NAO_FLASHER_DIR}"
 
 echo 'Install qibuild'
 pip2 install qibuild pyreadline
@@ -103,6 +110,9 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 		"${NAO_DOWNLOADS_DIR}/${NAOQI_PYTHON}")
 			mv -v "$f" "${NAO_PYTHON2_DIR}/"
 			;;
+		"${NAO_DOWNLOADS_DIR}/${NAO_FLASHER}")
+			mv -v "$f" "${NAO_FLASHER_DIR}/"
+			;;
 		*)
 			echo "Unknown file '$f'"
 			;;
@@ -125,6 +135,11 @@ echo '# Choregraphe path' >> "${HOME}/.bashrc"
 echo "readonly CHOREGRAPHE_PATH=\"${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}\"" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
 echo "Choregraphe key: '${CHOREGRAPHE_KEY}'"
+
+echo 'Installing NAO Flasher'
+echo '# NAO Flasher path' >> "${HOME}/.bashrc"
+echo "readonly NAO_FLASHER_PATH=\"${NAO_FLASHER_DIR}/${NAO_FLASHER}\"" >> "${HOME}/.bashrc"
+echo 'export PATH="${PATH}:${NAO_FLASHER_PATH}"' >> "${HOME}/.bashrc"
 
 echo 'Installing CPP library'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
