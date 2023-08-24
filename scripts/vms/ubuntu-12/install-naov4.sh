@@ -77,14 +77,6 @@ echo 'Download packages'
 for url in "${DOWNLOAD_URLS[@]}"; do
 	wget "${url}" --directory-prefix="${NAO_DOWNLOADS_DIR}"
 done
-#aria2c \
-#	--continue \
-#	--force-sequential \
-#	--check-certificate='false' \
-#	--dir="${NAO_DOWNLOADS_DIR}" \
-#	--max-concurrent-downloads="${ARIA2_JOBS}" \
-#	--max-connection-per-server="${ARIA2_SPLITS}" \
-#	"${DOWNLOAD_URLS[@]}"
 
 echo 'Extract packages'
 for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
