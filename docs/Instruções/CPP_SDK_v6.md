@@ -1,4 +1,5 @@
-# Instalação do SDK de C++ para o NAO v6 (NAOqi 2.8)
+# Instalação do SDK de C++ 2.8.5 (NAOqi 2.8)
+---
 
 Para que seja possível desenvolver programas que controlem os robôs, é necessário instalar o SDK (Software Development Kit - Kit de Desenvolvimento de Software) de C++ para o NAO v6 (com NAOqi 2.8).
 
@@ -88,6 +89,7 @@ cd 'Área de Trabalho'/worktree
 ```
 
 3. Uma vez dentro da pasta, execute o seguinte comando para inicializar o qiBuild:
+
 ```
 qibuild init
 ```
@@ -115,15 +117,15 @@ cd myfirstexample
 qibuild configure 
 ```
 
-> Obs.: note que o diretório "build-sys-linux-x86_64" foi criado dentro do diretório "myfirstexample"
+> Obs.: note que o diretório `build-sys-linux-x86_64` foi criado dentro do diretório "myfirstexample"
 
-4. Compilar o primeiro programa (Hello World) com o seguinte código:
+4. Compilar o primeiro programa (_Hello World_) com o seguinte código:
 
 ```
 qibuild make
 ```
 
-5. Para rodar o programa, acesse o diretório build-sys-linux-x86_64/sdk/bin:
+5. Para rodar o programa, acesse o diretório `build-sys-linux-x86_64/sdk/bin`:
 
 ```
 cd build-sys-linux-x86_64/sdk/bin
@@ -137,7 +139,7 @@ E execute:
 
 > Se a mensagem "Hello, world" aparecer no terminal, a instalação do qiBuild foi concluída com sucesso.
 
-## SDK C++ para NAO v6
+## SDK C++ 2.8.5 para NAO v6
 
 ### Download
 
@@ -145,8 +147,8 @@ Para baixar o SDK de C++, siga os seguintes passos:
 
 1. Visite o [site da Aldebaran Robotics](https://www.aldebaran.com/en/support/nao-6/downloads-softwares)
 2. Acesse o sub-menu "SDK"
-3. Na aba "Linux", selecione "SDKs 2.8.5 - C++ SDK"
-4. Na prompt que aparecer, selecione a opção "Salvar arquivo"
+3. Na aba "Linux", selecione "**SDKs 2.8.5 - C++ SDK**"
+4. Na prompt que aparecer, selecione a opção `Salvar arquivo`
 
 > Obs.: Muito cuidado ao selecionar a opção correta de acordo com seu sistema operacional.
 

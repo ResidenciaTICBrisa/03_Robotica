@@ -69,7 +69,7 @@ nav:
   - Instruções:
     - Maquina Virtual: Instruções/Maquina_Virtual.md
     - ROS1:
-      - Instruções: Instruções/ROS1.md
+      - Instalação: Instruções/ROS_1.md
       - General: ros1/general-instructions.md
       - Precompiled: ros1/installing-precompiled-packages.md
       - Compiling: ros1/compiling-for-amd64-based-systems.md
@@ -79,7 +79,12 @@ nav:
       - Precompiled: ros2/installing-precompiled-packages.md
       - Compiling: ros2/compiling-for-amd64-based-systems.md
       - Compiling for SBCs: ros2/compiling-for-arm-based-systems.md
-    - NAOv4:
+    - NAO v4:
       - VM Ubuntu 12: vms/ubuntu-12/README.md
-    - Robot Settings: Instruções/Robot_Settings.md
-    - SDK C++: Instruções/CPP_SDK.md
+      - SDK C++: Instruções/CPP_SDK_v4.md
+      - NAO Flasher: Instruções/NAO_Flasher.md
+      - Choregraphe: Instruções/Choregraphe_v4.md
+    - NAO v6:
+      - Robot Settings: Instruções/Robot_Settings.md
+      - SDK C++: Instruções/CPP_SDK_v6.md
+      - Choregraphe: Instruções/Choregraphe_v6.md
