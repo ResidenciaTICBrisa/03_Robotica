@@ -122,3 +122,14 @@ Python 2 to a newer version and to enable PIP2 and its binaries.
 
 This script will also prompt for administrative rights, as it needs to install
 packages used by the C++ and Python2 SDKs.
+
+### Activating Choregraphe
+
+Choregraphe will prompt for its activation key on its first initialisation. This
+key is available in the installation script, and it will also be printed to the
+terminal after the script is executed.
+
+### NAO Flasher permissions
+
+NAO Flasher requires administrative permissions (`sudo` or execution as the
+`root` user) to write data.
