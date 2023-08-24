@@ -52,9 +52,12 @@ must be executed in their host machine:
 1. `update-sources.sh`
 2. `inject-home.sh`
 
-Finally, inside the virtual machine, also known as the guest machine, the user
+Now, inside the virtual machine, also known as the guest machine, the user
 must run the `prepare-naoqi-requirements.sh` script to compile Python 2.7.11
 and install Pip 20.3.4.
+
+Finally, the user will be able to install the NAOv4 development environment
+using the `install-naov4.sh` script.
 
 ## Starting the Virtual Machine up for the first time
 
@@ -105,3 +108,17 @@ installing dependencies for compiling and installing Python 2 and Pip:
 ```
 ./prepare-naoqi-requirements.sh
 ```
+
+## Installing NAOv4 development environment
+
+After running the preparation script, the installation one must be run on a
+new terminal session. If you wish to remain in the same session, you must reload
+your `.bashrc` (`source .bashrc`) to enable the modifications made to redirect
+Python 2 to a newer version and to enable PIP2 and its binaries.
+
+```
+./install-naov4.sh
+```
+
+This script will also prompt for administrative rights, as it needs to install
+packages used by the C++ and Python2 SDKs.
