@@ -1,7 +1,7 @@
-# Instalação do NAO Flasher (NAO v4)
+# Instalação do NAO Flasher (NAO v4 e NAO v6)
 ---
 
-O NAO Flasher é uma ferramenta que permite a realização de updates no sistema do NAO v4, além do reset de fábrica e outras possibilidades.
+O NAO Flasher é uma ferramenta que permite a realização de updates no sistema do NAO v4 e do NAO v6, além do reset de fábrica e outras possibilidades.
 
 > Recomendação: usar no **Linux Ubuntu 16.04 (Xenial Xerus)**.
 
