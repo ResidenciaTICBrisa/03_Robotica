@@ -72,6 +72,7 @@ mkdir -pv "${NAO_PROGRAMS_DIR}"
 mkdir -pv "${NAO_DOCS_DIR}"
 mkdir -pv "${NAO_CHOREGRAPHE_DIR}"
 mkdir -pv "${NAO_FLASHER_DIR}"
+mkdir -pv "${NAO_ROBOT_SETTINGS_DIR}"
 
 echo 'Install qibuild'
 pip2 install qibuild pyreadline
@@ -150,6 +151,11 @@ echo 'Installing NAO Flasher'
 echo '# NAO Flasher path' >> "${HOME}/.bashrc"
 echo "readonly NAO_FLASHER_PATH=\"${NAO_FLASHER_DIR}/${NAO_FLASHER}\"" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${NAO_FLASHER_PATH}"' >> "${HOME}/.bashrc"
+
+echo 'Installing Robot Settings'
+echo '# Robot Settings path' >> "${HOME}/.bashrc"
+echo "readonly NAO_ROBOT_SETTINGS_PATH=\"${NAO_ROBOT_SETTINGS_DIR}/${NAO_ROBOT_SETTINGS_BINARIES}/bin\"" >> "${HOME}/.bashrc"
+echo 'export PATH="${PATH}:${NAO_ROBOT_SETTINGS_PATH}"' >> "${HOME}/.bashrc"
 
 echo 'Installing CPP library'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
