@@ -9,6 +9,8 @@ abort_if_bios_not_found
 abort_if_image_not_found
 abort_if_disk_not_found
 
+abort_if_usb_not_found
+
 qemu-system-x86_64 \
 -k pt-br \
 -machine "${MACHINE_CFG}" \
@@ -22,7 +24,7 @@ qemu-system-x86_64 \
 -netdev user,id=net0,net="${IPV4_NETWORK}",dhcpstart="${IPV4_DHCP_FIRST_ADDR}",hostfwd=tcp::"${P22_FWD}"-:22 \
 -device virtio-net-pci,netdev=net0 \
 -device qemu-xhci \
--device usb-host hostbus="${USB_HOST_BUS}",host_addr="${USB_HOST_ADDRESS}" \
+-device usb-host,hostdevice="${USB_FILE}" \
 -rtc base=localtime,clock=vm \
 -device "${DISPLAY_DEVICE}" \
 -display "${DISPLAY_BACKEND}" \

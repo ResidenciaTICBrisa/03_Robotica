@@ -26,9 +26,9 @@ readonly VM_USER="softex"
 
 readonly USB_HOST_BUS=""
 readonly USB_HOST_ADDRESS=""
-
 readonly USB_VENDOR_ID=""
 readonly USB_PRODUCT_ID=""
+readonly USB_FILE="/dev/bus/usb/${USB_HOST_BUS}/${USB_HOST_ADDRESS}"
 
 readonly UNSET_WARNING="is unset or empty"
 
@@ -71,6 +71,36 @@ abort_if_disk_not_found() {
 	if [[ ! -e "${DISK_LOCATION}" ]]; then
 		echo "Virtual Machine disk not found on '${DISK_LOCATION}'"
 		exit 3
+	fi
+}
+
+abort_if_usb_not_found() {
+	echo "USB_HOST_BUS=${USB_HOST_BUS:?${UNSET_WARNING}}"
+	echo "USB_HOST_ADDRESS=${USB_HOST_ADDRESS:?${UNSET_WARNING}}"
+
+	if [[ ! -e "${USB_FILE}" ]]; then
+		echo "USB device not found at '${USB_FILE}'"
+		exit 4
+	fi
+}
+
+abort_if_usb_misconfigured() {
+	echo "USB_HOST_BUS=${USB_HOST_BUS:?${UNSET_WARNING}}"
+	echo "USB_HOST_ADDRESS=${USB_HOST_ADDRESS:?${UNSET_WARNING}}"
+	echo "USB_VENDOR_ID=${USB_VENDOR_ID:?${UNSET_WARNING}}"
+	echo "USB_PRODUCT_ID=${USB_PRODUCT_ID:?${UNSET_WARNING}}"
+
+	abort_if_usb_not_found
+
+	lsusb \
+		-s "${USB_HOST_BUS}:${USB_HOST_ADDRESS}" \
+		-d "${USB_VENDOR_ID}:${USB_PRODUCT_ID}" \
+		>/dev/null
+	local status=$?
+
+	if [[ "$status" != 0 ]]; then
+		echo "Mismatched vendor or product id"
+		exit 5
 	fi
 }
 
