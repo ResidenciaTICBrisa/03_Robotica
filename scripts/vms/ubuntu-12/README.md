@@ -129,7 +129,76 @@ Choregraphe will prompt for its activation key on its first initialisation. This
 key is available in the installation script, and it will also be printed to the
 terminal after the script is executed.
 
+### Configuring the host USB
+
+The `env-vars.sh` script has four variables to control how the virtual machine
+will connect to the host USB device:
+
+- `USB_HOST_BUS`: the bus' ID, including leading zeros
+- `USB_HOST_ADDRESS`: the device's ID in the aforementioned bus, including leading
+zeros
+- `USB_VENDOR_ID`: the device's vendor ID in hexadecimal notation, that is, the
+device's vendor ID preceded by `0x`
+- `USB_PRODUCT_ID`: the device's product ID in hexadecimal notation, that is,
+the device's product ID preceded by `0x`
+
+The variables match the output of the `lsusb` command:
+
+```
+Bus $USB_HOST_BUS Device $USB_HOST_ADDRESS: ID $USB_VENDOR_ID:$USB_PRODUCT_ID MyUSB Device Thing
+```
+
+There are two scripts that will connect the host's device to the virtual
+machine:
+
+- `run-usb-productid.sh`: connects only the device with the matching vendor and
+product ID as long as it is connected to the specified port. It requires
+specifying all the four variables;
+- `run-usb-hostid.sh`: connects anything currenctly connected to the specified
+port. It requires specifying only the bus and the device.
+
+The virtualiser uses the `/dev/bus/usb` files to connect the VM to the host
+device. This requires superuser permissions on most machines. In order to
+connect a host USB device to the VM, the user must provide the script with the
+necessary privileges (run it as root, prefix with `sudo`) or change the
+permissions of the USB interface (changing its group with `chgrp` to a group
+that it user takes part in, or changing its owner with `chown`).
+
+#### Example
+
+Consider the following `lsusb` output:
+
+```
+Bus 001 Device 001: ID 0001:0001 USB Thing 1
+Bus 001 Device 002: ID 0001:0002 USB Thing 2
+Bus 001 Device 003: ID 0001:0001 USB Thing 1
+Bus 002 Device 001: ID 0002:0001 USB Device 1
+Bus 002 Device 002: ID 0002:0002 USB Device 2
+Bus 002 Device 003: ID 0002:0001 USB Device 1
+```
+
+If one wishes to connect the `USB Thing 1` connected at the `Bus 001` as the
+device numbered `003`, they should configure the variables at `env-vars.sh` as:
+
+```
+USB_HOST_BUS="001"
+USB_HOST_ADDRESS="003"
+USB_VENDOR_ID="0x0001"
+USB_PRODUCT_ID="0x0001"
+```
+
+Before running the desired script, the permissions must be set for the USB file
+(`chown the-user /dev/bus/usb/001/003`) or the script must be run with elevated
+privileges (`sudo` or run as root).
+
+Please be aware that in order to connect only the required device to the VM, one
+must run the VM using `run-usb-productid.sh`. Choosing the
+`run-usb-productid.sh` would connect all the devices connected to the `Bus 001`,
+the two `USB Thing 1` and the `USB Thing 2`.
+
+
 ### NAO Flasher permissions
 
 NAO Flasher requires administrative permissions (`sudo` or execution as the
-`root` user) to write data.
+`root` user) to write data. If `sudo` can't find the program's path, you may
+find it with `command -v flasher`.
