@@ -74,7 +74,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Maquina Virtual: Instruções/Maquina_Virtual.md
+  - Máquina Virtual: Instruções/Maquina_Virtual.md
   - NAOv4:
     - Máquina Virtual com scripts: vms/ubuntu-12/README.md
     - NAO Flahser: Instruções/NAO_Flasher.md
