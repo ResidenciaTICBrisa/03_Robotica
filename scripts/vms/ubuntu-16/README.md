@@ -32,7 +32,7 @@ Even though these scripts can be modified easily, they expect the following
 directory structure in their current form:
 
 - `env-vars.sh`, a script to centralise the VM's configurations
-- an image [1][1] from Ubuntu's installation disk version 16.04 named as
+- an [image][1] from Ubuntu's installation disk version 16.04 named as
 `ubuntu-16.04-desktop-amd64.iso` (this can be altered in the `IMAGE_LOCATION`
 variable at the `env-vars.sh` script)
 
