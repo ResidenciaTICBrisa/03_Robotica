@@ -89,6 +89,9 @@ fix this, run the following script when the VM is disabled:
 ./update-sources.sh
 ```
 
+Don't forget to update (`apt-get update`) and upgrade (`apt-get dist-upgrade`)
+if there are any updates available.
+
 ## Preparing to install NAOqi for NAOv4
 
 Ubuntu 12.04 has an old version of Python 2.7. It lacks support to download data
