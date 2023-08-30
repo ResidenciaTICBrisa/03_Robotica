@@ -139,7 +139,7 @@ done
 echo 'Installing Python library'
 echo '# NAOv6 Python SDK' >> "${HOME}/.bashrc"
 echo "readonly NAO6_PYTHON_SDK_PATH=\"${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}\"" >> "${HOME}/.bashrc"
-echo 'export PYTHONPATH="${PYTHONPATH}:${NAO6_PYTHON_SDK_PATH}"' >> "${HOME}/.bashrc"
+echo 'export PYTHONPATH="${PYTHONPATH}:${NAO6_PYTHON_SDK_PATH}/lib/python2.7/site-packages"' >> "${HOME}/.bashrc"
 
 echo 'Installing Choreographe'
 echo '# Choregraphe path' >> "${HOME}/.bashrc"
