@@ -4,6 +4,7 @@ readonly DOCDIRS=(ros1 ros2 vms/ubuntu-12)
 
 for docdir in "${DOCDIRS[@]}"; do
 	# Create directory inside the current one
+	rm -rv "${docdir}"
 	mkdir -pv "${docdir}"
 
 	dirlevel="$(perl -ne 'print tr/\///' <<< "${docdir}")"
