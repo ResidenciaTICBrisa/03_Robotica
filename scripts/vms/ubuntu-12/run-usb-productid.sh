@@ -6,7 +6,6 @@ echo "Booting machine '${VM_NAME}' with HDD and packages' disk"
 
 abort_if_bios_not_found
 
-abort_if_image_not_found
 abort_if_disk_not_found
 
 abort_if_usb_misconfigured
