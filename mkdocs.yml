@@ -81,7 +81,7 @@ nav:
     - Choregraphe: Instruções/Choregraphe_v4.md
   - NAOv6:
     - Robot Settings: Instruções/Robot_Settings.md
-    - SDK C++: Instruções/CPP_SDK.md
+    - SDK C++: Instruções/CPP_SDK_v6.md
     - Choregraphe: Instruções/Choregraphe_v6.md
   - ROS:
     - ROS1:
