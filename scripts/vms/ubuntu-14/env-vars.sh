@@ -4,19 +4,19 @@
 [ -z "${SOURCED_ENV_VARS_SH}" ] || exit 0
 
 readonly BIOS_LOCATION="/usr/share/seabios/vgabios-virtio.bin"
-readonly IMAGE_LOCATION="ubuntu-12.04-desktop-amd64.iso"
-readonly DISK_LOCATION="ubuntu-12.04-vm.qcow2"
+readonly IMAGE_LOCATION="ubuntu-14.04-desktop-amd64.iso"
+readonly DISK_LOCATION="ubuntu-14.04-vm.qcow2"
 
 readonly DISK_SIZE="50G"
 
-readonly VM_INITIAL_NAME="ubuntu-12.04-nao-first-boot"
-readonly VM_NAME="ubuntu-12.04-nao"
+readonly VM_INITIAL_NAME="ubuntu-14.04-nao-first-boot"
+readonly VM_NAME="ubuntu-14.04-nao"
 readonly IPV4_NETWORK="192.168.3.0/24"
 readonly IPV4_DHCP_FIRST_ADDR="192.168.3.220"
 readonly P22_FWD="10022"
 readonly MACHINE_TYPE="pc-q35-6.2"
 readonly MACHINE_CFG="type=${MACHINE_TYPE},accel=kvm"
-readonly CPU_MODEL="Nehalem-v2"
+readonly CPU_MODEL="Haswell-v4"
 readonly CPU_NUMBER="4"
 readonly MACHINE_MEMORY_SIZE="4G"
 readonly DISPLAY_DEVICE="qxl-vga"

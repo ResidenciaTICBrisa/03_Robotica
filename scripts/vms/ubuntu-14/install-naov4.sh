@@ -67,7 +67,7 @@ mkdir -pv "${NAO_CHOREGRAPHE_DIR}"
 mkdir -pv "${NAO_FLASHER_DIR}"
 
 echo 'Install qibuild'
-pip2 install qibuild pyreadline
+"${PIP_PATH}/pip2" install qibuild pyreadline
 echo '# NAOv4 installation' >> "${HOME}/.bashrc"
 echo "readonly PIP_PATH=\"${PIP_PATH}\"" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${PIP_PATH}"' >> "${HOME}/.bashrc"
