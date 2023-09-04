@@ -29,8 +29,6 @@ fi
 printf "Converting to QCOW2 and compressing %s\n" "${DRIVE}"
 mv "${DRIVE}" "${DRIVE_BACKUP}"
 sync
-qemu-img convert -p -O qcow2 "${DRIVE_BACKUP}" "${DRIVE}"
-#qemu-img convert -c -p -O qcow2 "${DRIVE_BACKUP}" "${DRIVE}"
+qemu-img convert -c -p -O qcow2 "${DRIVE_BACKUP}" "${DRIVE}"
 #qemu-img convert --salvage -c -p -O qcow2 "${DRIVE_BACKUP}" "${DRIVE}"
-#qemu-img convert -p -O qcow2 "${DRIVE_BACKUP}" "${DRIVE}"
 sync

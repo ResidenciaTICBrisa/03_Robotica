@@ -6,8 +6,9 @@ echo "Booting machine '${VM_NAME}' with HDD and packages' disk"
 
 abort_if_bios_not_found
 
-abort_if_image_not_found
 abort_if_disk_not_found
+
+abort_if_usb_misconfigured
 
 qemu-system-x86_64 \
 -k pt-br \
@@ -22,7 +23,7 @@ qemu-system-x86_64 \
 -netdev user,id=net0,net="${IPV4_NETWORK}",dhcpstart="${IPV4_DHCP_FIRST_ADDR}",hostfwd=tcp::"${P22_FWD}"-:22 \
 -device virtio-net-pci,netdev=net0 \
 -device qemu-xhci \
--device usb-host vendorid="${USB_VENDOR_ID}",productid="${USB_PRODUCT_ID}" \
+-device usb-host,hostdevice="${USB_FILE}",vendorid="${USB_VENDOR_ID}",productid="${USB_PRODUCT_ID}" \
 -rtc base=localtime,clock=vm \
 -device "${DISPLAY_DEVICE}" \
 -display "${DISPLAY_BACKEND}" \
