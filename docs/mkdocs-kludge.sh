@@ -1,9 +1,10 @@
 #!/bin/bash
 
-readonly DOCDIRS=(ros1 ros2 vms/ubuntu-12)
+readonly DOCDIRS=(ros1 ros2 vms/ubuntu-12 vms/ubuntu-16)
 
 for docdir in "${DOCDIRS[@]}"; do
 	# Create directory inside the current one
+	rm -rv "${docdir}"
 	mkdir -pv "${docdir}"
 
 	dirlevel="$(perl -ne 'print tr/\///' <<< "${docdir}")"

@@ -1,0 +1,7 @@
+# Vim swap files
+*.swp
+
+# QEMU disks
+*.qcow2
+*.qcow
+*.iso

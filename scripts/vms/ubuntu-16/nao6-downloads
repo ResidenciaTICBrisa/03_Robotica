@@ -1,0 +1,18 @@
+# Aldebaran Documentation for NAOqi 2.8
+http://doc.aldebaran.com/download/aldeb-doc-2.8.7.4.zip
+# Choreographe binaries for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/Choregraphe+Suite/Linux64/choregraphe-suite-2.8.7.4-linux64.tar.gz
+# Choreographe setup for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/Choregraphe+Suite/Linux64/choregraphe-suite-2.8.7.4-linux64-setup.run
+# Cross toolchain for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/cross+toolchain/ctc-linux64-atom-2.8.7.4-20210818_162500.zip
+# NAOqi C++ SDK for amd64
+https://community-static.aldebaran.com/resources/2.8.5/naoqi-sdk-2.8.5.10-linux64.tar.gz
+# NAOqi Python 2.7 for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/Python+SDK/pynaoqi-python2.7-2.8.7.4-linux64-20210819_141148.tar.gz
+# Robot Settings binaries for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/Robot+settings+1.2.1/Linux64/robot-settings_linux64_1.2.1-6c3a1204f_20210902-182550.tar.gz
+# Robot Settings setup for Linux amd64
+https://community-static.aldebaran.com/resources/2.8.7/Robot+settings+1.2.1/Linux64/robot-settings_linux64_1.2.1-6c3a1204f_20210902-182550_setup.run
+# NAO Flasher for Linux amd64
+https://community-static.aldebaran.com/resources/2.1.0.19/flasher-2.1.0.19-linux64.tar.gz
