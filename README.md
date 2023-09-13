@@ -1,4 +1,4 @@
-# Robótica: UnBeatables e EMA
+# Robótica: UnBeatables
 
 **Descrição:**
 
