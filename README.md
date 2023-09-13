@@ -2,7 +2,7 @@
 
 **Descrição:**
 
-A UnB possui os seguintes projetos de robótica: UnBeatables e EMA. A UnBeatables é uma equipe de competição de futebol de robôs humanoides que trabalha com o robô NAO (v6 e v4) para competições. Já o EMA (Empoderando Mobilidade e Autonomia), é um projeto voltado à melhoria da qualidade de vida de pessoas com deficiência através da tecnologia. Ambos os projetos são carentes de documentações e tutoriais relevantes para novos integrantes dos projetos, o que dificulta a ocorrência da produtividade desejada do integrante em tempo hábil. 
+A UnB possui o seguinte projeto de robótica: UnBeatables. A UnBeatables é uma equipe de competição de futebol de robôs humanoides que trabalha com o robô NAO (v6 e v4) para competições. Sendo que o projeto é carente de documentações e tutoriais relevantes para novos integrantes dos projetos, o que dificulta a ocorrência da produtividade desejada do integrante em tempo hábil. 
 
 **Resultados esperados:**
 
