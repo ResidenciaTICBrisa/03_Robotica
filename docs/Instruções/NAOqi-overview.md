@@ -77,6 +77,33 @@ Para chamar um método de um módulo, o NAOqi possibilita dois protocolos de cha
 
 - **Não bloqueadoras**: serve para chamar um método e, ao mesmo tempo, executar outras ações. Por exemplo: fazer o robô andar e falar ao mesmo tempo. Para isso, utiliza-se um “post object” de um proxy. Isso cria um processo que será executado paralelamente à outras atividades. Toda chamada que usa esse post object gera um TaskID, que pode ser usado para verificar se a tarefa está sendo ou já foi executada. Para criar uma chamada não bloqueadora, use a seguinte estrutura: ```modulo.post.metodo()```.
 
+**ALMemory**
+
+Essa ferramenta é a memória do robô. 
+
+Todos os módulos podem ler (resgatar informações) ou escrever (registrar/alterar informações) na memória do robô. O ALMemory é um array de ALValues (valores do módulo ALValues podem ser de todos os tipos tradicionais encontrados na programação).
+
+Para evitar problemas de acesso concorrente à memória (ações divergentes ao mesmo tempo no mesmo local da memória), eles utilizam critical sections de leitura/escrita para proteger o acesso, ou seja, os threads permitem a execução de apenas um processo por vez, enquanto os outros ficam suspensos até que o processo atual termine. Isso protege os dados.
+
+Para que fique mais claro:
+
+Suponha que existam dois métodos no mesmo ambiente, X e Y.
+
+```
+//Código X em Python: 
+
+a = 5
+```
+
+```
+//Código Y em Python:
+
+a = 8
+```
+
+Se esses códigos forem executados ao mesmo tempo, a execução correta das ações posteriores pode ser prejudicada. Para evitar esse erro nas operações de leitura/escrita em memória, usa-se a _critical section_.
+
+
 
 **Overview**: NAOqi é um framework que funciona como um **_broker_** (intermediário). Isso significa que ele interliga diversos módulos. Supondo que você esteja programando o robô e precise criar uma aplicação que faça o robô andar e falar durante sua execução. Para isso, o NAOqi utiliza um sistema que resgata ambos os módulos e os disponibiliza em sua aplicação.
 
