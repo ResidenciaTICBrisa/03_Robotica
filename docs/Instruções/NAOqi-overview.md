@@ -69,6 +69,13 @@ boost::shared_ptr<AL::ALBroker> broker =
 AL::ALProxy proxy = AL::ALProxy(broker, <nome_do_modulo>);
 ```
 
+**Chamadas bloqueadoras e não bloqueadoras**
+
+Para chamar um método de um módulo, o NAOqi possibilita dois protocolos de chamadas:
+
+- **Bloqueadoras**: chamada normal de um método. Instancia-se o objeto da classe e o utiliza usando a estrutura: ```modulo.metodo()```. Esse funcionamento é exatamente igual às chamadas normais de um método de uma classe.
+
+- **Não bloqueadoras**: serve para chamar um método e, ao mesmo tempo, executar outras ações. Por exemplo: fazer o robô andar e falar ao mesmo tempo. Para isso, utiliza-se um “post object” de um proxy. Isso cria um processo que será executado paralelamente à outras atividades. Toda chamada que usa esse post object gera um TaskID, que pode ser usado para verificar se a tarefa está sendo ou já foi executada. Para criar uma chamada não bloqueadora, use a seguinte estrutura: ```modulo.post.metodo()```.
 
 
 **Overview**: NAOqi é um framework que funciona como um **_broker_** (intermediário). Isso significa que ele interliga diversos módulos. Supondo que você esteja programando o robô e precise criar uma aplicação que faça o robô andar e falar durante sua execução. Para isso, o NAOqi utiliza um sistema que resgata ambos os módulos e os disponibiliza em sua aplicação.
