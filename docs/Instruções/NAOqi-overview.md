@@ -20,8 +20,8 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 - **C++**: o código criado precisa ser compilado para o SO alvo. É necessário usar uma ferramenta de cross-compilação para gerar um código que rode no sistema operacional do robô - o NAOqi SO. Entretanto, a programação em C++ possibilita a criação de um código muito mais rápido em termos de velocidade de execução, tornando o robô mais responsivo.
 
 <div align="center">
-    <img src='https://cdn.iconscout.com/icon/free/png-256/free-python-3521655-2945099.png?f=webp' width=100px>
-    <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png' width=100px style="margin-left:30px;">
+    <img src='../assets/images/python.webp' width=100px>
+    <img src='../assets/images/cpplogo.png' width=100px style="margin-left:30px;">
 </div>
 
 ## Conceitos-chave:
