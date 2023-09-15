@@ -7,7 +7,7 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 ## O que é?
 
 **NAOqi**: principal software usado no robô para controlá-lo.
-**NAOqi Framework**: é um framework usado para programar robôs da Aldebaran Robotics.
+**NAOqi Framework**: é um framework que funciona como um **_broker_** (intermediário). Isso significa que ele interliga diversos módulos. Suponha que você precise programar uma ação específica fora das ações comuns de fábrica do robô. Para isso, o NAOqi utiliza um sistema que resgata os módulos disponíveis (inclusive módulos criados por você, que contenha as funções específicas que você precisa) e os disponibiliza em sua aplicação.
 
 ## Principais características
 
@@ -35,7 +35,7 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 
 **Broker**: é um intermediador dos módulos. Por exemplo: o módulo A, em um de seus métodos, precisa de um método do módulo B. O broker "avisa" o módulo A da existência do módulo B, possibilitando o acesso desejado.
 
-<img src='http://doc.aldebaran.com/2-1/_images/broker-modules-methods.png' height=300px>
+<img src='../assets/images/Metodo_1.jpg' height=450px>
 
 **Módulos locais:**  Estão em um mesmo ambiente (processo), e portanto podem compartilhar variáveis e métodos com outros módulos locais. Além disso, apenas um broker é necessário para a conexão entre módulos locais, não precisando de internet para tal conexão. É bem mais rápido que a conexão remota entre módulos.
 
@@ -58,14 +58,15 @@ Os passos estão exemplificados aqui:
 ```
 // Um broker precisa de um nome, um IP e uma porta para "escutar":
 const std::string nomeBroker = "mybroker";
+
 // IP do NAOqi
 const std::string pip = "127.0.0.1"; // local NAOqi
+
 // Porta do NAOqi
 int pport = 9559;
 
 // Crie o seu próprio broker
-boost::shared_ptr<AL::ALBroker> broker =
-  AL::ALBroker::createBroker(nomeBroker, "0.0.0.0", 54000, pip, pport);
+boost::shared_ptr<AL::ALBroker> broker = AL::ALBroker::createBroker(nomeBroker, "0.0.0.0", 54000, pip, pport);
 AL::ALProxy proxy = AL::ALProxy(broker, <nome_do_modulo>);
 ```
 
@@ -103,8 +104,4 @@ a = 8
 
 Se esses códigos forem executados ao mesmo tempo, a execução correta das ações posteriores pode ser prejudicada. Para evitar esse erro nas operações de leitura/escrita em memória, usa-se a _critical section_.
 
-
-
-**Overview**: NAOqi é um framework que funciona como um **_broker_** (intermediário). Isso significa que ele interliga diversos módulos. Supondo que você esteja programando o robô e precise criar uma aplicação que faça o robô andar e falar durante sua execução. Para isso, o NAOqi utiliza um sistema que resgata ambos os módulos e os disponibiliza em sua aplicação.
-
-O NAOqi também pode ser usado com simuladores.
+// Falta adicionar imagens e relacionamento do robô com eventos.
