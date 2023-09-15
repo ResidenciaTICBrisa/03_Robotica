@@ -36,7 +36,7 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 
 **NAOqi Broker**: é um intermediador dos módulos. Por exemplo: o módulo A, em um de seus métodos, precisa de um método do módulo B. O broker "avisa" o módulo A da existência do módulo B, possibilitando o acesso desejado.
 
-**Autoload.ini**: arquivo responsável por carregar as bibliotecas quando o robô é iniciado.
+**Autoload.ini**: arquivo localizado no SO do robô, responsável por carregar as bibliotecas quando o robô é iniciado.
 
 <img src='../assets/images/Metodo_1.jpg' height=450px>
 
