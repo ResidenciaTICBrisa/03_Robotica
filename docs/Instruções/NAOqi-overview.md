@@ -1,4 +1,4 @@
-# NAOqi Framework
+# NAOqi Framework - Overview
 
 Este é um guia de apresentação de conceitos-chave do framework NAOqi, conhecimento necessário para o início na programação dos robôs da **Aldebaran Robotics**.
 
@@ -7,6 +7,7 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 ## O que é?
 
 **NAOqi**: principal software usado no robô para controlá-lo.
+
 **NAOqi Framework**: é um framework que funciona como um **_broker_** (intermediário). Isso significa que ele interliga diversos módulos. Suponha que você precise programar uma ação específica fora das ações comuns de fábrica do robô. Para isso, o NAOqi utiliza um sistema que resgata os módulos disponíveis (inclusive módulos criados por você, que contenha as funções específicas que você precisa) e os disponibiliza em sua aplicação.
 
 ## Principais características
@@ -15,8 +16,8 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 
 **Linguagens aceitas**:
 
-- Python: o código criado roda diretamente no robô, porém é mais lento em termos de velocidade de execução, tornando o robô menos responsivo;
-- C++: o código criado precisa ser compilado para o SO alvo. É necessário usar uma ferramenta de cross-compilação para gerar um código que rode no sistema operacional do robô - o NAOqi SO. Entretanto, a programação em C++ possibilita a criação de um código muito mais rápido em termos de velocidade de execução, tornando o robô mais responsivo.
+- **Python**: o código criado roda diretamente no robô, porém é mais lento em termos de velocidade de execução, tornando o robô menos responsivo;
+- **C++**: o código criado precisa ser compilado para o SO alvo. É necessário usar uma ferramenta de cross-compilação para gerar um código que rode no sistema operacional do robô - o NAOqi SO. Entretanto, a programação em C++ possibilita a criação de um código muito mais rápido em termos de velocidade de execução, tornando o robô mais responsivo.
 
 <div align="center">
     <img src='https://cdn.iconscout.com/icon/free/png-256/free-python-3521655-2945099.png?f=webp' width=100px>
@@ -33,7 +34,9 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 
 **Proxy:** ao criar um proxy de determinado módulo, é possível acessar os métodos desse módulo através do proxy. Funciona como um objeto de uma classe.
 
-**Broker**: é um intermediador dos módulos. Por exemplo: o módulo A, em um de seus métodos, precisa de um método do módulo B. O broker "avisa" o módulo A da existência do módulo B, possibilitando o acesso desejado.
+**NAOqi Broker**: é um intermediador dos módulos. Por exemplo: o módulo A, em um de seus métodos, precisa de um método do módulo B. O broker "avisa" o módulo A da existência do módulo B, possibilitando o acesso desejado.
+
+**Autoload.ini**: arquivo responsável por carregar as bibliotecas quando o robô é iniciado.
 
 <img src='../assets/images/Metodo_1.jpg' height=450px>
 
@@ -91,17 +94,15 @@ Para que fique mais claro:
 Suponha que existam dois métodos no mesmo ambiente, X e Y.
 
 ```
-//Código X em Python: 
+//Código X: 
 
 a = 5
 ```
 
 ```
-//Código Y em Python:
+//Código Y:
 
 a = 8
 ```
 
 Se esses códigos forem executados ao mesmo tempo, a execução correta das ações posteriores pode ser prejudicada. Para evitar esse erro nas operações de leitura/escrita em memória, usa-se a _critical section_.
-
-// Falta adicionar imagens e relacionamento do robô com eventos.
