@@ -15,6 +15,8 @@ readonly CHOREGRAPHE_KEY='562a-750a-252e-143c-0f2a-4550-505e-4f40-5f48-504c'
 
 readonly NAO_FLASHER_DIR="${NAO_PROGRAMS_DIR}/flasher"
 
+readonly NAO_CTC_DIR="${NAO_PROGRAMS_DIR}/ctc"
+
 readonly NAOQI_CPP_QIBUILD_TOOLCHAIN='naov4-toolchain'
 readonly NAOQI_CPP_QIBUILD_CONFIG="${NAOQI_CPP_QIBUILD_TOOLCHAIN}-config"
 
@@ -27,6 +29,7 @@ readonly CHOREGRAPHE_BINARIES_URL='https://community-static.aldebaran.com/resour
 readonly NAOQI_CPP_URL='https://community-static.aldebaran.com/resources/2.1.4.13/sdk-c%2B%2B/naoqi-sdk-2.1.4.13-linux64.tar.gz'
 readonly NAOQI_PYTHON_URL='https://community-static.aldebaran.com/resources/2.1.4.13/sdk-python/pynaoqi-python2.7-2.1.4.13-linux64.tar.gz'
 readonly NAO_FLASHER_URL='https://community-static.aldebaran.com/resources/2.1.0.19/flasher-2.1.0.19-linux64.tar.gz'
+readonly NAO_CTC_URL='https://community-static.aldebaran.com/resources/2.8.7/cross+toolchain/ctc-linux64-atom-2.8.7.4-20210818_162500.zip'
 
 readonly NAOQI_DOCS_FILE="${NAOQI_DOCS_URL##*/}"
 readonly CHOREGRAPHE_SETUP_FILE="${CHOREGRAPHE_SETUP_URL##*/}"
@@ -34,12 +37,14 @@ readonly CHOREGRAPHE_BINARIES_FILE="${CHOREGRAPHE_BINARIES_URL##*/}"
 readonly NAOQI_CPP_FILE="${NAOQI_CPP_URL##*/}"
 readonly NAOQI_PYTHON_FILE="${NAOQI_PYTHON_URL##*/}"
 readonly NAO_FLASHER_FILE="${NAO_FLASHER_URL##*/}"
+readonly NAO_CTC_FILE="${NAO_CTC_URL##*/}"
 
 readonly NAOQI_DOCS="${NAOQI_DOCS_FILE%*.zip}"
 readonly CHOREGRAPHE_BINARIES="${CHOREGRAPHE_BINARIES_FILE%*.tar.*}"
 readonly NAOQI_CPP="${NAOQI_CPP_FILE%*.tar.*}"
 readonly NAOQI_PYTHON="${NAOQI_PYTHON_FILE%*.tar.*}"
 readonly NAO_FLASHER="${NAO_FLASHER_FILE%*.tar.*}"
+readonly NAO_CTC="${NAO_CTC_FILE%*.zip}"
 
 readonly DOWNLOAD_URLS=(
 	"${CHOREGRAPHE_BINARIES_URL}"
@@ -47,6 +52,18 @@ readonly DOWNLOAD_URLS=(
 	"${NAOQI_PYTHON_URL}"
 	"${NAOQI_DOCS_URL}"
 	"${NAO_FLASHER_URL}"
+	"${NAO_CTC_URL}"
+)
+
+readonly DIRECTORIES=(
+	"${NAO_CPP_DIR}"
+	"${NAO_PYTHON2_DIR}"
+	"${NAO_DOWNLOADS_DIR}"
+	"${NAO_PROGRAMS_DIR}"
+	"${NAO_DOCS_DIR}"
+	"${NAO_CHOREGRAPHE_DIR}"
+	"${NAO_FLASHER_DIR}"
+	"${NAO_CTC_DIR}"
 )
 
 readonly ARIA2_JOBS=2
@@ -58,13 +75,9 @@ echo 'Install C++, Python dependencies and downloader'
 sudo apt-get install --yes build-essential cmake wget
 
 echo 'Create directories'
-mkdir -pv "${NAO_CPP_DIR}"
-mkdir -pv "${NAO_PYTHON2_DIR}"
-mkdir -pv "${NAO_DOWNLOADS_DIR}"
-mkdir -pv "${NAO_PROGRAMS_DIR}"
-mkdir -pv "${NAO_DOCS_DIR}"
-mkdir -pv "${NAO_CHOREGRAPHE_DIR}"
-mkdir -pv "${NAO_FLASHER_DIR}"
+for directory in "${DIRECTORIES[@]}"; do
+	mkdir -pv "${directory}"
+done
 
 echo 'Install qibuild'
 "${PIP_PATH}/pip2" install qibuild pyreadline
@@ -112,6 +125,9 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 			;;
 		"${NAO_DOWNLOADS_DIR}/${NAO_FLASHER}")
 			mv -v "$f" "${NAO_FLASHER_DIR}/"
+			;;
+		"${NAO_DOWNLOADS_DIR}/${NAO_CTC}")
+			mv -v "$f" "${NAO_CTC_DIR}"
 			;;
 		*)
 			echo "Unknown file '$f'"
