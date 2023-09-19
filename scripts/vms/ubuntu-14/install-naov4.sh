@@ -4,12 +4,15 @@ readonly PIP_PATH="${HOME}/.local/bin"
 
 readonly CURRENT_DIR="$(pwd)"
 
-readonly NAO_CPP_DIR="${HOME}/NAO4/SDKs/cpp"
-readonly NAO_PYTHON2_DIR="${HOME}/NAO4/SDKs/python2"
-readonly NAO_CTC_DIR="${HOME}/NAO4/SDKs/ctc"
-readonly NAO_DOWNLOADS_DIR="${HOME}/NAO4/downloads"
-readonly NAO_PROGRAMS_DIR="${HOME}/NAO4/programs"
-readonly NAO_DOCS_DIR="${HOME}/NAO4/docs"
+readonly NAO_BASE_DIR="${HOME}/NAO4"
+readonly NAO_SDKS_DIR="${NAO_BASE_DIR}/SDKs"
+
+readonly NAO_CPP_DIR="${NAO_SDKS_DIR}/cpp"
+readonly NAO_PYTHON2_DIR="${NAO_SDKS_DIR}/python2"
+readonly NAO_CTC_DIR="${NAO_SDKS_DIR}/ctc"
+readonly NAO_DOWNLOADS_DIR="${NAO_BASE_DIR}/downloads"
+readonly NAO_PROGRAMS_DIR="${NAO_BASE_DIR}/programs"
+readonly NAO_DOCS_DIR="${NAO_BASE_DIR}/docs"
 
 readonly NAO_CHOREGRAPHE_DIR="${NAO_PROGRAMS_DIR}/choregraphe"
 readonly CHOREGRAPHE_KEY='562a-750a-252e-143c-0f2a-4550-505e-4f40-5f48-504c'
