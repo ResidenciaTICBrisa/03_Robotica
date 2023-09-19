@@ -86,7 +86,7 @@ done
 echo 'Install qibuild'
 "${PIP_PATH}/pip2" install qibuild pyreadline
 echo '# NAOv4 installation' >> "${HOME}/.bashrc"
-echo "readonly PIP_PATH=\"${PIP_PATH}\"" >> "${HOME}/.bashrc"
+printf 'readonly PIP_PATH="%s"\n' "${PIP_PATH}" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${PIP_PATH}"' >> "${HOME}/.bashrc"
 
 echo 'Configure qibuild'
@@ -161,19 +161,19 @@ mv -v "${NAOQI_CMAKE_CONFIG}" "${NAO_CPP_DIR}/${NAOQI_CPP}/config.cmake"
 
 echo 'Installing Python library'
 echo '# NAOv4 Python SDK' >> "${HOME}/.bashrc"
-echo "readonly NAO4_PYTHON_SDK_PATH=\"${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}\"" >> "${HOME}/.bashrc"
+printf 'readonly NAO4_PYTHON_SDK_PATH="%s"\n' "${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}" >> "${HOME}/.bashrc"
 echo 'export PYTHONPATH="${PYTHONPATH}:${NAO4_PYTHON_SDK_PATH}"' >> "${HOME}/.bashrc"
 
 echo 'Installing Choreographe'
 echo '# Choregraphe path' >> "${HOME}/.bashrc"
-echo "readonly CHOREGRAPHE_PATH=\"${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}\"" >> "${HOME}/.bashrc"
+printf 'readonly CHOREGRAPHE_PATH="%s"\n' "${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
-echo "export CHOREGRAPHE_KEY=\"${CHOREGRAPHE_KEY}\"" >> "${HOME}/.bashrc"
+printf 'export CHOREGRAPHE_KEY="%s"\n' "${CHOREGRAPHE_KEY}" >> "${HOME}/.bashrc"
 echo "CHOREGRAPHE_KEY='${CHOREGRAPHE_KEY}'"
 
 echo 'Installing NAO Flasher'
 echo '# NAO Flasher path' >> "${HOME}/.bashrc"
-echo "readonly NAO_FLASHER_PATH=\"${NAO_FLASHER_DIR}/${NAO_FLASHER}\"" >> "${HOME}/.bashrc"
+printf 'readonly NAO_FLASHER_PATH="%s"\n' "${NAO_FLASHER_DIR}/${NAO_FLASHER}" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${NAO_FLASHER_PATH}"' >> "${HOME}/.bashrc"
 
 echo 'Installing CPP library'
@@ -189,17 +189,17 @@ cd "${NAO_QIBUILD_WORKSPACE}"
 cd "${CURRENT_DIR}"
 
 echo 'Saving qibuild workspace settings'
-echo "export NAO_QIBUILD_WORKSPACE=\"${NAO_QIBUILD_WORKSPACE}\"" >> "${HOME}/.bashrc"
+printf 'export NAO_QIBUILD_WORKSPACE="%s"\n' "${NAO_QIBUILD_WORKSPACE}" >> "${HOME}/.bashrc"
 echo "NAO_QIBUILD_WORKSPACE=${NAO_QIBUILD_WORKSPACE}"
 
-echo "export NAOQI_CPP_QIBUILD_TOOLCHAIN=\"${NAOQI_CPP_QIBUILD_TOOLCHAIN}\"" >> "${HOME}/.bashrc"
+printf 'export NAOQI_CPP_QIBUILD_TOOLCHAIN="%s"\n' "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" >> "${HOME}/.bashrc"
 echo "NAOQI_CPP_QIBUILD_TOOLCHAIN=${NAOQI_CPP_QIBUILD_TOOLCHAIN}"
-echo "export NAOQI_CPP_QIBUILD_CONFIG=\"${NAOQI_CPP_QIBUILD_CONFIG}\"" >> "${HOME}/.bashrc"
+printf 'export NAOQI_CPP_QIBUILD_CONFIG="%s"\n' "${NAOQI_CPP_QIBUILD_CONFIG}" >> "${HOME}/.bashrc"
 echo "NAOQI_CPP_QIBUILD_CONFIG=${NAOQI_CPP_QIBUILD_CONFIG}"
 
-echo "export NAOQI_QIBUILD_CTC=\"${NAOQI_QIBUILD_CTC}\"" >> "${HOME}/.bashrc"
+printf 'export NAOQI_QIBUILD_CTC="%s"\n' "${NAOQI_QIBUILD_CTC}" >> "${HOME}/.bashrc"
 echo "NAOQI_QIBUILD_CTC=${NAOQI_QIBUILD_CTC}"
-echo "export NAOQI_QIBUILD_CTC_CONFIG=\"${NAOQI_QIBUILD_CTC_CONFIG}\"" >> "${HOME}/.bashrc"
-echo "NAOQI_QIBUILD_CTC_CONFIG${NAOQI_QIBUILD_CTC_CONFIG}"
+printf 'export NAOQI_QIBUILD_CTC_CONFIG="%s"\n' "${NAOQI_QIBUILD_CTC_CONFIG}" >> "${HOME}/.bashrc"
+echo "NAOQI_QIBUILD_CTC_CONFIG=${NAOQI_QIBUILD_CTC_CONFIG}"
 
 exit 0
