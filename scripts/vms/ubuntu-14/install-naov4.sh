@@ -169,7 +169,7 @@ echo '# Choregraphe path' >> "${HOME}/.bashrc"
 echo "readonly CHOREGRAPHE_PATH=\"${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}\"" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
 echo "export CHOREGRAPHE_KEY=\"${CHOREGRAPHE_KEY}\"" >> "${HOME}/.bashrc"
-echo "Choregraphe key: '${CHOREGRAPHE_KEY}'"
+echo "CHOREGRAPHE_KEY='${CHOREGRAPHE_KEY}'"
 
 echo 'Installing NAO Flasher'
 echo '# NAO Flasher path' >> "${HOME}/.bashrc"
@@ -187,5 +187,19 @@ echo 'Installing Cross Toolchain'
 cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_QIBUILD_CTC_CONFIG}" -t "${NAOQI_QIBUILD_CTC}"
 cd "${CURRENT_DIR}"
+
+echo 'Saving qibuild workspace settings'
+echo "export NAO_QIBUILD_WORKSPACE=\"${NAO_QIBUILD_WORKSPACE}\"" >> "${HOME}/.bashrc"
+echo "NAO_QIBUILD_WORKSPACE=${NAO_QIBUILD_WORKSPACE}"
+
+echo "export NAOQI_CPP_QIBUILD_TOOLCHAIN=\"${NAOQI_CPP_QIBUILD_TOOLCHAIN}\"" >> "${HOME}/.bashrc"
+echo "NAOQI_CPP_QIBUILD_TOOLCHAIN=${NAOQI_CPP_QIBUILD_TOOLCHAIN}"
+echo "export NAOQI_CPP_QIBUILD_CONFIG=\"${NAOQI_CPP_QIBUILD_CONFIG}\"" >> "${HOME}/.bashrc"
+echo "NAOQI_CPP_QIBUILD_CONFIG=${NAOQI_CPP_QIBUILD_CONFIG}"
+
+echo "export NAOQI_QIBUILD_CTC=\"${NAOQI_QIBUILD_CTC}\"" >> "${HOME}/.bashrc"
+echo "NAOQI_QIBUILD_CTC=${NAOQI_QIBUILD_CTC}"
+echo "export NAOQI_QIBUILD_CTC_CONFIG=\"${NAOQI_QIBUILD_CTC_CONFIG}\"" >> "${HOME}/.bashrc"
+echo "NAOQI_QIBUILD_CTC_CONFIG${NAOQI_QIBUILD_CTC_CONFIG}"
 
 exit 0
