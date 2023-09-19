@@ -168,6 +168,7 @@ echo 'Installing Choreographe'
 echo '# Choregraphe path' >> "${HOME}/.bashrc"
 echo "readonly CHOREGRAPHE_PATH=\"${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}\"" >> "${HOME}/.bashrc"
 echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
+echo "export CHOREGRAPHE_KEY=\"${CHOREGRAPHE_KEY}\"" >> "${HOME}/.bashrc"
 echo "Choregraphe key: '${CHOREGRAPHE_KEY}'"
 
 echo 'Installing NAO Flasher'
