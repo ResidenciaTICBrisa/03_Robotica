@@ -75,21 +75,21 @@ readonly DIRECTORIES=(
 
 sudo apt-get update
 
-echo 'Install C++, Python dependencies and downloader'
+printf 'Install C++, Python dependencies and downloader\n'
 sudo apt-get install --yes build-essential cmake wget
 
-echo 'Create directories'
+printf 'Create directories\n'
 for directory in "${DIRECTORIES[@]}"; do
 	mkdir -pv "${directory}"
 done
 
-echo 'Install qibuild'
+printf 'Install qibuild\n'
 "${PIP_PATH}/pip2" install qibuild pyreadline
-echo '# NAOv4 installation' >> "${HOME}/.bashrc"
+printf '# NAOv4 installation\n' >> "${HOME}/.bashrc"
 printf 'readonly PIP_PATH="%s"\n' "${PIP_PATH}" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${PIP_PATH}"' >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${PIP_PATH}"\n' >> "${HOME}/.bashrc"
 
-echo 'Configure qibuild'
+printf 'Configure qibuild\n'
 mkdir -pv "${HOME}/.config/qi"
 mv -v "${QIBUILD_CONFIGURATION}" "${HOME}/.config/qi/qibuild.xml"
 
@@ -97,37 +97,37 @@ cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" init
 cd "${CURRENT_DIR}"
 
-echo 'Download packages'
+printf 'Download packages\n'
 for url in "${DOWNLOAD_URLS[@]}"; do
 	wget "${url}" --directory-prefix="${NAO_DOWNLOADS_DIR}"
 done
 
-echo 'Extract packages'
+printf 'Extract packages\n'
 for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
 	if [[ "$f" =~ .*\.zip ]]; then
-		echo "File '${f}' is a zip"
+		printf "File '%s' is a zip\n" "${f}"
 		rootdirs="$(zipinfo -1 "$f" | awk -F / '{ print $1; }' | sort | uniq)"
 		rootdirs_count=$(echo "${rootdirs}" | wc -l)
 		if (( rootdirs_count == 1 )); then
-			echo "File '${f}' has a root directory '${rootdirs}'"
+			printf "File '%s' has a root directory '%s'\n" "${f}" "${rootdirs}"
 			unzip -q "$f"
 			expected="${f##*/}"
 			expected="${expected%*.zip}"
 			if [[ "${rootdirs}" != "${expected}" ]]; then
-				echo "File '${f}'s root '${rootdirs}' has a different name than expected '${expected}'"
+				printf "File '%s's root '%s' has a different name than expected '%s'\n" "${f}" "${rootdirs}" "${expected}"
 				mv -v "${rootdirs}" "${f%*.zip}"
 			fi
 		else
-			echo "File '${f}' lacks a root directory"
+			printf "File '%s' lacks a root directory\n" "${f}"
 			unzip -q -d "${f%*.zip}" "$f"
 		fi
 	else
-		echo "File '${f}' is a tar"
+		printf "File '%s' is a tar\n" "${f}"
 		tar --extract --file="$f" --directory "${NAO_DOWNLOADS_DIR}"
 	fi
 done
 
-echo 'Move packages'
+printf 'Move packages\n'
 for f in "${NAO_DOWNLOADS_DIR}"/*; do
 	if [[ -d "$f" ]]; then
 		case "$f" in
@@ -150,56 +150,56 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 			mv -v "$f" "${NAO_CTC_DIR}"
 			;;
 		*)
-			echo "Unknown file '$f'"
+			printf "Unknown file '%s'\n" "${f}"
 			;;
 		esac
 	fi
 done
 
-echo 'Patching NAOv4 C++ SDK'
+printf 'Patching NAOv4 C++ SDK\n'
 mv -v "${NAOQI_CMAKE_CONFIG}" "${NAO_CPP_DIR}/${NAOQI_CPP}/config.cmake"
 
-echo 'Installing Python library'
-echo '# NAOv4 Python SDK' >> "${HOME}/.bashrc"
+printf 'Installing Python library\n'
+printf '# NAOv4 Python SDK\n' >> "${HOME}/.bashrc"
 printf 'readonly NAO4_PYTHON_SDK_PATH="%s"\n' "${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}" >> "${HOME}/.bashrc"
-echo 'export PYTHONPATH="${PYTHONPATH}:${NAO4_PYTHON_SDK_PATH}"' >> "${HOME}/.bashrc"
+printf 'export PYTHONPATH="${PYTHONPATH}:${NAO4_PYTHON_SDK_PATH}"\n' >> "${HOME}/.bashrc"
 
-echo 'Installing Choreographe'
-echo '# Choregraphe path' >> "${HOME}/.bashrc"
+printf 'Installing Choreographe\n'
+printf '# Choregraphe path\n' >> "${HOME}/.bashrc"
 printf 'readonly CHOREGRAPHE_PATH="%s"\n' "${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"\n' >> "${HOME}/.bashrc"
 printf 'export CHOREGRAPHE_KEY="%s"\n' "${CHOREGRAPHE_KEY}" >> "${HOME}/.bashrc"
-echo "CHOREGRAPHE_KEY='${CHOREGRAPHE_KEY}'"
+printf "CHOREGRAPHE_KEY='%s'\n" "${CHOREGRAPHE_KEY}"
 
-echo 'Installing NAO Flasher'
-echo '# NAO Flasher path' >> "${HOME}/.bashrc"
+printf 'Installing NAO Flasher\n'
+printf '# NAO Flasher path\n' >> "${HOME}/.bashrc"
 printf 'readonly NAO_FLASHER_PATH="%s"\n' "${NAO_FLASHER_DIR}/${NAO_FLASHER}" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${NAO_FLASHER_PATH}"' >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${NAO_FLASHER_PATH}"\n' >> "${HOME}/.bashrc"
 
-echo 'Installing CPP library'
+printf 'Installing CPP library\n'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
 cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_CPP_QIBUILD_CONFIG}" -t "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" --default
 cd "${CURRENT_DIR}"
 
-echo 'Installing Cross Toolchain'
+printf 'Installing Cross Toolchain\n'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_QIBUILD_CTC}" "${NAO_CTC_DIR}/${NAO_CTC}/toolchain.xml"
 cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_QIBUILD_CTC_CONFIG}" -t "${NAOQI_QIBUILD_CTC}"
 cd "${CURRENT_DIR}"
 
-echo 'Saving qibuild workspace settings'
+printf 'Saving qibuild workspace settings\n'
 printf 'export NAO_QIBUILD_WORKSPACE="%s"\n' "${NAO_QIBUILD_WORKSPACE}" >> "${HOME}/.bashrc"
-echo "NAO_QIBUILD_WORKSPACE=${NAO_QIBUILD_WORKSPACE}"
+printf 'NAO_QIBUILD_WORKSPACE=%s\n' "${NAO_QIBUILD_WORKSPACE}"
 
 printf 'export NAOQI_CPP_QIBUILD_TOOLCHAIN="%s"\n' "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" >> "${HOME}/.bashrc"
-echo "NAOQI_CPP_QIBUILD_TOOLCHAIN=${NAOQI_CPP_QIBUILD_TOOLCHAIN}"
+printf 'NAOQI_CPP_QIBUILD_TOOLCHAIN=%s\n' "${NAOQI_CPP_QIBUILD_TOOLCHAIN}"
 printf 'export NAOQI_CPP_QIBUILD_CONFIG="%s"\n' "${NAOQI_CPP_QIBUILD_CONFIG}" >> "${HOME}/.bashrc"
-echo "NAOQI_CPP_QIBUILD_CONFIG=${NAOQI_CPP_QIBUILD_CONFIG}"
+printf 'NAOQI_CPP_QIBUILD_CONFIG=%s\n' "${NAOQI_CPP_QIBUILD_CONFIG}"
 
 printf 'export NAOQI_QIBUILD_CTC="%s"\n' "${NAOQI_QIBUILD_CTC}" >> "${HOME}/.bashrc"
-echo "NAOQI_QIBUILD_CTC=${NAOQI_QIBUILD_CTC}"
+printf 'NAOQI_QIBUILD_CTC=%s\n' "${NAOQI_QIBUILD_CTC}"
 printf 'export NAOQI_QIBUILD_CTC_CONFIG="%s"\n' "${NAOQI_QIBUILD_CTC_CONFIG}" >> "${HOME}/.bashrc"
-echo "NAOQI_QIBUILD_CTC_CONFIG=${NAOQI_QIBUILD_CTC_CONFIG}"
+printf 'NAOQI_QIBUILD_CTC_CONFIG=%s\n' "${NAOQI_QIBUILD_CTC_CONFIG}"
 
 exit 0
