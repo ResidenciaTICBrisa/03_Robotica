@@ -69,9 +69,6 @@ readonly DIRECTORIES=(
 	"${NAO_CTC_DIR}"
 )
 
-readonly ARIA2_JOBS=2
-readonly ARIA2_SPLITS=2
-
 sudo apt-get update
 
 echo 'Install C++, Python dependencies and downloader'
