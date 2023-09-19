@@ -23,6 +23,8 @@ readonly NAO_FLASHER_DIR="${NAO_PROGRAMS_DIR}/flasher"
 
 readonly NAOQI_CPP_QIBUILD_TOOLCHAIN='naov4-toolchain'
 readonly NAOQI_CPP_QIBUILD_CONFIG="${NAOQI_CPP_QIBUILD_TOOLCHAIN}-config"
+readonly NAOQI_QIBUILD_CTC='cross-atom-naov4'
+readonly NAOQI_QIBUILD_CTC_CONFIG="${NAOQI_QIBUILD_CTC}-config"
 
 readonly NAOQI_CMAKE_CONFIG='naov4-config.cmake'
 readonly QIBUILD_CONFIGURATION='naov4-qibuild.xml'
@@ -179,6 +181,12 @@ echo 'Installing CPP library'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
 cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_CPP_QIBUILD_CONFIG}" -t "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" --default
+cd "${CURRENT_DIR}"
+
+echo 'Installing Cross Toolchain'
+"${PIP_PATH}/qitoolchain" create "${NAOQI_QIBUILD_CTC}" "${NAO_CTC_DIR}/${NAO_CTC}/toolchain.xml"
+cd "${NAO_QIBUILD_WORKSPACE}"
+"${PIP_PATH}/qibuild" add-config "${NAOQI_QIBUILD_CTC_CONFIG}" -t "${NAOQI_QIBUILD_CTC}"
 cd "${CURRENT_DIR}"
 
 exit 0
