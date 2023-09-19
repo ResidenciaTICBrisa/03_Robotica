@@ -107,10 +107,12 @@ for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
 		rootdirs="$(zipinfo -1 "$f" | awk -F / '{ print $1; }' | sort | uniq)"
 		rootdirs_count=$(echo "${rootdirs}" | wc -l)
 		if (( rootdirs_count == 1 )); then
-			echo "File '${f}' has a root directory"
+			echo "File '${f}' has a root directory '${rootdirs}'"
 			unzip -q "$f"
-			if [[ "${rootdirs}" != "${f%*.zip}" ]]; then
-				echo "File '${f}'s root has a different name than expected"
+			expected="${f##*/}"
+			expected="${expected%*.zip}"
+			if [[ "${rootdirs}" != "${expected}" ]]; then
+				echo "File '${f}'s root '${rootdirs}' has a different name than expected '${expected}'"
 				mv -v "${rootdirs}" "${f%*.zip}"
 			fi
 		else
