@@ -153,8 +153,6 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 			echo "Unknown file '$f'"
 			;;
 		esac
-	else
-		echo "Not a directory: '$f'"
 	fi
 done
 
