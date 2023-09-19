@@ -2,7 +2,8 @@
 
 readonly PIP_PATH="${HOME}/.local/bin"
 
-readonly CURRENT_DIR="$(pwd)"
+CURRENT_DIR="$(pwd)"
+readonly CURRENT_DIR
 
 readonly NAO_BASE_DIR="${HOME}/NAO4"
 readonly NAO_SDKS_DIR="${NAO_BASE_DIR}/SDKs"
