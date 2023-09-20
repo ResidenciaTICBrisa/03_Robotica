@@ -110,12 +110,12 @@ for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
 		rootdirs_count=$(echo "${rootdirs}" | wc -l)
 		if (( rootdirs_count == 1 )); then
 			printf "File '%s' has a root directory '%s'\n" "${f}" "${rootdirs}"
-			unzip -q "$f"
+			unzip -q -d "${NAO_DOWNLOADS_DIR}" "${f}"
 			expected="${f##*/}"
 			expected="${expected%*.zip}"
 			if [[ "${rootdirs}" != "${expected}" ]]; then
 				printf "File '%s's root '%s' has a different name than expected '%s'\n" "${f}" "${rootdirs}" "${expected}"
-				mv -v "${rootdirs}" "${f%*.zip}"
+				mv -v "${NAO_DOWNLOADS_DIR}/${rootdirs}" "${NAO_DOWNLOADS_DIR}/${f%*.zip}"
 			fi
 		else
 			printf "File '%s' lacks a root directory\n" "${f}"
@@ -147,7 +147,7 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 			mv -v "$f" "${NAO_FLASHER_DIR}/"
 			;;
 		"${NAO_DOWNLOADS_DIR}/${NAO_CTC}")
-			mv -v "$f" "${NAO_CTC_DIR}"
+			mv -v "$f" "${NAO_CTC_DIR}/"
 			;;
 		*)
 			printf "Unknown file '%s'\n" "${f}"
