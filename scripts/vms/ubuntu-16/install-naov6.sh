@@ -61,21 +61,27 @@ readonly DOWNLOAD_URLS=(
 	"${NAO_ROBOT_SETTINGS_BINARIES_URL}"
 )
 
+readonly DIRECTORIES=(
+	"${NAO_CPP_DIR}"
+	"${NAO_PYTHON2_DIR}"
+	"${NAO_DOWNLOADS_DIR}"
+	"${NAO_PROGRAMS_DIR}"
+	"${NAO_DOCS_DIR}"
+	"${NAO_CHOREGRAPHE_DIR}"
+	"${NAO_FLASHER_DIR}"
+	"${NAO_ROBOT_SETTINGS_DIR}"
+	"${NAO_QIBUILD_WORKSPACE}"
+)
+
 sudo apt-get update
 
 echo 'Install C++, Python dependencies and downloader'
 sudo apt-get install --yes build-essential cmake wget
 
 echo 'Create directories'
-mkdir -pv "${NAO_CPP_DIR}"
-mkdir -pv "${NAO_PYTHON2_DIR}"
-mkdir -pv "${NAO_DOWNLOADS_DIR}"
-mkdir -pv "${NAO_PROGRAMS_DIR}"
-mkdir -pv "${NAO_DOCS_DIR}"
-mkdir -pv "${NAO_CHOREGRAPHE_DIR}"
-mkdir -pv "${NAO_FLASHER_DIR}"
-mkdir -pv "${NAO_ROBOT_SETTINGS_DIR}"
-mkdir -pv "${NAO_QIBUILD_WORKSPACE}"
+for directory in "${DIRECTORIES[@]}"; do
+	mkdir -pv "${directory}"
+done
 
 echo 'Install qibuild'
 pip2 install qibuild pyreadline
