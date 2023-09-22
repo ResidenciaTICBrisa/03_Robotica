@@ -164,8 +164,6 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 			printf "Unknown file '%s'\n" "$f"
 			;;
 		esac
-	else
-		printf "Not a directory: '%s'\n" "$f"
 	fi
 done
 
