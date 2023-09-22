@@ -105,8 +105,24 @@ done
 echo 'Extract packages'
 for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
 	if [[ "$f" =~ .*\.zip ]]; then
-		unzip -d "${f%*.zip}" "$f"
+		printf "File '%s' is a zip\n" "${f}"
+		rootdirs="$(zipinfo -1 "$f" | awk -F / '{ print $1; }' | sort | uniq)"
+		rootdirs_count=$(echo "${rootdirs}" | wc -l)
+		if (( rootdirs_count == 1 )); then
+			printf "File '%s' has a root directory '%s'\n" "${f}" "${rootdirs}"
+			unzip -q -d "${NAO_DOWNLOADS_DIR}" "${f}"
+			expected="${f##*/}"
+			expected="${expected%*.zip}"
+			if [[ "${rootdirs}" != "${expected}" ]]; then
+				printf "File '%s's root '%s' has a different name than expected '%s'\n" "${f}" "${rootdirs}" "${expected}"
+				mv -v "${NAO_DOWNLOADS_DIR}/${rootdirs}" "${NAO_DOWNLOADS_DIR}/${f%*.zip}"
+			fi
+		else
+			printf "File '%s' lacks a root directory\n" "${f}"
+			unzip -q -d "${f%*.zip}" "$f"
+		fi
 	else
+		printf "File '%s' is a tar\n" "${f}"
 		tar --extract --file="$f" --directory "${NAO_DOWNLOADS_DIR}"
 	fi
 done
