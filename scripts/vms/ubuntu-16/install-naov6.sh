@@ -177,11 +177,12 @@ echo '# NAOv6 Python SDK' >> "${HOME}/.bashrc"
 echo "readonly NAO6_PYTHON_SDK_PATH=\"${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}\"" >> "${HOME}/.bashrc"
 echo 'export PYTHONPATH="${PYTHONPATH}:${NAO6_PYTHON_SDK_PATH}/lib/python2.7/site-packages"' >> "${HOME}/.bashrc"
 
-echo 'Installing Choreographe'
-echo '# Choregraphe path' >> "${HOME}/.bashrc"
-echo "readonly CHOREGRAPHE_PATH=\"${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}\"" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"' >> "${HOME}/.bashrc"
-echo "Choregraphe key: '${CHOREGRAPHE_KEY}'"
+printf 'Installing Choreographe\n'
+printf '# Choregraphe path\n' >> "${HOME}/.bashrc"
+printf 'readonly CHOREGRAPHE_PATH="%s"\n' "${NAO_CHOREGRAPHE_DIR}/${CHOREGRAPHE_BINARIES}" >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"\n' >> "${HOME}/.bashrc"
+printf 'export CHOREGRAPHE_KEY="%s"\n' "${CHOREGRAPHE_KEY}" >> "${HOME}/.bashrc"
+printf "CHOREGRAPHE_KEY='%s'\n" "${CHOREGRAPHE_KEY}"
 
 echo 'Installing NAO Flasher'
 echo '# NAO Flasher path' >> "${HOME}/.bashrc"
