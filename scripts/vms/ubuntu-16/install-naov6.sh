@@ -13,6 +13,7 @@ readonly NAO_PYTHON2_DIR="${NAO_SDKS_DIR}/python2"
 readonly NAO_DOWNLOADS_DIR="${NAO_BASE_DIR}/downloads"
 readonly NAO_PROGRAMS_DIR="${NAO_BASE_DIR}/programs"
 readonly NAO_DOCS_DIR="${NAO_BASE_DIR}/docs"
+readonly NAO_QIBUILD_WORKSPACE="${NAO_BASE_DIR}/workspace"
 
 readonly NAO_CHOREGRAPHE_DIR="${NAO_PROGRAMS_DIR}/choregraphe"
 readonly CHOREGRAPHE_KEY='654e-4564-153c-6518-2f44-7562-206e-4c60-5f47-5f45'
@@ -77,6 +78,7 @@ mkdir -pv "${NAO_DOCS_DIR}"
 mkdir -pv "${NAO_CHOREGRAPHE_DIR}"
 mkdir -pv "${NAO_FLASHER_DIR}"
 mkdir -pv "${NAO_ROBOT_SETTINGS_DIR}"
+mkdir -pv "${NAO_QIBUILD_WORKSPACE}"
 
 echo 'Install qibuild'
 pip2 install qibuild pyreadline
@@ -88,7 +90,7 @@ echo 'Configure qibuild'
 mkdir -pv "${HOME}/.config/qi"
 mv -v "${QIBUILD_CONFIGURATION}" "${HOME}/.config/qi/qibuild.xml"
 
-cd "${NAO_CPP_DIR}"
+cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" init
 cd "${CURRENT_DIR}"
 
@@ -163,7 +165,7 @@ echo 'export PATH="${PATH}:${NAO_ROBOT_SETTINGS_PATH}"' >> "${HOME}/.bashrc"
 
 echo 'Installing CPP library'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
-cd "${NAO_CPP_DIR}"
+cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_CPP_QIBUILD_CONFIG}" -t "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" --default
 cd "${CURRENT_DIR}"
 
