@@ -2,7 +2,8 @@
 
 readonly PIP_PATH="${HOME}/.local/bin"
 
-readonly CURRENT_DIR="$(pwd)"
+CURRENT_DIR="$(pwd)"
+readonly CURRENT_DIR
 
 readonly NAO_CPP_DIR="${HOME}/NAO6/SDKs/cpp"
 readonly NAO_PYTHON2_DIR="${HOME}/NAO6/SDKs/python2"
