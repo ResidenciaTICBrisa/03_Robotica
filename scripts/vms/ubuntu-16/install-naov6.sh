@@ -10,6 +10,7 @@ readonly NAO_SDKS_DIR="${NAO_BASE_DIR}/SDKs"
 
 readonly NAO_CPP_DIR="${NAO_SDKS_DIR}/cpp"
 readonly NAO_PYTHON2_DIR="${NAO_SDKS_DIR}/python2"
+readonly NAO_CTC_DIR="${NAO_SDKS_DIR}/ctc"
 readonly NAO_DOWNLOADS_DIR="${NAO_BASE_DIR}/downloads"
 readonly NAO_PROGRAMS_DIR="${NAO_BASE_DIR}/programs"
 readonly NAO_DOCS_DIR="${NAO_BASE_DIR}/docs"
@@ -23,6 +24,8 @@ readonly NAO_ROBOT_SETTINGS_DIR="${NAO_PROGRAMS_DIR}/robot-settings"
 
 readonly NAOQI_CPP_QIBUILD_TOOLCHAIN='naov6-toolchain'
 readonly NAOQI_CPP_QIBUILD_CONFIG="${NAOQI_CPP_QIBUILD_TOOLCHAIN}-config"
+readonly NAOQI_QIBUILD_CTC='cross-atom-naov6'
+readonly NAOQI_QIBUILD_CTC_CONFIG="${NAOQI_QIBUILD_CTC}-config"
 
 # readonly NAOQI_CMAKE_CONFIG='naov6-config.cmake'
 readonly QIBUILD_CONFIGURATION='naov6-qibuild.xml'
@@ -35,6 +38,7 @@ readonly NAOQI_PYTHON_URL='https://community-static.aldebaran.com/resources/2.8.
 readonly NAO_FLASHER_URL='https://community-static.aldebaran.com/resources/2.1.0.19/flasher-2.1.0.19-linux64.tar.gz'
 readonly NAO_ROBOT_SETTINGS_SETUP_URL='https://community-static.aldebaran.com/resources/2.8.7/Robot+settings+1.2.1/Linux64/robot-settings_linux64_1.2.1-6c3a1204f_20210902-182550_setup.run'
 readonly NAO_ROBOT_SETTINGS_BINARIES_URL='https://community-static.aldebaran.com/resources/2.8.7/Robot+settings+1.2.1/Linux64/robot-settings_linux64_1.2.1-6c3a1204f_20210902-182550.tar.gz'
+readonly NAO_CTC_URL='https://community-static.aldebaran.com/resources/2.8.7/cross+toolchain/ctc-linux64-atom-2.8.7.4-20210818_162500.zip'
 
 readonly NAOQI_DOCS_FILE="${NAOQI_DOCS_URL##*/}"
 readonly CHOREGRAPHE_SETUP_FILE="${CHOREGRAPHE_SETUP_URL##*/}"
@@ -44,6 +48,7 @@ readonly NAOQI_PYTHON_FILE="${NAOQI_PYTHON_URL##*/}"
 readonly NAO_FLASHER_FILE="${NAO_FLASHER_URL##*/}"
 readonly NAO_ROBOT_SETTINGS_SETUP_FILE="${NAO_ROBOT_SETTINGS_SETUP_URL##*/}"
 readonly NAO_ROBOT_SETTINGS_BINARIES_FILE="${NAO_ROBOT_SETTINGS_BINARIES_URL##*/}"
+readonly NAO_CTC_FILE="${NAO_CTC_URL##*/}"
 
 readonly NAOQI_DOCS="${NAOQI_DOCS_FILE%*.zip}"
 readonly CHOREGRAPHE_BINARIES="${CHOREGRAPHE_BINARIES_FILE%*.tar.*}"
@@ -51,6 +56,7 @@ readonly NAOQI_CPP="${NAOQI_CPP_FILE%*.tar.*}"
 readonly NAOQI_PYTHON="${NAOQI_PYTHON_FILE%*.tar.*}"
 readonly NAO_FLASHER="${NAO_FLASHER_FILE%*.tar.*}"
 readonly NAO_ROBOT_SETTINGS_BINARIES="${NAO_ROBOT_SETTINGS_BINARIES_FILE%*.tar.*}"
+readonly NAO_CTC="${NAO_CTC_FILE%*.zip}"
 
 readonly DOWNLOAD_URLS=(
 	"${CHOREGRAPHE_BINARIES_URL}"
@@ -59,6 +65,7 @@ readonly DOWNLOAD_URLS=(
 	"${NAOQI_DOCS_URL}"
 	"${NAO_FLASHER_URL}"
 	"${NAO_ROBOT_SETTINGS_BINARIES_URL}"
+	"${NAO_CTC_URL}"
 )
 
 readonly DIRECTORIES=(
@@ -70,6 +77,7 @@ readonly DIRECTORIES=(
 	"${NAO_CHOREGRAPHE_DIR}"
 	"${NAO_FLASHER_DIR}"
 	"${NAO_ROBOT_SETTINGS_DIR}"
+	"${NAO_CTC_DIR}"
 	"${NAO_QIBUILD_WORKSPACE}"
 )
 
@@ -149,6 +157,9 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 		"${NAO_DOWNLOADS_DIR}/${NAO_ROBOT_SETTINGS_BINARIES}")
 			mv -v "$f" "${NAO_ROBOT_SETTINGS_DIR}/"
 			;;
+		"${NAO_DOWNLOADS_DIR}/${NAO_CTC}")
+			mv -v "$f" "${NAO_CTC_DIR}/"
+			;;
 		*)
 			echo "Unknown file '$f'"
 			;;
@@ -186,6 +197,12 @@ echo 'Installing CPP library'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
 cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_CPP_QIBUILD_CONFIG}" -t "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" --default
+cd "${CURRENT_DIR}"
+
+printf 'Installing Cross Toolchain\n'
+"${PIP_PATH}/qitoolchain" create "${NAOQI_QIBUILD_CTC}" "${NAO_CTC_DIR}/${NAO_CTC}/toolchain.xml"
+cd "${NAO_QIBUILD_WORKSPACE}"
+"${PIP_PATH}/qibuild" add-config "${NAOQI_QIBUILD_CTC_CONFIG}" -t "${NAOQI_QIBUILD_CTC}"
 cd "${CURRENT_DIR}"
 
 exit 0
