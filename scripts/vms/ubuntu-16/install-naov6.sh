@@ -61,9 +61,6 @@ readonly DOWNLOAD_URLS=(
 	"${NAO_ROBOT_SETTINGS_BINARIES_URL}"
 )
 
-readonly ARIA2_JOBS=2
-readonly ARIA2_SPLITS=2
-
 sudo apt-get update
 
 echo 'Install C++, Python dependencies and downloader'
