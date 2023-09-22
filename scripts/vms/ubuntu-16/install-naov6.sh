@@ -5,11 +5,14 @@ readonly PIP_PATH="${HOME}/.local/bin"
 CURRENT_DIR="$(pwd)"
 readonly CURRENT_DIR
 
-readonly NAO_CPP_DIR="${HOME}/NAO6/SDKs/cpp"
-readonly NAO_PYTHON2_DIR="${HOME}/NAO6/SDKs/python2"
-readonly NAO_DOWNLOADS_DIR="${HOME}/NAO6/downloads"
-readonly NAO_PROGRAMS_DIR="${HOME}/NAO6/programs"
-readonly NAO_DOCS_DIR="${HOME}/NAO6/docs"
+readonly NAO_BASE_DIR="${HOME}/NAO6"
+readonly NAO_SDKS_DIR="${NAO_BASE_DIR}/SDKs"
+
+readonly NAO_CPP_DIR="${NAO_SDKS_DIR}/cpp"
+readonly NAO_PYTHON2_DIR="${NAO_SDKS_DIR}/python2"
+readonly NAO_DOWNLOADS_DIR="${NAO_BASE_DIR}/downloads"
+readonly NAO_PROGRAMS_DIR="${NAO_BASE_DIR}/programs"
+readonly NAO_DOCS_DIR="${NAO_BASE_DIR}/docs"
 
 readonly NAO_CHOREGRAPHE_DIR="${NAO_PROGRAMS_DIR}/choregraphe"
 readonly CHOREGRAPHE_KEY='654e-4564-153c-6518-2f44-7562-206e-4c60-5f47-5f45'
