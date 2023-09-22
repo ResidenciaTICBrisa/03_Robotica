@@ -205,4 +205,18 @@ cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_QIBUILD_CTC_CONFIG}" -t "${NAOQI_QIBUILD_CTC}"
 cd "${CURRENT_DIR}"
 
+printf 'Saving qibuild workspace settings\n'
+printf 'export NAO_QIBUILD_WORKSPACE="%s"\n' "${NAO_QIBUILD_WORKSPACE}" >> "${HOME}/.bashrc"
+printf 'NAO_QIBUILD_WORKSPACE=%s\n' "${NAO_QIBUILD_WORKSPACE}"
+
+printf 'export NAOQI_CPP_QIBUILD_TOOLCHAIN="%s"\n' "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" >> "${HOME}/.bashrc"
+printf 'NAOQI_CPP_QIBUILD_TOOLCHAIN=%s\n' "${NAOQI_CPP_QIBUILD_TOOLCHAIN}"
+printf 'export NAOQI_CPP_QIBUILD_CONFIG="%s"\n' "${NAOQI_CPP_QIBUILD_CONFIG}" >> "${HOME}/.bashrc"
+printf 'NAOQI_CPP_QIBUILD_CONFIG=%s\n' "${NAOQI_CPP_QIBUILD_CONFIG}"
+
+printf 'export NAOQI_QIBUILD_CTC="%s"\n' "${NAOQI_QIBUILD_CTC}" >> "${HOME}/.bashrc"
+printf 'NAOQI_QIBUILD_CTC=%s\n' "${NAOQI_QIBUILD_CTC}"
+printf 'export NAOQI_QIBUILD_CTC_CONFIG="%s"\n' "${NAOQI_QIBUILD_CTC_CONFIG}" >> "${HOME}/.bashrc"
+printf 'NAOQI_QIBUILD_CTC_CONFIG=%s\n' "${NAOQI_QIBUILD_CTC_CONFIG}"
+
 exit 0
