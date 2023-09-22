@@ -83,21 +83,21 @@ readonly DIRECTORIES=(
 
 sudo apt-get update
 
-echo 'Install C++, Python dependencies and downloader'
+printf 'Install C++, Python dependencies and downloader\n'
 sudo apt-get install --yes build-essential cmake wget
 
-echo 'Create directories'
+printf 'Create directories\n'
 for directory in "${DIRECTORIES[@]}"; do
 	mkdir -pv "${directory}"
 done
 
-echo 'Install qibuild'
+printf 'Install qibuild\n'
 pip2 install qibuild pyreadline
-echo '# NAOv6 installation' >> "${HOME}/.bashrc"
-echo "readonly PIP_PATH=\"${PIP_PATH}\"" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${PIP_PATH}"' >> "${HOME}/.bashrc"
+printf '# NAOv6 installation\n' >> "${HOME}/.bashrc"
+printf 'readonly PIP_PATH="%s"\n' "${PIP_PATH}" >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${PIP_PATH}"\n' >> "${HOME}/.bashrc"
 
-echo 'Configure qibuild'
+printf 'Configure qibuild\n'
 mkdir -pv "${HOME}/.config/qi"
 mv -v "${QIBUILD_CONFIGURATION}" "${HOME}/.config/qi/qibuild.xml"
 
@@ -105,12 +105,12 @@ cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" init
 cd "${CURRENT_DIR}"
 
-echo 'Download packages'
+printf 'Download packages\n'
 for url in "${DOWNLOAD_URLS[@]}"; do
 	wget "${url}" --directory-prefix="${NAO_DOWNLOADS_DIR}"
 done
 
-echo 'Extract packages'
+printf 'Extract packages\n'
 for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
 	if [[ "$f" =~ .*\.zip ]]; then
 		printf "File '%s' is a zip\n" "${f}"
@@ -135,7 +135,7 @@ for f in "${NAO_DOWNLOADS_DIR}"/{*.zip,*.tar.gz}; do
 	fi
 done
 
-echo 'Move packages'
+printf 'Move packages\n'
 for f in "${NAO_DOWNLOADS_DIR}"/*; do
 	if [[ -d "$f" ]]; then
 		case "$f" in
@@ -161,21 +161,21 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 			mv -v "$f" "${NAO_CTC_DIR}/"
 			;;
 		*)
-			echo "Unknown file '$f'"
+			printf "Unknown file '%s'\n" "$f"
 			;;
 		esac
 	else
-		echo "Not a directory: '$f'"
+		printf "Not a directory: '%s'\n" "$f"
 	fi
 done
 
-# echo 'Patching NAOv6 C++ SDK'
+# printf 'Patching NAOv6 C++ SDK\n'
 # mv -v "${NAOQI_CMAKE_CONFIG}" "${NAO_CPP_DIR}/${NAOQI_CPP}/config.cmake"
 
-echo 'Installing Python library'
-echo '# NAOv6 Python SDK' >> "${HOME}/.bashrc"
-echo "readonly NAO6_PYTHON_SDK_PATH=\"${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}\"" >> "${HOME}/.bashrc"
-echo 'export PYTHONPATH="${PYTHONPATH}:${NAO6_PYTHON_SDK_PATH}/lib/python2.7/site-packages"' >> "${HOME}/.bashrc"
+printf 'Installing Python library\n'
+printf '# NAOv6 Python SDK\n' >> "${HOME}/.bashrc"
+printf 'readonly NAO6_PYTHON_SDK_PATH="%s"\n' "${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}" >> "${HOME}/.bashrc"
+printf 'export PYTHONPATH="${PYTHONPATH}:${NAO6_PYTHON_SDK_PATH}/lib/python2.7/site-packages"\n' >> "${HOME}/.bashrc"
 
 printf 'Installing Choreographe\n'
 printf '# Choregraphe path\n' >> "${HOME}/.bashrc"
@@ -184,17 +184,17 @@ printf 'export PATH="${PATH}:${CHOREGRAPHE_PATH}"\n' >> "${HOME}/.bashrc"
 printf 'export CHOREGRAPHE_KEY="%s"\n' "${CHOREGRAPHE_KEY}" >> "${HOME}/.bashrc"
 printf "CHOREGRAPHE_KEY='%s'\n" "${CHOREGRAPHE_KEY}"
 
-echo 'Installing NAO Flasher'
-echo '# NAO Flasher path' >> "${HOME}/.bashrc"
-echo "readonly NAO_FLASHER_PATH=\"${NAO_FLASHER_DIR}/${NAO_FLASHER}\"" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${NAO_FLASHER_PATH}"' >> "${HOME}/.bashrc"
+printf 'Installing NAO Flasher\n'
+printf '# NAO Flasher path\n' >> "${HOME}/.bashrc"
+printf 'readonly NAO_FLASHER_PATH="%s"\n' "${NAO_FLASHER_DIR}/${NAO_FLASHER}" >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${NAO_FLASHER_PATH}"\n' >> "${HOME}/.bashrc"
 
-echo 'Installing Robot Settings'
-echo '# Robot Settings path' >> "${HOME}/.bashrc"
-echo "readonly NAO_ROBOT_SETTINGS_PATH=\"${NAO_ROBOT_SETTINGS_DIR}/${NAO_ROBOT_SETTINGS_BINARIES}/bin\"" >> "${HOME}/.bashrc"
-echo 'export PATH="${PATH}:${NAO_ROBOT_SETTINGS_PATH}"' >> "${HOME}/.bashrc"
+printf 'Installing Robot Settings\n'
+printf '# Robot Settings path\n' >> "${HOME}/.bashrc"
+printf 'readonly NAO_ROBOT_SETTINGS_PATH="%s"\n' "${NAO_ROBOT_SETTINGS_DIR}/${NAO_ROBOT_SETTINGS_BINARIES}/bin" >> "${HOME}/.bashrc"
+printf 'export PATH="${PATH}:${NAO_ROBOT_SETTINGS_PATH}"\n' >> "${HOME}/.bashrc"
 
-echo 'Installing CPP library'
+printf 'Installing CPP library\n'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
 cd "${NAO_QIBUILD_WORKSPACE}"
 "${PIP_PATH}/qibuild" add-config "${NAOQI_CPP_QIBUILD_CONFIG}" -t "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" --default
