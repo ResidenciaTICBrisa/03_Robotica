@@ -36,7 +36,7 @@ readonly BRIDGE_IP="10.14.1.15/16"
 readonly DNSMASQ_IP_START="10.14.1.16"
 readonly DNSMASQ_IP_END="10.14.1.254"
 readonly DNSMASQ_IP_MASK="255.255.0.0"
-readonly VM_MAC="52:54:00:00:00:01"
+readonly VM_MAC="52:54:00:00:04:01"
 readonly QEMU_NAT_TABLE="qemu-nat"
 readonly QEMU_FILTER_TABLE="qemu-filter"
 
