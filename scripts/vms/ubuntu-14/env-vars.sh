@@ -36,6 +36,7 @@ readonly BRIDGE_IP="10.14.1.15/16"
 readonly DNSMASQ_IP_START="10.14.1.16"
 readonly DNSMASQ_IP_END="10.14.1.254"
 readonly DNSMASQ_IP_MASK="255.255.0.0"
+readonly VM_MAC="52:54:00:00:00:01"
 
 readonly UNSET_WARNING="is unset or empty"
 
@@ -65,6 +66,7 @@ echo "BRIDGE_IP=${BRIDGE_IP:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_START=${DNSMASQ_IP_START:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_END=${DNSMASQ_IP_END:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_MASK=${DNSMASQ_IP_MASK:?${UNSET_WARNING}}"
+echo "VM_MAC=${VM_MAC:?${UNSET_WARNING}}"
 
 abort_if_bios_not_found() {
 	if [[ ! -e "${BIOS_LOCATION}" ]]; then

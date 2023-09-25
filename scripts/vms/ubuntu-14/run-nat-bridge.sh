@@ -20,7 +20,7 @@ qemu-system-x86_64 \
 -device qemu-xhci \
 -boot menu=on \
 -netdev bridge,id=net0,br="${BRIDGE}" \
--device virtio-net-pci,netdev=net0,mac='52:54:00:00:00:01' \
+-device virtio-net-pci,netdev=net0,mac="${VM_MAC}" \
 -rtc base=localtime,clock=vm \
 -device "${DISPLAY_DEVICE}" \
 -display "${DISPLAY_BACKEND}" \
