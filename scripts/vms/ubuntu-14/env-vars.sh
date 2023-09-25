@@ -124,4 +124,27 @@ abort_if_usb_misconfigured() {
 	fi
 }
 
+abort_if_iproute2_not_found() {
+	if ! command -v ip >/dev/null; then
+		echo "'ip' not found"
+		echo "Please install 'iproute2'"
+		exit 6
+	fi
+}
+
+abort_if_nftables_not_found() {
+	if ! command -v nft >/dev/null; then
+		echo "'nft' not found"
+		echo "Please install 'nftables'"
+		echo 7
+	fi
+}
+
+abort_if_interface_not_found() {
+	if ! ip link show "${INTERFACE}" >/dev/null; then
+		echo "Device ${INTERFACE} does not exist"
+		echo 8
+	fi
+}
+
 readonly SOURCED_ENV_VARS_SH=1

@@ -2,6 +2,10 @@
 
 source './env-vars.sh'
 
+abort_if_iproute2_not_found
+abort_if_nftables_not_found
+abort_if_interface_not_found
+
 chmod -v 4755 /usr/lib/qemu/qemu-bridge-helper
 printf 'allow %s\n' "${BRIDGE}" > /etc/qemu/bridge.conf
 chmod -v 0644 /etc/qemu/bridge.conf
