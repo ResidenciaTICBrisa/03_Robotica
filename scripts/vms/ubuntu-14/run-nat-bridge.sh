@@ -19,7 +19,7 @@ qemu-system-x86_64 \
 -device scsi-hd,bus=scsi0.0,drive=drive-hd0,id=hd0,bootindex=0 \
 -device qemu-xhci \
 -boot menu=on \
--netdev bridge,id=net0,br=qemubr0 \
+-netdev bridge,id=net0,br="${BRIDGE}" \
 -device virtio-net-pci,netdev=net0,mac='52:54:00:00:00:01' \
 -rtc base=localtime,clock=vm \
 -device "${DISPLAY_DEVICE}" \
