@@ -30,6 +30,16 @@ readonly USB_VENDOR_ID=""
 readonly USB_PRODUCT_ID=""
 readonly USB_FILE="/dev/bus/usb/${USB_HOST_BUS}/${USB_HOST_ADDRESS}"
 
+readonly BRIDGE="qemubr0"
+readonly INTERFACE="wlp0s20f3"
+readonly BRIDGE_IP="10.14.1.15/16"
+readonly DNSMASQ_IP_START="10.14.1.16"
+readonly DNSMASQ_IP_END="10.14.1.254"
+readonly DNSMASQ_IP_MASK="255.255.0.0"
+readonly VM_MAC="52:54:00:00:06:01"
+readonly QEMU_NAT_TABLE="qemu-nat"
+readonly QEMU_FILTER_TABLE="qemu-filter"
+
 readonly UNSET_WARNING="is unset or empty"
 
 echo "BIOS_LOCATION=${BIOS_LOCATION:?${UNSET_WARNING}}"
@@ -51,6 +61,16 @@ echo "MACHINE_CFG=${MACHINE_CFG:?${UNSET_WARNING}}"
 echo "CPU_MODEL=${CPU_MODEL:?${UNSET_WARNING}}"
 echo "CPU_NUMBER=${CPU_NUMBER:?${UNSET_WARNING}}"
 echo "MACHINE_MEMORY_SIZE=${MACHINE_MEMORY_SIZE:?${UNSET_WARNING}}"
+
+echo "BRIDGE=${BRIDGE:?${UNSET_WARNING}}"
+echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
+echo "BRIDGE_IP=${BRIDGE_IP:?${UNSET_WARNING}}"
+echo "DNSMASQ_IP_START=${DNSMASQ_IP_START:?${UNSET_WARNING}}"
+echo "DNSMASQ_IP_END=${DNSMASQ_IP_END:?${UNSET_WARNING}}"
+echo "DNSMASQ_IP_MASK=${DNSMASQ_IP_MASK:?${UNSET_WARNING}}"
+echo "VM_MAC=${VM_MAC:?${UNSET_WARNING}}"
+echo "QEMU_NAT_TABLE=${QEMU_NAT_TABLE:?${UNSET_WARNING}}"
+echo "QEMU_FILTER_TABLE=${QEMU_FILTER_TABLE:?${UNSET_WARNING}}"
 
 abort_if_bios_not_found() {
 	if [[ ! -e "${BIOS_LOCATION}" ]]; then
@@ -101,6 +121,29 @@ abort_if_usb_misconfigured() {
 	if [[ "$status" != 0 ]]; then
 		echo "Mismatched vendor or product id"
 		exit 5
+	fi
+}
+
+abort_if_iproute2_not_found() {
+	if ! command -v ip >/dev/null; then
+		echo "'ip' not found"
+		echo "Please install 'iproute2'"
+		exit 6
+	fi
+}
+
+abort_if_nftables_not_found() {
+	if ! command -v nft >/dev/null; then
+		echo "'nft' not found"
+		echo "Please install 'nftables'"
+		echo 7
+	fi
+}
+
+abort_if_interface_not_found() {
+	if ! ip link show "${INTERFACE}" >/dev/null; then
+		echo "Device ${INTERFACE} does not exist"
+		echo 8
 	fi
 }
 
