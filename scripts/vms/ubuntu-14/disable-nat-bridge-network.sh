@@ -11,5 +11,5 @@ sysctl "net.ipv6.conf.${BRIDGE}.forwarding=0"
 ip link set "${BRIDGE}" down
 ip link delete "${BRIDGE}" type bridge
 
-nft delete table inet qemu-nat
-nft delete table inet qemu-filter
+nft delete table inet "${QEMU_NAT_TABLE}"
+nft delete table inet "${QEMU_FILTER_TABLE}"
