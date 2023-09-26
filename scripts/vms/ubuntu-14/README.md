@@ -233,6 +233,42 @@ SDK was added to the *worktree*. It is the default toolchain configuration.
 It can be used to replace the C++ SDK as the project's toolchain in order to
 create a binary that can be transfered to the robot.
 
+### Basic project setup
+
+The following steps will create and build a C++ SDK-based project on the
+configured *worktree*:
+
+```bash
+cd "${NAO_QIBUILD_WORKSPACE}"
+qisrc create my-project
+cd my-project
+qibuild configure
+qibuild make
+```
+
+The C++ SDK is configured as the default toolchain. If you wish to set up a
+project with an explicit configuration and build setup, you may run:
+
+```bash
+cd "${NAO_QIBUILD_WORKSPACE}"
+qisrc create my-project
+cd my-project
+qibuild configure -c "${NAOQI_CPP_QIBUILD_CONFIG}" my-project
+qibuild make -c "${NAOQI_CPP_QIBUILD_CONFIG}" my-project
+```
+
+Compiling a project that will be run on the robot requires an explicit
+configuration to replace the default toolchain by the cross-compilation one
+(NAO CTC):
+
+```bash
+cd "${NAO_QIBUILD_WORKSPACE}"
+qisrc create my-project
+cd my-project
+qibuild configure -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
+qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
+```
+
 ## Connecting to the Robot
 
 There are three scripts that are used when connecting the Virtual Machine to
