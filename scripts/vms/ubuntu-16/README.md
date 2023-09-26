@@ -229,3 +229,65 @@ SDK was added to the *worktree*. It is the default toolchain configuration.
 - `NAOQI_QIBUILD_CTC_CONFIG`: the name of the configuration in the *worktree*.
 It can be used to replace the C++ SDK as the project's toolchain in order to
 create a binary that can be transfered to the robot.
+
+### Basic project setup
+
+The following steps will create and build a C++ SDK-based project on the
+configured *worktree*:
+
+```bash
+cd "${NAO_QIBUILD_WORKSPACE}"
+qisrc create my-project
+cd my-project
+qibuild configure
+qibuild make
+```
+
+The C++ SDK is configured as the default toolchain. If you wish to set up a
+project with an explicit configuration and build setup, you may run:
+
+```bash
+cd "${NAO_QIBUILD_WORKSPACE}"
+qisrc create my-project
+cd my-project
+qibuild configure -c "${NAOQI_CPP_QIBUILD_CONFIG}" my-project
+qibuild make -c "${NAOQI_CPP_QIBUILD_CONFIG}" my-project
+```
+
+Compiling a project that will be run on the robot requires an explicit
+configuration to replace the default toolchain by the cross-compilation one
+(NAO CTC):
+
+```bash
+cd "${NAO_QIBUILD_WORKSPACE}"
+qisrc create my-project
+cd my-project
+qibuild configure -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
+qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
+```
+
+## Connecting to the Robot
+
+There are three scripts that are used when connecting the Virtual Machine to
+your NAO:
+
+1. `enable-nat-bridge-network.sh`: this script must be run with elevated
+privileges to set a bridge with a bound DHCP server and a NAT masquerade up
+2. `run-nat-bridge.sh`: this script executes the VM with connectivity to the
+previously configured bridge. This is achieved by a `tap` device that QEMU will
+automatically add to the bridge using `/usr/lib/qemu/qemu-bridge-helper` and
+`/etc/qemu/bridge.conf`. It may be executed by a common user.
+3. `disable-nat-bridge-network.sh`: this script must be run with elevated
+privileges to undo all the modifications made by the NAT enabler script.
+
+### Warning to Docker users
+
+Docker overrides all user firewall configurations. The scripts currently
+require a standard firewall configuration, so it will be necessary to remove
+all tables and rules created by Docker. It is recommended to stop Docker with
+`systemctl stop docker.service docker.socket` to avoid a surprise firewall
+reconfiguration event.
+
+You should be able to reset nftables to its standard configuration using the
+command: `nft flush ruleset`. This will break the network for the containers
+until the machine or the Docker service unit are restarted.
