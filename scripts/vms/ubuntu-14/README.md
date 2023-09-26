@@ -18,6 +18,7 @@ These scripts need the following packages to be installed on the host's system
 |ovmf            |2022.11|
 |libguestfs-tools|1.48.6 |
 |iproute2        |5.15   |
+|nftables        |1.0.2  |
 
 The scripts assume that KVM-based accelerated virtualisation is enabled on the
 host machine. This requires a compatible processor and it may require a
