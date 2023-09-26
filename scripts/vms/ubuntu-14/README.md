@@ -17,6 +17,7 @@ These scripts need the following packages to be installed on the host's system
 |qemu-block-extra|6.2.0  |
 |ovmf            |2022.11|
 |libguestfs-tools|1.48.6 |
+|iproute2        |5.15   |
 
 The scripts assume that KVM-based accelerated virtualisation is enabled on the
 host machine. This requires a compatible processor and it may require a
