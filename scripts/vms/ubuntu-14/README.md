@@ -232,3 +232,17 @@ SDK was added to the *worktree*. It is the default toolchain configuration.
 - `NAOQI_QIBUILD_CTC_CONFIG`: the name of the configuration in the *worktree*.
 It can be used to replace the C++ SDK as the project's toolchain in order to
 create a binary that can be transfered to the robot.
+
+## Connecting to the Robot
+
+### Warning to Docker users
+
+Docker overrides all user firewall configurations. The scripts currently
+require a standard firewall configuration, so it will be necessary to remove
+all tables and rules created by Docker. It is recommended to stop Docker with
+`systemctl stop docker.service docker.socket` to avoid a surprise firewall
+reconfiguration event.
+
+You should be able to reset nftables to its standard configuration using the
+command: `nft flush ruleset`. This will break the network for the containers
+until the machine or the Docker service unit are restarted.
