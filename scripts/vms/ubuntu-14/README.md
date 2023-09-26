@@ -16,7 +16,7 @@ These scripts need the following packages to be installed on the host's system
 |qemu-system-gui |6.2.0  |
 |qemu-block-extra|6.2.0  |
 |ovmf            |2022.02|
-|libguestfs-tools|1.48.6 |
+|libguestfs-tools|1.46.2 |
 |iproute2        |5.15   |
 |nftables        |1.0.2  |
 
