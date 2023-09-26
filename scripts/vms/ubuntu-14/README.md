@@ -235,6 +235,18 @@ create a binary that can be transfered to the robot.
 
 ## Connecting to the Robot
 
+There are three scripts that are used when connecting the Virtual Machine to
+your NAO:
+
+1. `enable-nat-bridge-network.sh`: this script must be run with elevated
+privileges to set a bridge with a bound DHCP server and a NAT masquerade up
+2. `run-nat-bridge.sh`: this script executes the VM with connectivity to the
+previously configured bridge. This is achieved by a `tap` device that QEMU will
+automatically add to the bridge using `/usr/lib/qemu/qemu-bridge-helper` and
+`/etc/qemu/bridge.conf`. It may be executed by a common user.
+3. `disable-nat-bridge-network.sh`: this script must be run with elevated
+privileges to undo all the modifications made by the NAT enabler script.
+
 ### Warning to Docker users
 
 Docker overrides all user firewall configurations. The scripts currently
