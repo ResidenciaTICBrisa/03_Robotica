@@ -49,6 +49,12 @@ theme:
   favicon: assets/images/robo.png
   custom_dir: docs/overrides
 
+extra_css:
+  - stylesheets/style.css
+
+extra_javascript:
+  - javascripts/script.js
+
 plugins:
   - search:
       lang:

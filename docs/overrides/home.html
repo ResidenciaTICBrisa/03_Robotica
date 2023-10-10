@@ -1,0 +1,177 @@
+{% extends "main.html" %}
+
+<!-- Render hero under tabs -->
+{% block tabs %}
+  {{ super() }}
+
+  <!-- Additional styles for landing page -->
+  <style>
+
+    /* Application header should be static for the landing page */
+    .md-header {
+      position: initial;
+    }
+
+    /* Remove spacing, as we cannot hide it completely */
+    .md-main__inner {
+      margin: 0;
+    }
+
+    /* Hide main content for now */
+    .md-content {
+      display: none;
+    }
+
+    /* Hide table of contents */
+    @media screen and (min-width: 60em) {
+      .md-sidebar--secondary {
+        display: none;
+      }
+    }
+
+    /* Hide navigation */
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+    }
+  </style>
+
+  <!--Conteúdo da Página-->
+
+  <main>
+    <section id="section_1">
+        <img src="assets/images/Imagem 1.jpg" alt="Image da RoboConnection, com o nome do projeto e a foto do robô">
+    </section><!--section_1-->
+
+    <section id="section_2">
+        <h1>Facilidade sem igual com os robôs NAO</h1>
+
+        <div id="flex">
+            <div class="item">
+                <div class="alinha">
+                    <img src="assets/icons/Guias.png" loading="lazy" alt="Icone de uma folha A4">
+                    <span>Guias de Uso</span>
+                </div>
+                <p>Tutorias didáticos que capacitam o usuário no uso de diferentes softwares e métodos para programar os robôs NAO.</p>
+            </div>
+
+            <div class="item">
+                <div class="alinha">
+                    <img src="assets/icons/Markdown.png" loading="lazy" alt="Logo do Markdown">
+                    <span>Documentação em Markdown</span>
+                </div>
+                <p>Documentação completa em markdown, possibilitando fácil manutenção e acesso a recursos, como adição de imagens e tabelas.</p>
+            </div>
+
+            <div class="item">
+                <div class="alinha">
+                    <img src="assets/icons/Bash.png" loading="lazy" alt="Icone que representa o ShellScript">
+                    <span>Scripts automáticos de instalação</span>
+                </div>
+                <p>Scripts que instalam automaticamente programas e dependências de difícil acesso mais usadas na programação dos robôs NAO.</p>
+            </div>
+
+            <div class="item">
+                <div class="alinha">
+                    <img src="assets/icons/Computador.png" loading="lazy" alt="Icone de um Computador">
+                    <span>Uso de máquinas virtuais</span>
+                </div>
+                <p>Vários ambientes em um. Programe robôs NAO diferentes em um mesmo sistema e economize recursos temporais e financeiros.</p>
+            </div>
+
+            <div class="item">
+                <div class="alinha">
+                    <img src="assets/icons/Pincel.png" loading="lazy" alt="Icone de um Pincel">
+                    <span>Design simples e elegante</span>
+                </div>
+                <p>Design baseado em MKDocs para melhor organização, usabilidade e elegância dos diversos guias disponibilizados pela Robo Connection.</p>
+            </div>
+
+            <div class="item">
+                <div class="alinha">
+                    <img src="assets/icons/Robo.png" loading="lazy" alt="Icone de um Robô">
+                    <span>Abrangência da abordagem</span>
+                </div>
+                <p>A Robo Connection fornece guias para as versões V6 e V4 do NAO, separadamente. Isso inclui um ambiente configurado para cada versão.</p>
+            </div>
+        </div><!--flex-->
+
+    </section><!--section_2-->
+
+    <section id="section_3">
+        <h1>Mais do que apenas documentação</h1>
+        <div class="flex_3">
+            <div class="texto">
+                <h2>Apoio à equipe UnBeatables</h2>
+                <p>O <strong>Robo Connection</strong> possibilita um primeiro contato muito mais suave e eficiente com as tecnologias usadas nos NAOs. Ingressantes da equipe <strong>UnBeatables</strong> que <strong>gastavam semanas (e até meses)</strong> para instalar os programas e bibliotecas essenciais agora podem desfrutar da instalação dos componentes executando <strong>apenas um script</strong></br></br>Além disso, com os tutoriais de <strong>fácil entendimento e estruturação otimizada</strong> do Robo Connection, estudar a programação do NAO se torna <strong>muito mais fácil</strong></p>
+            </div>
+
+            <div class="img">
+                <img src="assets/images/unbeatables.png" loading="lazy" alt="Logo da UnBeatables">
+            </div>
+        </div>
+
+        <div class="flex_3">
+            <div style="order: 2;" class="texto">
+                <h2>Solução para a SoftBank Robotics</h2>
+                <p>A <strong>SoftBank Robotics</strong> é a <strong>líder mundial</strong> no mercado de robôs móveis domésticos, responsável pela produção e comercialização dos robôs NAO.</br>Entretanto, modelos novos e antigos apresentam <strong>problemas de compatibilidade e corrupção de arquivos</strong> (mesmo que através das fontes oficiais de distribuição), <strong>limitando imensamente</strong> a proposta original dos produtos.</br></br>O <strong>Robo Connection</strong> visa <strong>devolver o potencial dos NAOs</strong> através de soluções inteligentes. Com isso, <strong>o valor do produto será restaurado</strong>, reabrindo um mundo de possibilidades para os robôs humanoides da SoftBank Robotics.</p>
+            </div>
+
+            <div style="order: 1;" class="img">
+                <img src="assets/images/softbank.jpg" loading="lazy" alt="Imagem de um Robô apresentando a logo da softbank">
+            </div>
+        </div>
+    </section><!--section_3-->
+
+    <section id="section_4">
+        <h1>Equipe de Desenvolvedores - Robo Connection</h1>
+        <div id="flex_4">
+            <div class="menbro">
+                <img src="assets/images/damarcones.jpg" loading="lazy" alt="Foto do Damarcones">
+                <h2>Damarcones Porto</h2>
+                <span class="line"></span>
+                <p>Product Manager</p>
+            </div>
+
+            <div class="menbro">
+                <img src="assets/images/daniel.jpeg" loading="lazy" alt="Foto do Daniel">
+                <h2>Daniel dos Santos</h2>
+                <span class="line"></span>
+                <p>Community Manager</p>
+            </div>
+
+            <div class="menbro">
+                <img src="assets/images/davi.jpg" loading="lazy" alt="Icone usado pelo Davi">
+                <h2>Davi Antônio</h2>
+                <span class="line"></span>
+                <p>Devops/Arquitetura</p>
+            </div>
+
+            <div class="menbro">
+                <img src="assets/images/gustavo.jpg" loading="lazy" alt="Foto do Gustavo">
+                <h2>Gustavo Macedo</h2>
+                <span class="line"></span>
+                <p>Scrum Master</p>
+            </div>
+
+            <div class="menbro">
+                <img src="assets/images/matheus.jpeg" loading="lazy" alt="Foto do Matheus">
+                <h2>Matheus Rodrigues</h2>
+                <span class="line"></span>
+                <p>Líder Técnico</p>
+            </div>
+        </div>
+    </section><!--section_4-->
+
+</main>
+
+  <!--Fim do Conteúdo da Página-->
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}{% endblock %}
+
+<!-- Application footer -->
+{% block footer %}{% endblock %}
