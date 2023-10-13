@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DOCDIRS=(ros1 ros2 vms/ubuntu-12 vms/ubuntu-16)
+readonly DOCDIRS=(ros1 ros2 vms/ubuntu-14 vms/ubuntu-16)
 
 for docdir in "${DOCDIRS[@]}"; do
 	# Create directory inside the current one

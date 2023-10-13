@@ -77,8 +77,8 @@ nav:
   - Máquina Virtual: Instruções/Maquina_Virtual.md
   - NAOv4:
     - Introdução ao NAOqi: Instruções/NAOqi-overview.md
-    - Máquina Virtual com scripts: vms/ubuntu-12/README.md
-    - NAO Flasher: Instruções/NAO_Flasher.md
+    - Máquina Virtual com scripts: vms/ubuntu-14/README.md
+    - NAO Flahser: Instruções/NAO_Flasher.md
     - SDK C++: Instruções/CPP_SDK_v4.md
     - Choregraphe: Instruções/Choregraphe_v4.md
   - NAOv6:

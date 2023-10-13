@@ -198,9 +198,34 @@ must run the VM using `run-usb-productid.sh`. Choosing the
 `run-usb-productid.sh` would connect all the devices connected to the `Bus 001`,
 the two `USB Thing 1` and the `USB Thing 2`.
 
-
 ### NAO Flasher permissions
 
 NAO Flasher requires administrative permissions (`sudo` or execution as the
 `root` user) to write data. If `sudo` can't find the program's path, you may
 find it with `command -v flasher`.
+
+## Compiling C++ code
+
+The qibuild framework requires that all projects must be based inside a
+worktree. The configuration script creates a worktree inside the
+`NAO4/worktree` directory. It is configured with the C++ SDK as the default
+toolchain, and the CTC is also available if the user wishes to set up their
+projects as so.
+
+The *worktree* path is stored in the user's `.bashrc` in the
+`NAO_QIBUILD_WORKSPACE` variable.
+
+### Qibuild configuration
+
+The script sets up the configurations' names in the user's `.bashrc`. The
+following environment variables hold data important for setting up qibuild-based
+projects:
+
+- `NAOQI_CPP_QIBUILD_TOOLCHAIN`: the name of the toolchain used when it was
+added to the *worktree*.
+- `NAOQI_CPP_QIBUILD_CONFIG`: the name of the configuration generated after the
+SDK was added to the *worktree*. It is the default toolchain configuration.
+- `NAOQI_QIBUILD_CTC`: the name of the cross toolchain in the *worktree*.
+- `NAOQI_QIBUILD_CTC_CONFIG`: the name of the configuration in the *worktree*.
+It can be used to replace the C++ SDK as the project's toolchain in order to
+create a binary that can be transfered to the robot.

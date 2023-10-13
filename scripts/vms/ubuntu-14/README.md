@@ -32,11 +32,11 @@ Even though these scripts can be modified easily, they expect the following
 directory structure in their current form:
 
 - `env-vars.sh`, a script to centralise the VM's configurations
-- an [image][1] from Ubuntu's installation disk version 12.04 named as
-`ubuntu-12.04-desktop-amd64.iso` (this can be altered in the `IMAGE_LOCATION`
+- an [image][1] from Ubuntu's installation disk version 14.04 named as
+`ubuntu-14.04-desktop-amd64.iso` (this can be altered in the `IMAGE_LOCATION`
 variable at the `env-vars.sh` script)
 
-[1]: https://old-releases.ubuntu.com/releases/precise/ubuntu-12.04.5-desktop-amd64.iso
+[1]: https://releases.ubuntu.com/trusty/ubuntu-14.04.6-desktop-amd64.iso
 
 ### Creating the VM and preparing to compile NAOqi for NAOv4
 
@@ -46,7 +46,7 @@ the following order:
 1. `reset-main-drive.sh`
 2. `first-boot.sh`
 
-After installing Ubuntu 12.04 in their virtual machine, the following scripts
+After installing Ubuntu 14.04 in their virtual machine, the following scripts
 must be executed in their host machine:
 
 1. `update-sources.sh`
@@ -57,7 +57,8 @@ must run the `prepare-naoqi-requirements.sh` script to compile Python 2.7.11
 and install Pip 20.3.4.
 
 Finally, the user will be able to install the NAOv4 development environment
-using the `install-naov4.sh` script.
+using the `install-naov4.sh` script. The newer Python will be used only to
+download Pip, as it crashes the Python SDK.
 
 ## Starting the Virtual Machine up for the first time
 
@@ -68,7 +69,7 @@ The initial images are created by the `reset-*` scripts
 ```
 
 With the drives created, run the initialisation script and install a regular
-Ubuntu 12.04 LTS installation:
+Ubuntu 14.04 LTS installation:
 
 - Language and keyboard layout: Português Brasileiro
 - Erase disk and install Ubuntu
@@ -81,9 +82,10 @@ Ubuntu 12.04 LTS installation:
 
 ## Running the VM
 
-Ubuntu 12.04 is not a supported release anymore. This means that the repository
-in the original release has been changed to the old release archive. In order to
-fix this, run the following script when the VM is disabled:
+Sometimes the Brazilian server takes too long to synchronise with the main
+server, leading to failed installations or upgrades. In order to avoid this
+problem, please run the following script to set the repository to the main
+archive:
 
 ```
 ./update-sources.sh
@@ -94,7 +96,7 @@ if there are any updates available.
 
 ## Preparing to install NAOqi for NAOv4
 
-Ubuntu 12.04 has an old version of Python 2.7. It lacks support to download data
+Ubuntu 14.04 has an old version of Python 2.7. It lacks support to download data
 from websites that enforce HTTPS, such as the modern Python packages index
 (`pip`). This requires a compilation of a newer Python version and the
 installation of the last compatible `pip` release. These steps can be automated
@@ -199,9 +201,34 @@ must run the VM using `run-usb-productid.sh`. Choosing the
 `run-usb-productid.sh` would connect all the devices connected to the `Bus 001`,
 the two `USB Thing 1` and the `USB Thing 2`.
 
-
 ### NAO Flasher permissions
 
 NAO Flasher requires administrative permissions (`sudo` or execution as the
 `root` user) to write data. If `sudo` can't find the program's path, you may
 find it with `command -v flasher`.
+
+## Compiling C++ code
+
+The qibuild framework requires that all projects must be based inside a
+worktree. The configuration script creates a worktree inside the
+`NAO4/worktree` directory. It is configured with the C++ SDK as the default
+toolchain, and the CTC is also available if the user wishes to set up their
+projects as so.
+
+The *worktree* path is stored in the user's `.bashrc` in the
+`NAO_QIBUILD_WORKSPACE` variable.
+
+### Qibuild configuration
+
+The script sets up the configurations' names in the user's `.bashrc`. The
+following environment variables hold data important for setting up qibuild-based
+projects:
+
+- `NAOQI_CPP_QIBUILD_TOOLCHAIN`: the name of the toolchain used when it was
+added to the *worktree*.
+- `NAOQI_CPP_QIBUILD_CONFIG`: the name of the configuration generated after the
+SDK was added to the *worktree*. It is the default toolchain configuration.
+- `NAOQI_QIBUILD_CTC`: the name of the cross toolchain in the *worktree*.
+- `NAOQI_QIBUILD_CTC_CONFIG`: the name of the configuration in the *worktree*.
+It can be used to replace the C++ SDK as the project's toolchain in order to
+create a binary that can be transfered to the robot.

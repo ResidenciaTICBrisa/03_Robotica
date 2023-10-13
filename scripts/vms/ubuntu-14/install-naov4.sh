@@ -5,7 +5,7 @@ readonly PIP_PATH="${HOME}/.local/bin"
 CURRENT_DIR="$(pwd)"
 readonly CURRENT_DIR
 
-readonly NAO_BASE_DIR="${HOME}/NAO6"
+readonly NAO_BASE_DIR="${HOME}/NAO4"
 readonly NAO_SDKS_DIR="${NAO_BASE_DIR}/SDKs"
 
 readonly NAO_CPP_DIR="${NAO_SDKS_DIR}/cpp"
@@ -17,27 +17,24 @@ readonly NAO_DOCS_DIR="${NAO_BASE_DIR}/docs"
 readonly NAO_QIBUILD_WORKSPACE="${NAO_BASE_DIR}/workspace"
 
 readonly NAO_CHOREGRAPHE_DIR="${NAO_PROGRAMS_DIR}/choregraphe"
-readonly CHOREGRAPHE_KEY='654e-4564-153c-6518-2f44-7562-206e-4c60-5f47-5f45'
+readonly CHOREGRAPHE_KEY='562a-750a-252e-143c-0f2a-4550-505e-4f40-5f48-504c'
 
 readonly NAO_FLASHER_DIR="${NAO_PROGRAMS_DIR}/flasher"
-readonly NAO_ROBOT_SETTINGS_DIR="${NAO_PROGRAMS_DIR}/robot-settings"
 
-readonly NAOQI_CPP_QIBUILD_TOOLCHAIN='naov6-toolchain'
+readonly NAOQI_CPP_QIBUILD_TOOLCHAIN='naov4-toolchain'
 readonly NAOQI_CPP_QIBUILD_CONFIG="${NAOQI_CPP_QIBUILD_TOOLCHAIN}-config"
-readonly NAOQI_QIBUILD_CTC='cross-atom-naov6'
+readonly NAOQI_QIBUILD_CTC='cross-atom-naov4'
 readonly NAOQI_QIBUILD_CTC_CONFIG="${NAOQI_QIBUILD_CTC}-config"
 
-# readonly NAOQI_CMAKE_CONFIG='naov6-config.cmake'
-readonly QIBUILD_CONFIGURATION='naov6-qibuild.xml'
+readonly NAOQI_CMAKE_CONFIG='naov4-config.cmake'
+readonly QIBUILD_CONFIGURATION='naov4-qibuild.xml'
 
-readonly NAOQI_DOCS_URL='http://doc.aldebaran.com/download/aldeb-doc-2.8.7.4.zip'
-readonly CHOREGRAPHE_SETUP_URL='https://community-static.aldebaran.com/resources/2.8.7/Choregraphe+Suite/Linux64/choregraphe-suite-2.8.7.4-linux64-setup.run'
-readonly CHOREGRAPHE_BINARIES_URL='https://community-static.aldebaran.com/resources/2.8.7/Choregraphe+Suite/Linux64/choregraphe-suite-2.8.7.4-linux64.tar.gz'
-readonly NAOQI_CPP_URL='https://community-static.aldebaran.com/resources/2.8.5/naoqi-sdk-2.8.5.10-linux64.tar.gz'
-readonly NAOQI_PYTHON_URL='https://community-static.aldebaran.com/resources/2.8.7/Python+SDK/pynaoqi-python2.7-2.8.7.4-linux64-20210819_141148.tar.gz'
+readonly NAOQI_DOCS_URL='http://doc.aldebaran.com/download/aldeb-doc-2.1.4.13.zip'
+readonly CHOREGRAPHE_SETUP_URL='https://community-static.aldebaran.com/resources/2.1.4.13/choregraphe/choregraphe-suite-2.1.4.13-linux64-setup.run'
+readonly CHOREGRAPHE_BINARIES_URL='https://community-static.aldebaran.com/resources/2.1.4.13/choregraphe/choregraphe-suite-2.1.4.13-linux64.tar.gz'
+readonly NAOQI_CPP_URL='https://community-static.aldebaran.com/resources/2.1.4.13/sdk-c%2B%2B/naoqi-sdk-2.1.4.13-linux64.tar.gz'
+readonly NAOQI_PYTHON_URL='https://community-static.aldebaran.com/resources/2.1.4.13/sdk-python/pynaoqi-python2.7-2.1.4.13-linux64.tar.gz'
 readonly NAO_FLASHER_URL='https://community-static.aldebaran.com/resources/2.1.0.19/flasher-2.1.0.19-linux64.tar.gz'
-readonly NAO_ROBOT_SETTINGS_SETUP_URL='https://community-static.aldebaran.com/resources/2.8.7/Robot+settings+1.2.1/Linux64/robot-settings_linux64_1.2.1-6c3a1204f_20210902-182550_setup.run'
-readonly NAO_ROBOT_SETTINGS_BINARIES_URL='https://community-static.aldebaran.com/resources/2.8.7/Robot+settings+1.2.1/Linux64/robot-settings_linux64_1.2.1-6c3a1204f_20210902-182550.tar.gz'
 readonly NAO_CTC_URL='https://community-static.aldebaran.com/resources/2.8.7/cross+toolchain/ctc-linux64-atom-2.8.7.4-20210818_162500.zip'
 
 readonly NAOQI_DOCS_FILE="${NAOQI_DOCS_URL##*/}"
@@ -46,8 +43,6 @@ readonly CHOREGRAPHE_BINARIES_FILE="${CHOREGRAPHE_BINARIES_URL##*/}"
 readonly NAOQI_CPP_FILE="${NAOQI_CPP_URL##*/}"
 readonly NAOQI_PYTHON_FILE="${NAOQI_PYTHON_URL##*/}"
 readonly NAO_FLASHER_FILE="${NAO_FLASHER_URL##*/}"
-readonly NAO_ROBOT_SETTINGS_SETUP_FILE="${NAO_ROBOT_SETTINGS_SETUP_URL##*/}"
-readonly NAO_ROBOT_SETTINGS_BINARIES_FILE="${NAO_ROBOT_SETTINGS_BINARIES_URL##*/}"
 readonly NAO_CTC_FILE="${NAO_CTC_URL##*/}"
 
 readonly NAOQI_DOCS="${NAOQI_DOCS_FILE%*.zip}"
@@ -55,7 +50,6 @@ readonly CHOREGRAPHE_BINARIES="${CHOREGRAPHE_BINARIES_FILE%*.tar.*}"
 readonly NAOQI_CPP="${NAOQI_CPP_FILE%*.tar.*}"
 readonly NAOQI_PYTHON="${NAOQI_PYTHON_FILE%*.tar.*}"
 readonly NAO_FLASHER="${NAO_FLASHER_FILE%*.tar.*}"
-readonly NAO_ROBOT_SETTINGS_BINARIES="${NAO_ROBOT_SETTINGS_BINARIES_FILE%*.tar.*}"
 readonly NAO_CTC="${NAO_CTC_FILE%*.zip}"
 
 readonly DOWNLOAD_URLS=(
@@ -64,7 +58,6 @@ readonly DOWNLOAD_URLS=(
 	"${NAOQI_PYTHON_URL}"
 	"${NAOQI_DOCS_URL}"
 	"${NAO_FLASHER_URL}"
-	"${NAO_ROBOT_SETTINGS_BINARIES_URL}"
 	"${NAO_CTC_URL}"
 )
 
@@ -76,7 +69,6 @@ readonly DIRECTORIES=(
 	"${NAO_DOCS_DIR}"
 	"${NAO_CHOREGRAPHE_DIR}"
 	"${NAO_FLASHER_DIR}"
-	"${NAO_ROBOT_SETTINGS_DIR}"
 	"${NAO_CTC_DIR}"
 	"${NAO_QIBUILD_WORKSPACE}"
 )
@@ -92,8 +84,8 @@ for directory in "${DIRECTORIES[@]}"; do
 done
 
 printf 'Install qibuild\n'
-pip2 install qibuild pyreadline
-printf '# NAOv6 installation\n' >> "${HOME}/.bashrc"
+"${PIP_PATH}/pip2" install qibuild pyreadline
+printf '# NAOv4 installation\n' >> "${HOME}/.bashrc"
 printf 'readonly PIP_PATH="%s"\n' "${PIP_PATH}" >> "${HOME}/.bashrc"
 printf 'export PATH="${PATH}:${PIP_PATH}"\n' >> "${HOME}/.bashrc"
 
@@ -154,26 +146,23 @@ for f in "${NAO_DOWNLOADS_DIR}"/*; do
 		"${NAO_DOWNLOADS_DIR}/${NAO_FLASHER}")
 			mv -v "$f" "${NAO_FLASHER_DIR}/"
 			;;
-		"${NAO_DOWNLOADS_DIR}/${NAO_ROBOT_SETTINGS_BINARIES}")
-			mv -v "$f" "${NAO_ROBOT_SETTINGS_DIR}/"
-			;;
 		"${NAO_DOWNLOADS_DIR}/${NAO_CTC}")
 			mv -v "$f" "${NAO_CTC_DIR}/"
 			;;
 		*)
-			printf "Unknown file '%s'\n" "$f"
+			printf "Unknown file '%s'\n" "${f}"
 			;;
 		esac
 	fi
 done
 
-# printf 'Patching NAOv6 C++ SDK\n'
-# mv -v "${NAOQI_CMAKE_CONFIG}" "${NAO_CPP_DIR}/${NAOQI_CPP}/config.cmake"
+printf 'Patching NAOv4 C++ SDK\n'
+mv -v "${NAOQI_CMAKE_CONFIG}" "${NAO_CPP_DIR}/${NAOQI_CPP}/config.cmake"
 
 printf 'Installing Python library\n'
-printf '# NAOv6 Python SDK\n' >> "${HOME}/.bashrc"
-printf 'readonly NAO6_PYTHON_SDK_PATH="%s"\n' "${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}" >> "${HOME}/.bashrc"
-printf 'export PYTHONPATH="${PYTHONPATH}:${NAO6_PYTHON_SDK_PATH}/lib/python2.7/site-packages"\n' >> "${HOME}/.bashrc"
+printf '# NAOv4 Python SDK\n' >> "${HOME}/.bashrc"
+printf 'readonly NAO4_PYTHON_SDK_PATH="%s"\n' "${NAO_PYTHON2_DIR}/${NAOQI_PYTHON}" >> "${HOME}/.bashrc"
+printf 'export PYTHONPATH="${PYTHONPATH}:${NAO4_PYTHON_SDK_PATH}"\n' >> "${HOME}/.bashrc"
 
 printf 'Installing Choreographe\n'
 printf '# Choregraphe path\n' >> "${HOME}/.bashrc"
@@ -186,11 +175,6 @@ printf 'Installing NAO Flasher\n'
 printf '# NAO Flasher path\n' >> "${HOME}/.bashrc"
 printf 'readonly NAO_FLASHER_PATH="%s"\n' "${NAO_FLASHER_DIR}/${NAO_FLASHER}" >> "${HOME}/.bashrc"
 printf 'export PATH="${PATH}:${NAO_FLASHER_PATH}"\n' >> "${HOME}/.bashrc"
-
-printf 'Installing Robot Settings\n'
-printf '# Robot Settings path\n' >> "${HOME}/.bashrc"
-printf 'readonly NAO_ROBOT_SETTINGS_PATH="%s"\n' "${NAO_ROBOT_SETTINGS_DIR}/${NAO_ROBOT_SETTINGS_BINARIES}/bin" >> "${HOME}/.bashrc"
-printf 'export PATH="${PATH}:${NAO_ROBOT_SETTINGS_PATH}"\n' >> "${HOME}/.bashrc"
 
 printf 'Installing CPP library\n'
 "${PIP_PATH}/qitoolchain" create "${NAOQI_CPP_QIBUILD_TOOLCHAIN}" "${NAO_CPP_DIR}/${NAOQI_CPP}/toolchain.xml"
