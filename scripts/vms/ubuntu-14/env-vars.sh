@@ -63,7 +63,6 @@ echo "CPU_NUMBER=${CPU_NUMBER:?${UNSET_WARNING}}"
 echo "MACHINE_MEMORY_SIZE=${MACHINE_MEMORY_SIZE:?${UNSET_WARNING}}"
 
 echo "BRIDGE=${BRIDGE:?${UNSET_WARNING}}"
-#echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
 echo "BRIDGE_IP=${BRIDGE_IP:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_START=${DNSMASQ_IP_START:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_END=${DNSMASQ_IP_END:?${UNSET_WARNING}}"
@@ -141,6 +140,8 @@ abort_if_nftables_not_found() {
 }
 
 abort_if_interface_not_found() {
+	echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
+
 	if ! ip link show "${INTERFACE}" >/dev/null; then
 		echo "Device ${INTERFACE} does not exist"
 		echo 8
