@@ -26,6 +26,7 @@ qemu-system-x86_64 \
 -device usb-host,hostdevice="${USB_FILE}" \
 -rtc base=localtime,clock=vm \
 -device "${DISPLAY_DEVICE}" \
+-device usb-tablet \
 -display "${DISPLAY_BACKEND}" \
 -monitor stdio \
 -name "${VM_NAME}"
