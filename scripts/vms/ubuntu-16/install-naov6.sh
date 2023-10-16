@@ -86,6 +86,9 @@ sudo apt-get update
 printf 'Install C++, Python dependencies and downloader\n'
 sudo apt-get install --yes build-essential cmake wget
 
+printf 'Install editors\n'
+sudo apt-get install --yes vim vim-gtk3
+
 printf 'Create directories\n'
 for directory in "${DIRECTORIES[@]}"; do
 	mkdir -pv "${directory}"
