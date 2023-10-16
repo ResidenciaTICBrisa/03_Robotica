@@ -2,7 +2,7 @@
 
 Este é um guia de apresentação de conceitos-chave do framework NAOqi, conhecimento necessário para o início na programação dos robôs da **Aldebaran Robotics**.
 
-<img src='https://www.robotlab.com/hubfs/Nao%20Power%20V6-1-%20darker.png' width=300px>
+<img src='../overrides/assets/icons/NAO.png' width=300px>
 
 ## O que é?
 
@@ -20,8 +20,8 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 - **C++**: o código criado precisa ser compilado para o SO alvo. É necessário usar uma ferramenta de cross-compilação para gerar um código que rode no sistema operacional do robô - o NAOqi SO. Entretanto, a programação em C++ possibilita a criação de um código muito mais rápido em termos de velocidade de execução, tornando o robô mais responsivo.
 
 <div align="center">
-    <img src='../assets/images/python.webp' width=100px>
-    <img src='../assets/images/cpplogo.png' width=100px style="margin-left:30px;">
+    <img src='../overrides/assets/icons/python.webp' width=100px>
+    <img src='../overrides/assets/icons/cpplogo.png' width=100px style="margin-left:30px;">
 </div>
 
 ## Conceitos-chave:
@@ -38,7 +38,7 @@ Este é um guia de apresentação de conceitos-chave do framework NAOqi, conheci
 
 **Autoload.ini**: arquivo localizado no SO do robô, responsável por carregar as bibliotecas quando o robô é iniciado.
 
-<img src='../assets/images/Metodo_1.jpg' height=450px>
+<img src='../overrides/assets/icons/Metodo_1.jpg' height=450px>
 
 **Módulos locais:**  Estão em um mesmo ambiente (processo), e portanto podem compartilhar variáveis e métodos com outros módulos locais. Além disso, apenas um broker é necessário para a conexão entre módulos locais, não precisando de internet para tal conexão. É bem mais rápido que a conexão remota entre módulos.
 
