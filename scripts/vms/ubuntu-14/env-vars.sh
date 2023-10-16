@@ -19,7 +19,7 @@ readonly MACHINE_CFG="type=${MACHINE_TYPE},accel=kvm"
 readonly CPU_MODEL="Haswell-v4"
 readonly CPU_NUMBER="4"
 readonly MACHINE_MEMORY_SIZE="4G"
-readonly DISPLAY_DEVICE="qxl-vga"
+readonly DISPLAY_DEVICE="vmware-svga,vgamem_mb=32"
 readonly DISPLAY_BACKEND="gtk"
 
 readonly VM_USER="softex"
