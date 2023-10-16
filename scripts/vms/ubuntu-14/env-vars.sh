@@ -3,7 +3,7 @@
 # [ -z "${VAR}" ] && echo "unset" || echo "set"
 [ -z "${SOURCED_ENV_VARS_SH}" ] || exit 0
 
-readonly BIOS_LOCATION="/usr/share/seabios/vgabios-virtio.bin"
+readonly BIOS_LOCATION="/usr/share/seabios/bios-256k.bin"
 readonly IMAGE_LOCATION="ubuntu-14.04-desktop-amd64.iso"
 readonly DISK_LOCATION="ubuntu-14.04-vm.qcow2"
 
@@ -63,7 +63,7 @@ echo "CPU_NUMBER=${CPU_NUMBER:?${UNSET_WARNING}}"
 echo "MACHINE_MEMORY_SIZE=${MACHINE_MEMORY_SIZE:?${UNSET_WARNING}}"
 
 echo "BRIDGE=${BRIDGE:?${UNSET_WARNING}}"
-echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
+#echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
 echo "BRIDGE_IP=${BRIDGE_IP:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_START=${DNSMASQ_IP_START:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_END=${DNSMASQ_IP_END:?${UNSET_WARNING}}"
