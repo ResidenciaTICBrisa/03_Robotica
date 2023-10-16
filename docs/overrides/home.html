@@ -20,12 +20,24 @@
     --section-2: #2e303e;
     --section-4: #145d6e;
 
+    --cor-transition-1: #01193a;
+    --cor-transition-2: #000000;
+
     --link: #A47BEA;
     }
     /*Fim das Variáveis Globais*/
 
     /*Configuração do Material*/
-    .md-header {position: initial;}
+    .md-header {
+        position: initial;
+        background-image: linear-gradient(to top, var(--cor-transition-1), var(--cor-transition-2));
+    }
+
+    nav.md-tabs{
+        background-color: var(--cor-transition-1);
+        background-image: linear-gradient(var(--cor-transition-1), var(--cor-transition-2));
+    }
+
     .md-content {display: none;}
     .md-main__inner {
         margin: 0;
@@ -48,7 +60,7 @@
 
     * h1{
         font-weight: var(--light);
-        font-size: 2em;
+        font-size: 3em;
         line-height: 1.3;
         letter-spacing: -.01em;
     }
@@ -147,11 +159,11 @@
     }
 
     #section_3 h1{
-        text-align: center;
-        padding: 25px 0;
+        padding-left: 3.5%;
+        padding-top: 40px;
         color: #000008;
         opacity: 54%;
-        margin-bottom: 25px;
+        margin-bottom: 50px;
     }
 
     #section_3 > h2, #section_3 p{
@@ -161,17 +173,24 @@
 
     #section_3 .flex_3{
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row nowrap;
         justify-content: space-evenly;
         align-content: center;
         align-items: flex-start;
     }
 
-    #section_3 div:last-child{margin-top: 30px;}
+    #section_3 div:last-child{margin-top: 35px;}
 
     #section_3 .flex_3 .texto{
         width: calc(94% / 2);
-        padding: 0px 25px 0px 25px;
+        padding: 1%;
+    }
+
+    #section_3 .flex_3 .texto h2{
+        font-size: 2em;
+        color: #000000;
+        opacity: 87%;
+        padding-bottom: 25px;
     }
 
     #section_3 .flex_3 .texto p{
@@ -180,15 +199,95 @@
     }
 
     #section_3 .flex_3 img{
-        width: 100%;
+        border-radius: 25px;
+        border: gray solid 3px;
+        box-shadow: 0px 6px 10px rgb(89, 107, 113);
+        width: calc(94% / 2);
         max-width: 870px;
     }
     /*Fim da Seção 3*/
+    
+    /*Responsivo*/
+
+    @media screen and (max-width: 1520px){
+        /*Section 3*/
+
+        #section_3 .flex_3 .texto p{font-size: 17px;}
+        
+        /*Fim da Section 3*/
+    }
+
+    @media screen and (max-width: 1150px){
+        #section_3 .flex_3{
+            display: block;
+            text-align: center;
+            padding: 0 3%;
+        }
+
+        #section_3 .flex_3 .texto{
+            width: 100%;
+            padding: 2% 0;
+        }
+
+        #section_3 .flex_3 img{
+            width: 100%;
+        }
+    }
+
+    @media screen and (max-width: 1280px){
+        /*Section 3*/
+
+        #section_3 .flex_3 .texto p{font-size: 15px;}
+        
+        /*Fim da Section 3*/
+    }
+
+    @media screen and (max-width: 1080px){
+        /*Seção 2*/
+        
+        #flex .item{max-width: calc(85% / 2);}
+
+        #flex .item p{font-size: 15px;}
+        
+        /*Fim da Seção 2*/
+
+        /*Seção 3*/
+        #section_3{
+            background-size: cover;
+        }
+        /*Fim da Seção 3*/
+    }
+
+    @media screen and (max-width: 900px){
+
+    }
+
+    @media screen and (max-width: 850px){
+        /*Seção 2*/
+        #section_2 h1{
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        #flex{display: block;}
+
+        #flex .item{
+            max-width: inherit;
+            padding: 0 20px;
+        }
+
+        #flex .item .alinha img{width: 50px;}
+        
+        #flex .item p{padding-left: 70px;}
+        /*Fim da Seção 2*/
+    }
+
+    /*Fim do Responsivo*/
 
   </style>
   
   <!--Conteúdo da Página-->
-    <img id="img_sec1" src="assets/images/Imagem 1.jpg" alt="Image da RoboConnection, com o nome do projeto e a foto do robô">
+    <img id="img_sec1" src="assets/images/Imagem1-sombreada-f.jpg" alt="Image da RoboConnection, com o nome do projeto e a foto do robô">
     <main>
         <section id="section_2">
             <h1>Facilidade sem igual com os robôs NAO</h1>
@@ -249,12 +348,11 @@
             <div class="flex_3">
                 <div class="texto">
                     <h2>Apoio à equipe UnBeatables</h2>
-                    <p>O <strong>Robo Connection</strong> possibilita um primeiro contato muito mais suave e eficiente com as tecnologias usadas nos NAOs. Ingressantes da equipe <strong>UnBeatables</strong> que <strong>gastavam semanas (e até meses)</strong> para instalar os programas e bibliotecas essenciais agora podem desfrutar da instalação dos componentes executando <strong>apenas um script</strong></br></br>Além disso, com os tutoriais de <strong>fácil entendimento e estruturação otimizada</strong> do Robo Connection, estudar a programação do NAO se torna <strong>muito mais fácil</strong></p>
+                    <p>O <strong>Robo Connection</strong> possibilita um primeiro contato muito mais suave e eficiente com as tecnologias usadas nos NAOs. Ingressantes da equipe <strong>UnBeatables</strong> que <strong>gastavam semanas (e até meses)</strong> para instalar os programas e bibliotecas essenciais agora podem desfrutar da instalação dos componentes executando <strong>apenas um script</strong></br></br>Além disso, com os tutoriais de <strong>fácil entendimento e estruturação otimizada</strong> do Robo Connection, estudar a programação do NAO se torna <strong>muito mais fácil</strong>.</p>
                 </div>
-    
-                <div class="img">
-                    <img src="assets/images/unbeatables.png" loading="lazy" alt="Logo da UnBeatables">
-                </div>
+                
+                <img src="assets/images/unbeatables.jpg" loading="lazy" alt="Logo da UnBeatables">
+                
             </div>
     
             <div class="flex_3">
@@ -263,9 +361,8 @@
                     <p>A <strong>SoftBank Robotics</strong> é a <strong>líder mundial</strong> no mercado de robôs móveis domésticos, responsável pela produção e comercialização dos robôs NAO.</br>Entretanto, modelos novos e antigos apresentam <strong>problemas de compatibilidade e corrupção de arquivos</strong> (mesmo que através das fontes oficiais de distribuição), <strong>limitando imensamente</strong> a proposta original dos produtos.</br></br>O <strong>Robo Connection</strong> visa <strong>devolver o potencial dos NAOs</strong> através de soluções inteligentes. Com isso, <strong>o valor do produto será restaurado</strong>, reabrindo um mundo de possibilidades para os robôs humanoides da SoftBank Robotics.</p>
                 </div>
     
-                <div style="order: 1;" class="img">
-                    <img src="assets/images/softbank.jpg" loading="lazy" alt="Imagem de um Robô apresentando a logo da softbank">
-                </div>
+                <img src="assets/images/softbank.jpg" loading="lazy" alt="Imagem de um Robô apresentando a logo da softbank">
+
             </div>
         </section><!--section_3-->
     </main>
@@ -297,7 +394,6 @@
 <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
         <div class="md-copyright">
-
             <div class="md-copyright__highlight">Copyright © 2023 BRISA</div>
             Made with
             <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
