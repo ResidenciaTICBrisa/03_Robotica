@@ -96,6 +96,49 @@ archive:
 Don't forget to update (`apt-get update`) and upgrade (`apt-get dist-upgrade`)
 if there are any updates available.
 
+### How to reclaim unused memory from the Virtual Machine
+
+If you are running the virtual machine on a memory constrained host, we
+recommend you to use the included `virtio-balloon` functionality. This will
+recover unused memory from the virtual machine (the guest) and return it to your
+computer (the host).
+
+A balloon driver is a special driver included on the kernels of some operating
+systems that helps the hypervisors, programs used to run virtual machines, to
+recover unused memory from their guests. This drivers offers two operations: a
+balloon inflation and a deflation.
+
+The inflation procedure is used to reclaim unused memory: it orders the driver
+to create memory pressure on the guest machine, triggering a page update. This
+decreases the available memory in the guest, but it enables the host to reclaim
+any unused pages.
+
+The deflation procedure increases the available memory on the guest up its
+configured physical memory limit. It is commonly used after an inflation
+procedure to allow the virtual machine to use its configured physical memory.
+
+#### How to use the QEMU's balloon driver
+
+The QEMU's balloon driver is controlled in the QEMU monitor on the
+implementation offered by the scripts. The `balloon` command takes an argument
+that specifies the target logical size of the virtual machine:
+
+- if the argument is less than the physical memory configured for the VM, the
+balloon will be inflated in the guest, and any unused pages will be reclaimed;
+- if the argument is equal or greater than the guest's physical memory, the
+balloon will be deflated until it no longer restricts the virtual machine's
+physical memory.
+
+Please be aware that the `virtio-balloon` does not require the installation of
+any external driver on most GNU/Linux-based guests, as it is included in the
+kernel since 2008 (version 2.6.25).
+
+It is important to always have in mind that the balloon inflation operation
+should only be performed when the virtual machine is not under memory pressure.
+This means that you should only try to recover **unused** memory from the
+VM when it has a healthy amount of free memory to keep running without needing
+to swap.
+
 ## Preparing to install NAOqi for NAOv4
 
 Ubuntu 14.04 has an old version of Python 2.7. It lacks support to download data
