@@ -22,6 +22,7 @@ qemu-system-x86_64 \
 -netdev user,id=net0,net="${IPV4_NETWORK}",dhcpstart="${IPV4_DHCP_FIRST_ADDR}",hostfwd=tcp::"${P22_FWD}"-:22 \
 -device virtio-net-pci,netdev=net0 \
 -rtc base=localtime,clock=vm \
+-device virtio-balloon \
 -device "${DISPLAY_DEVICE}" \
 -device usb-tablet \
 -display "${DISPLAY_BACKEND}" \

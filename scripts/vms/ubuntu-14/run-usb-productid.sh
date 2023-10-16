@@ -25,6 +25,7 @@ qemu-system-x86_64 \
 -device qemu-xhci \
 -device usb-host,hostdevice="${USB_FILE}",vendorid="${USB_VENDOR_ID}",productid="${USB_PRODUCT_ID}" \
 -rtc base=localtime,clock=vm \
+-device virtio-balloon \
 -device "${DISPLAY_DEVICE}" \
 -device usb-tablet \
 -display "${DISPLAY_BACKEND}" \
