@@ -174,7 +174,7 @@ Para criar os snapshots, siga os passos abaixo:
 Para acessar os snapshots criados, siga os passos abaixo:
 
 - Certifique-se de que o Virt Manager esteja sendo executado com uma VM aberta
-- No menu acima (na janela da VM), abra novamente o menu de snapshots com o botão    <img src="../overrides/assets/images/vm-11.jpg"> e clique nele.
+- No menu acima (na janela da VM), abra novamente o menu de snapshots com o botão    <img src="../overrides/assets/images/vm-11.jpg">
 - No navegador à esquerda, selecione o snapshot desejado
 - No canto inferior esquerdo, clique no botão com ícone de seta (Executar snapshot selecionado)
 
