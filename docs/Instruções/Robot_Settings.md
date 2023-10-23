@@ -10,7 +10,7 @@ Entretanto, até o momento da criação desse tutorial, o Robot Settings 2.8.6 �
 - Ubuntu 16.04 (Xenial Xerus)
 - Ao menos 1 GB de espaço livre no disco rígido
 
-## Instalando Robot Settings
+## Instalando o Robot Settings
 
 Os seguintes passos devem ser realizados dentro da VM com Ubuntu 16.04 ou em um sistema com Ubuntu 16.04 nativo.
 
@@ -21,6 +21,10 @@ Os seguintes passos devem ser realizados dentro da VM com Ubuntu 16.04 ou em um 
 - Abra a opção "Robot Settings"
 - No sub-menu "Linux (2.8.6 and later)", clique sobre "Robot Settings 2.8.6 - Setup"
 - Deixe selecionado "Save file" e clique em `OK`
+
+<div align=center>
+    <img src='../overrides/assets/images/robot_settings1.jpg'>
+</div>
 
 ### Instalação do Robot Settings
 
