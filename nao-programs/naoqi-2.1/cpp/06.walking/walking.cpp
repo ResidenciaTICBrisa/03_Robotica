@@ -77,7 +77,6 @@ void Walking::start()
 	subscribe(fsmCriticalEventKey, &Walking::eventCallback,
 		eventCallbackName);
 
-	//state = &Walking::initialState;
 	setState(&Walking::initialState);
 
 	memoryProxy.raiseEvent(fsmNextStateEventKey, 0);
@@ -91,7 +90,6 @@ void Walking::stop()
 
 	motionProxy.rest();
 
-	//state = &Walking::finalState;
 	setState(&Walking::finalState);
 }
 
@@ -234,7 +232,7 @@ void Walking::walkLeftState(const std::string &key, const AL::ALValue &value,
 	motionProxy.moveTo(x, y, theta);
 
 	setState(&Walking::crouchState);
-	
+
 	memoryProxy.raiseEvent(fsmNextStateEventKey, 0);
 }
 
@@ -298,7 +296,7 @@ void Walking::walkUpState(const std::string &key, const AL::ALValue &value,
 	motionProxy.moveTo(x, y, theta);
 
 	setState(&Walking::finalState);
-	
+
 	memoryProxy.raiseEvent(fsmNextStateEventKey, 0);
 }
 
