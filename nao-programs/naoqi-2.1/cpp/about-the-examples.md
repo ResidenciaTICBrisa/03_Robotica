@@ -4,9 +4,10 @@ These examples may be used to learn how to code the most basic behaviours
 using the NAOqi 2.1 C++98 programming interface.
 
 The NAOqi 2.1 Application Programming Interface only supports C++98,
-regardless of the compiler used. All the examples were tested on the GCC
+regardless of the compiler used. All the examples were compiled by the GCC
 4.8.2 and cmake 2.8.12 available on the repositories of Ubuntu 14.04,
-codenamed *trusty*.
+codenamed *trusty* and tested on a NAOH25V40 robot, a NAO v4 with a complete
+body including the feet FSRs.
 
 The following examples are included:
 
