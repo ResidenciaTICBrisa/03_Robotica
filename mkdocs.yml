@@ -6,7 +6,7 @@ site_url: https://residenciaticbrisa.github.io/03_Robotica/
 repo_name: 'RoboConnection'
 repo_url: https://github.com/ResidenciaTICBrisa/03_Robotica
 
-copyright: Copyright &copy; 2023 BRISA
+copyright: RoboConnection</br>Universidade de Brasília - UnB</br>Copyright &copy; 2023 BRISA
 
 theme:
   name: material
@@ -51,9 +51,6 @@ theme:
 
 extra_css:
   - stylesheets/style.css
-
-extra_javascript:
-  - javascripts/script.js
 
 plugins:
   - search:
