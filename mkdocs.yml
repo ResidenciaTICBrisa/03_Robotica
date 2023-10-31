@@ -87,6 +87,7 @@ nav:
     - Robot Settings: Instruções/Robot_Settings.md
     - SDK C++: Instruções/CPP_SDK_v6.md
     - Choregraphe: Instruções/Choregraphe_v6.md
+  - Exemplos NAOqi 2.1 C++: naoqi-2.1/cpp/about-the-examples.md
   - ROS:
     - ROS1:
       - Instruções: Instruções/ROS_1.md
