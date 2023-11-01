@@ -85,7 +85,7 @@
     /*Menbro*/
     div.menbro{
         margin: 0 auto;
-        width: 1000px;
+        max-width: 1000px;
         padding: 2%;
         color: white;
 
@@ -124,6 +124,36 @@
         margin: 5px;
     }
     /*Fim do Social*/
+
+    /*Responsivo*/
+    @media screen and (max-width: 650px){
+        /*Menbro*/
+        div.menbro{
+            display: block;
+            text-align: center;
+            padding-top: 20px;
+        }
+        /*Fim do Menbro*/
+
+        /*Texto*/
+        div.texto{
+            text-align: justify;
+            padding: 1%;
+            margin: 0 auto;
+        }
+        /*Fim do Texto*/
+
+        /*Social*/
+        div.social{
+            background-size: contain;
+            display: block;
+
+            margin: 0 auto;
+            text-align: center;
+        }
+        /*Fim do Social*/
+    }
+    /*Fim do Responsivo*/
 
   </style>
   
