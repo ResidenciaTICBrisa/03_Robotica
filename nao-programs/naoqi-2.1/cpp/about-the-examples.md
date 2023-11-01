@@ -48,6 +48,14 @@ problems on their joints or FSRs by checking if the robot has been able to
 approach the desired posture. This example also uses the NAOqi's abstraction
 to enable the use of the POSIX `sleep` or `msleep` functions.
 
+## How to find the examples
+
+1. Go to [Robo Connection repository](https://github.com/ResidenciaTICBrisa/03_Robotica).
+
+2. Enter the `03_Robotica/nao-programs/naoqi-2.1/cpp/` directory.
+
+3. All the examples should be listed  and separated by their specific folders.
+
 ## How to run the examples
 
 1. copy the desired example to your `qibuild` workspace. If you used our
