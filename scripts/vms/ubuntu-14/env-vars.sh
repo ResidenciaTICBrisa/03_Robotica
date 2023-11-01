@@ -3,7 +3,7 @@
 # [ -z "${VAR}" ] && echo "unset" || echo "set"
 [ -z "${SOURCED_ENV_VARS_SH}" ] || exit 0
 
-readonly BIOS_LOCATION="/usr/share/seabios/vgabios-virtio.bin"
+readonly BIOS_LOCATION="/usr/share/seabios/bios-256k.bin"
 readonly IMAGE_LOCATION="ubuntu-14.04-desktop-amd64.iso"
 readonly DISK_LOCATION="ubuntu-14.04-vm.qcow2"
 
@@ -19,7 +19,7 @@ readonly MACHINE_CFG="type=${MACHINE_TYPE},accel=kvm"
 readonly CPU_MODEL="Haswell-v4"
 readonly CPU_NUMBER="4"
 readonly MACHINE_MEMORY_SIZE="4G"
-readonly DISPLAY_DEVICE="qxl-vga"
+readonly DISPLAY_DEVICE="vmware-svga,vgamem_mb=32"
 readonly DISPLAY_BACKEND="gtk"
 
 readonly VM_USER="softex"
@@ -63,7 +63,6 @@ echo "CPU_NUMBER=${CPU_NUMBER:?${UNSET_WARNING}}"
 echo "MACHINE_MEMORY_SIZE=${MACHINE_MEMORY_SIZE:?${UNSET_WARNING}}"
 
 echo "BRIDGE=${BRIDGE:?${UNSET_WARNING}}"
-echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
 echo "BRIDGE_IP=${BRIDGE_IP:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_START=${DNSMASQ_IP_START:?${UNSET_WARNING}}"
 echo "DNSMASQ_IP_END=${DNSMASQ_IP_END:?${UNSET_WARNING}}"
@@ -141,6 +140,8 @@ abort_if_nftables_not_found() {
 }
 
 abort_if_interface_not_found() {
+	echo "INTERFACE=${INTERFACE:?${UNSET_WARNING}}"
+
 	if ! ip link show "${INTERFACE}" >/dev/null; then
 		echo "Device ${INTERFACE} does not exist"
 		echo 8

@@ -22,7 +22,9 @@ qemu-system-x86_64 \
 -netdev bridge,id=net0,br="${BRIDGE}" \
 -device virtio-net-pci,netdev=net0,mac="${VM_MAC}" \
 -rtc base=localtime,clock=vm \
+-device virtio-balloon \
 -device "${DISPLAY_DEVICE}" \
+-device usb-tablet \
 -display "${DISPLAY_BACKEND}" \
 -monitor stdio \
 -name "${VM_NAME}"

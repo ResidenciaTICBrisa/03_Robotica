@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly DOCDIRS=(ros1 ros2 vms/ubuntu-14 vms/ubuntu-16)
+readonly DOCDIRS=(ros1 ros2 vms/ubuntu-14 vms/ubuntu-16 naoqi-2.1/cpp)
 
 for docdir in "${DOCDIRS[@]}"; do
 	# Create directory inside the current one
@@ -14,8 +14,10 @@ for docdir in "${DOCDIRS[@]}"; do
 		linklevel="${linklevel}../"
 	done
 
-	for f in ../scripts/"${docdir}"/*.md; do
+	for f in ../{scripts,nao-programs}/"${docdir}"/*.md; do
 		# Link relative to the new directory with the same file name
-		ln -sv "${linklevel}${f}" "${docdir}/$(basename "$f")"
+		if [[ -f "${f}" ]]; then
+			ln -sv "${linklevel}${f}" "${docdir}/$(basename "$f")"
+		fi
 	done
 done
