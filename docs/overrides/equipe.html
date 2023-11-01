@@ -75,12 +75,123 @@
     main{
         max-width: 1920px;
         margin: 0 auto;
+        padding: 1%;
+        font-family: var(--font);
+
+        background-image: url(assets/images/fundo_puro.jpg);
     }
     /*Fim da Main*/
+
+    /*Menbro*/
+    div.menbro{
+        margin: 0 auto;
+        width: 1000px;
+        padding: 2%;
+        color: white;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-content: center;
+        align-items: center;
+    }
+
+    div.menbro img{max-width: 200px;}
+    /*Fim do Menbro*/
+
+    /*Texto*/
+    div.texto{padding-left: 15px;}
+    /*Fim do texto*/
+
+    /*Social*/
+    div.social{
+        width: 200px;
+        background-image: url(assets/images/faixa_inferior.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: baseline; 
+    }
+
+    div.social a:first-child{margin-top: 2px;}
+
+    div.social a img{
+        width: 32px;
+        margin: 5px;
+    }
+    /*Fim do Social*/
 
   </style>
   
   <!--Conteúdo da Página-->
+    <main>
+      <div class="menbro">
+          <img src="assets/images/Damarcones.png" alt="Foto do Damarcones com algumas de suas informações">
+          <div class="texto">
+              <p>Formando em Engenharia de Software pela Universidade de Brasília (UnB).</br>Possui interesse na área de Ciência de Dados e Machine Learning.</br>Atualmente é Pesquisador Colaborador Júnior II, no Parque de Inovação e Sustentabilidade do Ambiente Construído-UnB (PISAC-UNB), extensionista pela UnB e trabalha no projeto Robo Connection da Residência em TIC do Instituto BRISA.</p>
+
+              <div class="social">
+                  <a href="https://www.instagram.com/damarcones/" target="_blank"><img src="assets/icons/insta_logo.png" alt="Logo do instagram"></a>
+                  <a href="https://www.linkedin.com/in/damarcones-porto-4690991b0/" target="_blank"><img src="assets/icons/linkedin_logo.png" alt="Logo do Linkedin"></a>
+                  <a href="https://github.com/damarcones" target="_blank"><img src="assets/icons/github_logo.png" alt="Logo do github"></a>
+              </div><!--social-->
+          </div><!--Texto-->
+      </div><!--menbro-->
+
+      <div class="menbro">
+          <img src="assets/images/Daniel.png" alt="Foto do Daniel com algumas de suas informações">
+          <div class="texto">
+              <p>Graduando em Engenharia de Software pela Universidade de Brasília (UnB), atualmente no 6° semestre, e Técnico em Eletrônica pela Escola Técnica de Brasília (ETB).</br>Possui interesse na área de Ciência de Dados, Machine Learning e no Planejamento de Inteligência Artificial.</br>Atualmente fazendo projeto de Iniciação Científica no ramo de Planejamento de Inteligência Artificial e trabalhando no projeto RoboConnection da Residência em TIC da BRISA.</p>
+
+              <div class="social">
+                  <a href="https://www.instagram.com/dev_daniel.sousa/" target="_blank"><img src="assets/icons/insta_logo.png" alt="Logo do instagram"></a>
+                  <a href="https://www.linkedin.com/in/daniel-sb-sousa" target="_blank"><img src="assets/icons/linkedin_logo.png" alt="Logo do Linkedin"></a>
+                  <a href="https://github.com/daniel-de-sousa" target="_blank"><img src="assets/icons/github_logo.png" alt="Logo do github"></a>
+              </div><!--social-->
+          </div><!--Texto-->
+      </div><!--menbro-->
+
+      <div class="menbro">
+          <img src="assets/images/Davi.png" alt="Foto do Davi com algumas de suas informações">
+          <div class="texto">
+              <p>Engenheiro em Eletrônica e Engenheiro de Software pela Universidade de Brasília (UnB).</br>Possui interesse em Sistemas Embarcados e software livre.</br>Atualmente trabalha no projeto RoboConnection da Residência em TIC da BRISA e no Banco do Brasil.</p>
+
+              <div class="social">
+                  <a href="https://www.linkedin.com/in/davi-antonio-da-silva-santos" target="_blank"><img src="assets/icons/linkedin_logo.png" alt="Logo do Linkedin"></a>
+                  <a href="https://github.com/DaviAntonio" target="_blank"><img src="assets/icons/github_logo.png" alt="Logo do github"></a>
+              </div><!--social-->
+          </div><!--Texto-->
+      </div><!--menbro-->
+
+      <div class="menbro">
+          <img src="assets/images/Gustavo.png" alt="Foto do Gustavo com algumas de suas informações">
+          <div class="texto">
+              <p>Aluno do curso de Bacharelado em Ciência da Computação na Universidade de Brasília (UnB), atualmente cursando o 5º semestre.</br>Possui interesse na área de Ciência de Dados, Inteligência Artificial e Programação Competitiva.</br>Atualmente trabalha no projeto Robo Connection da Residência em TIC da BRISA.</p>
+
+              <div class="social">
+                  <a href="https://www.instagram.com/gustarvinz/" target="_blank"><img src="assets/icons/insta_logo.png" alt="Logo do instagram"></a>
+                  <a href="https://www.linkedin.com/in/gustavo-macedo-44430521b/" target="_blank"><img src="assets/icons/linkedin_logo.png" alt="Logo do Linkedin"></a>
+                  <a href="https://github.com/Gustavo-Macedo1" target="_blank"><img src="assets/icons/github_logo.png" alt="Logo do github"></a>
+              </div><!--social-->
+          </div><!--Texto-->
+      </div><!--menbro-->
+
+      <div class="menbro">
+          <img src="assets/images/Matheus.png" alt="Foto do Matheus com algumas de suas informações">
+          <div class="texto">
+              <p>Aluno do curso de Bacharelado em Engenharia de Software na Universidade de Brasília (UnB), atualmente cursando o 3º semestre.</br>Possui interesse na área de robótica aérea e educacional, além do desenvolvimento web.</br>Atualmente trabalha no projeto Robo Connection da Residência em TIC da BRISA e líder da área de Controle e Sistemas Embarcados da EDRA - Equipe de Robótica Aérea da UnB.</p>
+
+              <div class="social">
+                  <a href="https://www.linkedin.com/in/matheus-rodrigues-97b5ba141/" target="_blank"><img src="assets/icons/linkedin_logo.png" alt="Logo do Linkedin"></a>
+                  <a href="https://github.com/mrodrigues14" target="_blank"><img src="assets/icons/github_logo.png" alt="Logo do github"></a>
+              </div><!--social-->
+          </div><!--Texto-->
+      </div><!--menbro-->
+  </main>
   <!--Fim do Conteúdo da Página-->
 
 {% endblock %}
