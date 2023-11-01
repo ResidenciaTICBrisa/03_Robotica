@@ -76,13 +76,13 @@ nav:
   - Home: index.md
   - Máquina Virtual: Instruções/Maquina_Virtual.md
   - NAOv4:
-    - Introdução ao NAOqi: Instruções/NAOqi-overview.md
+    - Introdução ao NAOqi: Instruções/NAOqi-overview_v4.md
     - Máquina Virtual com scripts: vms/ubuntu-14/README.md
     - NAO Flahser: Instruções/NAO_Flasher.md
     - SDK C++: Instruções/CPP_SDK_v4.md
     - Choregraphe: Instruções/Choregraphe_v4.md
   - NAOv6:
-    - Introdução ao NAOqi: Instruções/NAOqi-overview.md
+    - Introdução ao NAOqi: Instruções/NAOqi-overview_v6.md
     - Máquina Virtual com scripts: vms/ubuntu-16/README.md
     - Robot Settings: Instruções/Robot_Settings.md
     - SDK C++: Instruções/CPP_SDK_v6.md
