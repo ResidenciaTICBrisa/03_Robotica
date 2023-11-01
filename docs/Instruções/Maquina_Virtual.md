@@ -1,6 +1,10 @@
 # Instalação de Máquina Virtual com Virt Manager
 ---
 
+<div align=center>
+    <img src="../overrides/assets/icons/virt-manager.png" width=150px>
+</div>
+
 Os robôs NAO utilizam diversos programas para configuração, programação e manutenção. Porém, esses programas são compatíveis com diferentes versões do sistema Linux.
 
 Para que não seja necessário utilizar muitas máquinas, utilizaremos apenas uma máquina com diversas máquinas virtuais (VMs) disponíveis para rodar no sistema com o gerenciador Virt Manager (cada máquina virtual com um sistema operacional diferente, para que sejam acessados os diversos programas em uma mesma máquina física).
@@ -13,8 +17,8 @@ Para ilustrar a diferença dos sistemas operacionais necessários na operação 
 |---|---|
 | Robot Settings 2.8.6 | Ubuntu 16.04 |
 | Choregraphe 2.8.6 | Ubuntu 16.04 |
-| NAOqi SDK 2.8.6 (Python)| Ubuntu 16.04 |
-| NAOqi SDK 2.8.5 (C++)| Ubuntu 16.04 |
+| NAOqi SDK 2.8.5 (C++ - V6)| Ubuntu 16.04 |
+| NAOqi SDK 2.1.4 (C++ - V4)| Ubuntu 12.04 |
 | ROS1 | Ubuntu 20.04 |
 | ROS2 | Ubuntu 22.04 |
 
@@ -22,7 +26,7 @@ Para ilustrar a diferença dos sistemas operacionais necessários na operação 
 
 > O NAO v4 utiliza diferentes versões desses programas, com sistemas operacionais também diferentes, em alguns casos. Para mais informações, consulte o [Developer Center da Aldebaran Robotics](https://www.aldebaran.com/developer-center/index.html).
 
-O Virt Manager é o programa no qual as VMs estarão acessíveis, tornando possível criar, excluir e modificar VMs. Além disso, o Virt Manager permite o compartilhamento de portas USB entre máquina real e virtual e a criação de _snapshots_ (pontos de controle), que funcionam como um recurso de back-up caso estejamos testando diferentes funcionalidades que podem corromper o sistema das VMs.
+O Virt Manager é o programa no qual as VMs estarão acessíveis, tornando possível criar, excluir e modificar VMs. Além disso, o Virt Manager permite o compartilhamento de portas USB entre máquina real e virtual e a criação de _snapshots_ (pontos de controle), que funcionam como um recurso de back-up rápido caso estejamos testando diferentes funcionalidades que podem corromper o sistema das VMs.
 
 
 ## Requisitos
@@ -35,7 +39,7 @@ O Virt Manager é o programa no qual as VMs estarão acessíveis, tornando poss�
 
 ### Verificando compatibilidade
 
-Para verificar a compatibilidade, pode-se executar o comando `kvm-ok` do pacote `cpu-checker` como superuser.
+Para verificar a compatibilidade do processador, pode-se executar o comando `kvm-ok` do pacote `cpu-checker` como _superuser_.
 
 ```
 sudo apt update
@@ -43,7 +47,9 @@ sudo apt install cpu-checker
 sudo kvm-ok
 ```
 
-## Instalando dependencias necessárias
+## Instalando dependências necessárias
+
+Para instalar as dependências necessárias, execute o seguinte código em terminal:
 
 ```
 sudo apt update
@@ -56,7 +62,7 @@ sudo apt install libguestfs-tools
 sudo apt install virt-manager
 ```
 
-## Habilitando o libvirtd
+**Habilitando o libvirtd**
 
 ```
 sudo systemctl start libvirtd
@@ -69,13 +75,54 @@ sudo systemctl enable libvirtd
 
 - No navegador de aplicativos do Ubuntu, procure e execute o Virt Manager
 - Na aba arquivo, selecione a opção "Nova máquina virtual"
-- Selecione "Mídia de instalação ISO ou CDROM", clique em `Navegar` e procure a opção `Navegar localmente`
-- Selecione o arquivo ISO do Ubuntu, deixe marcado "Detectar automaticamente mídia (...)" ou selecione a versão desejada manualmente
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-0.jpg">
+</div>
+
+- Selecione "Mídia de instalação ISO ou CDROM" e clique em `Forward`. No próximo menu, clique em `Navegar` e procure a opção `Navegar localmente`
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-1.jpg">
+</div>
+
+- Selecione o arquivo ISO do Ubuntu, deixe marcado "Detectar automaticamente a partir de mídia(...)" ou selecione a versão desejada manualmente
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-2.jpg">
+</div>
+
 - Caso apareça uma prompt sobre permissão de acesso, clique em `Sim`
-- Separe a memória e o número de CPUs desejados para a VM (recomendação: deixe pelo menos 4GB de RAM e 4 CPUs para seu computador físico)
+- No próximo menu, separe a memória e o número de CPUs desejados para a VM (recomendação: deixe pelo menos 4GB de RAM e 4 CPUs para seu computador físico)
 - Marque a opção "Habilitar armazenamento para esta máquina virtual" e reserve o espaço desejado (recomendação: pelo menos 20GB)
+
+<div align=center justify-content=center>
+    <img src="../overrides/assets/images/vm-3.jpg">
+    <img src="../overrides/assets/images/vm-4.jpg">
+</div>
+
+
 - Dê um nome para a VM (use nomes simples para melhor manipulação)
 - Clique em `Concluir` para criar a VM
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-5.jpg">
+</div>
+
+
+## Iniciando a VM
+
+Para iniciar a VM, clique duas vezes sobre a listagem da VM no menu principal do Virt Manager.
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-6.jpg">
+</div>
+
+Em seguida, clique no botão indicado para inicializar a máquina virtual selecionada:
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-7.jpg">
+</div>
 
 ## Instalando Ubuntu na VM
 
@@ -93,19 +140,32 @@ Com a VM iniciada, realize a instalação do Ubuntu normalmente:
 - Clique em `Continuar` e aguarde até o fim da instalação
 - Clique em `Reiniciar agora`
 
-> Obs.: após o reinício pós-instalação, é comum as VMs travarem. Se for o caso, no menu superior do Virt Manager há um botão vermelho com uma seta ao lado. Clique na seta e selecione "Forçar desligamento". Confirme e depois reinicie a VM no botão de _start_.
+> **Obs.**: após o reinício pós-instalação, é comum as VMs travarem. Se for o caso, no menu superior do Virt Manager há um botão vermelho com uma seta ao lado. Clique na seta e selecione "Forçar desligamento". Confirme e depois reinicie a VM no botão de _start_.
+
 
 ## Snapshots
 
-_Snapshots_ são pontos de controle da máquina virtual. Para exemplificar, imagine o seguinte exemplo: você precisa instalar um programa instável, e ele pode corromper seu sistema. Para impedir isso, você cria um snapshot antes de instalar o programa. Se, durante a instalação do programa, ocorrer algum problema com seu sistema, você pode acessar o snapshot para voltar ao estado da máquina correspondente ao momento em que você criou o snapshot (antes de instalar o programa) e tomar as medidas necessárias.
+_Snapshots_ são pontos de controle da máquina virtual. Para exemplificar, imagine o seguinte exemplo: você precisa instalar um programa instável, e ele pode corromper seu sistema.
+
+Para impedir isso, você cria um snapshot antes de instalar o programa. Se, durante a instalação do programa, ocorrer algum problema com seu sistema, você pode acessar o snapshot para voltar ao estado da máquina correspondente ao momento em que você criou o snapshot (antes de instalar o programa) e tomar as medidas necessárias para evitar a reincidência do erro.
 
 ### Criação de snapshots
 
 Para criar os snapshots, siga os passos abaixo:
 
 - Certifique-se de que o Virt Manager esteja sendo executado com uma VM aberta
-- No menu acima (na janela da VM), existe um botão com o ícone de duas telas de computador (Gerenciar os estados da VM), clique nele.
+- No menu acima (na janela da VM), existe um botão com o ícone de duas telas de computador (Gerenciar os snapshots da VM), clique nele.
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-8.jpg">
+</div>
+
 - No canto inferior esquerdo, clique no botão com sinal de "+" (Criar novo snapshot)
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-9.jpg">
+</div>
+
 - Dê um nome ao snapshot (sem espaços) e adicione uma descrição
 - Clique em `Concluir` para finalizar a criação do snapshot
 
@@ -114,9 +174,14 @@ Para criar os snapshots, siga os passos abaixo:
 Para acessar os snapshots criados, siga os passos abaixo:
 
 - Certifique-se de que o Virt Manager esteja sendo executado com uma VM aberta
-- No menu acima (na janela da VM), existe um botão com o ícone de duas telas de computador (Gerenciar os estados da VM), clique nele.
+- No menu acima (na janela da VM), abra novamente o menu de snapshots com o botão    <img src="../overrides/assets/images/vm-11.jpg">
 - No navegador à esquerda, selecione o snapshot desejado
 - No canto inferior esquerdo, clique no botão com ícone de seta (Executar snapshot selecionado)
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-9.jpg">
+</div>
+
 - Clique em `Sim` para confirmar e retornar ao snapshot selecionado
 
 ## Portas USB
@@ -129,4 +194,9 @@ Para isso, siga os passos a seguir:
 - Certifique-se de conectar o dipositivo desejado na porta USB da sua máquina física
 - No menu superior da janela da VM, clique na aba `Máquina Virtual`
 - Selecione a opção `Redirecionar dispositivo USB` e selecione o dispositivo inserido
+
+<div align=center>
+    <img src="../overrides/assets/images/vm-10.jpg">
+</div>
+
 - Confira no sistema da VM se o dispositivo foi adicionado

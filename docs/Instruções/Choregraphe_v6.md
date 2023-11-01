@@ -1,7 +1,11 @@
-# Guia de instalação do Choregraphe 2.8.6 (NAO v6)
+# Guia de instalação do Choregraphe 2.8.7 (NAO v6)
 ---
 
 ## O que é o Choregraphe?
+
+<div align=center>
+<img src='../overrides/assets/icons/choregraphe.png'/>
+</div>
 
 **Choregraphe** é um programa da **Softbank Robotics** usado para:
 
@@ -32,9 +36,13 @@ Ainda que o Choregraphe seja multiplataforma, recomenda-se a instalação no **U
 
 ## Download
 
-Para baixar o Choregraphe 2.8.6, acesse o [site da Aldebaran Robotics](https://www.aldebaran.com/en/support/nao-6/downloads-softwares).
+Para baixar o Choregraphe 2.8.7, acesse o [site da Aldebaran Robotics](https://www.aldebaran.com/en/support/nao-6/downloads-softwares).
 
-Desça até o sub-menu Choregraphe, e na seção "LINUX (2.8.6 and later)", selecione `Choregraphe 2.8.6 - Binaries`.
+Desça até o sub-menu Choregraphe, e na seção "LINUX (2.8.7 and later)", selecione `Choregraphe 2.8.7 - Binaries`.
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v6-1.jpg'/>
+</div>
 
 Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório de sua escolha.
 
@@ -43,14 +51,14 @@ Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório d
 
 ## Execução do programa
 
-**Executando o Choregraphe 2.8.6** 
+**Executando o Choregraphe 2.8.7** 
 
 - Acesse o terminal e execute o Choregraphe diretamente.
 
-**Exemplo**: se o arquivo extraído (`choregraphe-suite-2.8.6.23-linux64`) está em "/meu/diretorio", execute o Choregraphe com:
+**Exemplo**: se o arquivo extraído (`choregraphe-suite-2.8.7.23-linux64`) está em "/meu/diretorio", execute o Choregraphe com:
 
 ```
-"/meu/diretorio/choregraphe-suite-2.8.6.23-linux64/bin/choregraphe_launcher"
+"/meu/diretorio/choregraphe-suite-2.8.7.23-linux64/bin/choregraphe_launcher"
 ```
 
 > **IMPORTANTE**: lembre-se de alterar o caminho no código acima de acordo com o local de extração do tar.gz dos binários baixados!
@@ -58,13 +66,38 @@ Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório d
 **Selecionando o robô virtual NAO**
 
 - Na tela que se abre quando se executa o Choregraphe, clique no botão verde com símbolo  de conexão (`Connect to...`).
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v6-2.jpg'/>
+</div>
+
 - Na janela que se abre, selecione o primeiro robô e clique em `Select`.
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v6-3.jpg'/>
+</div>
+
 - O robô que aparece por padrão é o **Pepper**, mas vamos mudá-lo para o **NAO**.
 - Expanda a janela do Choregraphe (clique no botão do lado do botão de fechar janela).
 - Com o mouse em cima da barra superior (cinza) da janela do Choregraphe, as opções File, Edit, Connection, View e Help aparecerão.
 - Clique em `Edit` e em `Preferences`.
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v6-4.jpg'/>
+</div>
+
 - Na aba "Virtual Robot", em "Robot Model", selecione `NAO H25 (V6)` e clique em `OK`. Na janela que se abre, confirme.
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v6-5.jpg'/>
+</div>
+
 - Espere um pouco e o robô virtual será reinicializado com o NAO v6.
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v6-6.jpg'/>
+</div>
+
 
 **CASO TENHA ERRO DE DESCONEXÃO DO ROBÔ** 
 
@@ -73,7 +106,7 @@ Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório d
 - Selecione o primeiro robô e confirme.
 - O robô deve ser reiniciado e atualizado para o modelo NAO v6.
 
-> Nota:
+> **Nota:**
 > Você pode ter problemas com aceleração gráfica se não tiver com os drivers apropriados. Nesse caso, utilize:
 > ```./choregraphe --no-ogre```
 

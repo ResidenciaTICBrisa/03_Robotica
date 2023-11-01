@@ -1,0 +1,495 @@
+{% extends "main.html" %}
+
+<!-- Render hero under tabs -->
+{% block tabs %}
+  {{ super() }}
+
+  <style>
+    /*Regras*/
+    @charset "UTF-8";
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    /*Fim das Regras*/
+
+    /*Variáveis Globais*/
+    :root{
+    --font: 'Roboto', serif, sans-serif;
+    --light: 300;
+    --regular: 400;
+    --bold: 700;
+
+    --section-2: #2e303e;
+    --section-4: #145d6e;
+
+    --cor-transition-1: #01193a;
+    --cor-transition-2: #000000;
+
+    --link: #A47BEA;
+    }
+    /*Fim das Variáveis Globais*/
+
+    /*Configuração do Material*/
+    .md-header {
+        position: initial;
+        background-image: linear-gradient(to top, var(--cor-transition-1), var(--cor-transition-2));
+    }
+
+    nav.md-tabs{
+        background-color: var(--cor-transition-1);
+        background-image: linear-gradient(var(--cor-transition-1), var(--cor-transition-2));
+    }
+
+    .md-content {display: none;}
+    .md-main__inner {
+        margin: 0;
+        display: none;
+    }
+
+    @media screen and (min-width: 60em) {.md-sidebar--secondary {display: none;}}
+    @media screen and (min-width: 76.25em) {.md-sidebar--primary {display: none;}}
+    /*Fim da Configuração do Material*/
+
+    /*Configurações Globais*/
+    html{height: 100%;}
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--font);
+    }
+
+    * h1{
+        font-weight: var(--light);
+        font-size: 3em;
+        line-height: 1.3;
+        letter-spacing: -.01em;
+    }
+
+    * h2{
+        font-weight: var(--bold);
+        font-size: 1.5625em;
+        line-height: 1.4;
+        letter-spacing: -.01em;
+    }
+
+    * p{
+        font-weight: var(--regular);
+        font-size: .8rem;
+        line-height: 1.6;
+    }
+    /*Fim das Configurações Globais*/
+
+    /*Main*/
+    main{
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+    /*Fim da Main*/
+
+    /*Seção 1*/
+    #img_sec1 {
+        width: 100%;
+        max-width: 1920px;
+        object-fit: contain;
+    }
+    /*Fim da Seção 1*/
+
+    /*Seção 2*/
+    #section_2{
+        background-color: #2e303e;
+        padding: 25px 0;
+    }
+
+    #section_2 h1{
+        text-align: center;
+        color: #d2d7f9;
+        opacity: 62%;
+        margin-bottom: 25px;
+    }
+
+    #section_2 h2, p, span{color: #e9ebfc;}
+
+    #section_2 span{
+        font-weight: var(--bold);
+        font-size: 1.5625em;
+        line-height: 1.4;
+        letter-spacing: -.01em;
+    }
+
+    #flex{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-content: center;
+        align-items: flex-start;
+    }
+
+    #flex .item{
+        width: 100%;
+        max-width: calc(70% / 2);
+        margin: 20px 0;
+    }
+
+    #flex .item .alinha{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+    }
+
+    #flex .item .alinha img{
+        width: 64px;
+        margin-right: 20px;
+    }
+
+    #flex .item p{
+        font-size: 20px;
+        text-align: justify;
+        padding-left: 85px;
+    }
+    /*Fim da Seção 2*/
+
+    /*Seção 3*/
+    #section_3{
+        padding-bottom: 300px;
+
+        background-image: url(assets/images/Fundo\ 3.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        
+    }
+
+    #section_3 h1{
+        padding-left: 3.5%;
+        padding-top: 40px;
+        color: #000008;
+        opacity: 54%;
+        margin-bottom: 50px;
+    }
+
+    #section_3 > h2, #section_3 p{
+        color: #000000;
+        opacity: 87%;
+    }
+
+    #section_3 .flex_3{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-content: center;
+        align-items: flex-start;
+    }
+
+    #section_3 div:last-child{margin-top: 35px;}
+
+    #section_3 .flex_3 .texto{
+        width: calc(94% / 2);
+        padding: 1%;
+    }
+
+    #section_3 .flex_3 .texto h2{
+        font-size: 2em;
+        color: #000000;
+        opacity: 87%;
+        padding-bottom: 25px;
+    }
+
+    #section_3 .flex_3 .texto p{
+        font-size: 20px;
+        text-align: justify;
+    }
+
+    #section_3 .flex_3 img{
+        border-radius: 25px;
+        border: gray solid 3px;
+        box-shadow: 0px 6px 10px rgb(89, 107, 113);
+        width: calc(94% / 2);
+        max-width: 870px;
+    }
+    /*Fim da Seção 3*/
+
+    /*Seção 4*/
+    #section_4{
+        width: 100%;
+        padding: 2%;
+        background-color: #2e303e;
+    }
+
+    #section_4 > h1{
+        text-align: center;
+        color: #d2d7f9;
+        opacity: 62%;
+    }
+
+    #section_4 div.flex_4{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-evenly;
+        align-content: center;
+        align-items: flex-start;
+    }
+
+    #section_4 div.coment{
+        width: calc(70% / 3);
+        padding: 2%;
+        text-align: center;
+    }
+
+    #section_4 div.coment img{width: 100px;}
+
+    #section_4 div.coment p.texto_coment{
+        font-size: 16px;
+        text-align: justify;
+        padding-top: 10px;
+    }
+
+    #section_4 div.coment div.stars{padding-top: 10px;}
+
+    #section_4 div.coment div.stars img{width: 32px;}
+    /*Fim da Seção 4*/
+    
+    /*Responsivo*/
+
+    @media screen and (max-width: 1520px){
+        /*Section 3*/
+        #section_3 .flex_3 .texto p{font-size: 17px;}
+        /*Fim da Section 3*/
+    }
+
+    @media screen and (max-width: 1280px){
+        /*Section 3*/
+        #section_3 .flex_3 .texto p{font-size: 15px;}
+        /*Fim da Section 3*/
+
+        /*Seção 4*/
+        #section_4 div.coment{width: calc(85% / 3);}
+        /*Fim da Seção 4*/
+    }
+
+    @media screen and (max-width: 1150px){
+        /*Seção 3*/
+        #section_3 .flex_3{
+            display: block;
+            text-align: center;
+            padding: 0 3%;
+        }
+
+        #section_3 .flex_3 .texto{
+            width: 100%;
+            padding: 2% 0;
+        }
+
+        #section_3 .flex_3 img{width: 100%;}
+        /*Fim da Seção 3*/
+    }
+
+    @media screen and (max-width: 1080px){
+        /*Seção 2*/
+        #flex .item{max-width: calc(85% / 2);}
+
+        #flex .item p{font-size: 15px;}
+        /*Fim da Seção 2*/
+
+        /*Seção 3*/
+        #section_3{background-size: cover;}
+        /*Fim da Seção 3*/
+
+        /*Seção 4*/
+        #section_4 div.coment{width: calc(95% / 3);}
+        /*Fim da Seção 4*/
+    }
+
+    @media screen and (max-width: 850px){
+        /*Seção 2*/
+        #section_2 h1{
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        #flex{display: block;}
+
+        #flex .item{
+            max-width: inherit;
+            padding: 0 20px;
+        }
+
+        #flex .item .alinha img{width: 50px;}
+        
+        #flex .item p{padding-left: 70px;}
+        /*Fim da Seção 2*/
+
+        /*Seção 4*/
+        #section_4 div.coment{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #section_4 div.flex_4{
+            display: block;
+            margin: 15px 0px;
+        }
+        /*Fim da Seção 4*/
+    }
+
+    /*Fim do Responsivo*/
+
+  </style>
+  
+  <!--Conteúdo da Página-->
+    <img id="img_sec1" src="assets/images/Imagem1-sombreada-f.jpg" alt="Image da RoboConnection, com o nome do projeto e a foto do robô">
+    <main>
+        <section id="section_2">
+            <h1>Facilidade sem igual com os robôs NAO</h1>
+    
+            <div id="flex">
+                <div class="item">
+                    <div class="alinha">
+                        <img src="assets/icons/Guias.png" loading="lazy" alt="Icone de uma folha A4">
+                        <span>Guias de Uso</span>
+                    </div><!--alinha-->
+                    <p>Tutorias didáticos que capacitam o usuário no uso de diferentes softwares e métodos para programar os robôs NAO.</p>
+                </div><!--item-->
+    
+                <div class="item">
+                    <div class="alinha">
+                        <img src="assets/icons/Markdown.png" loading="lazy" alt="Logo do Markdown">
+                        <span>Documentação em Markdown</span>
+                    </div><!--alinha-->
+                    <p>Documentação completa em markdown, possibilitando fácil manutenção e acesso a recursos, como adição de imagens e tabelas.</p>
+                </div><!--item-->
+    
+                <div class="item">
+                    <div class="alinha">
+                        <img src="assets/icons/Bash.png" loading="lazy" alt="Icone que representa o ShellScript">
+                        <span>Scripts automáticos de instalação</span>
+                    </div><!--alinha-->
+                    <p>Scripts que instalam automaticamente programas e dependências de difícil acesso mais usadas na programação dos robôs NAO.</p>
+                </div><!--item-->
+    
+                <div class="item">
+                    <div class="alinha">
+                        <img src="assets/icons/Computador.png" loading="lazy" alt="Icone de um Computador">
+                        <span>Uso de máquinas virtuais</span>
+                    </div><!--alinha-->
+                    <p>Vários ambientes em um. Programe robôs NAO diferentes em um mesmo sistema e economize recursos temporais e financeiros.</p>
+                </div><!--item-->
+    
+                <div class="item">
+                    <div class="alinha">
+                        <img src="assets/icons/Pincel.png" loading="lazy" alt="Icone de um Pincel">
+                        <span>Design simples e elegante</span>
+                    </div><!--alinha-->
+                    <p>Design baseado em MKDocs para melhor organização, usabilidade e elegância dos diversos guias disponibilizados pela Robo Connection.</p>
+                </div><!--item-->
+    
+                <div class="item">
+                    <div class="alinha">
+                        <img src="assets/icons/Robo.png" loading="lazy" alt="Icone de um Robô">
+                        <span>Abrangência da abordagem</span>
+                    </div><!--alinha-->
+                    <p>A Robo Connection fornece guias para as versões V6 e V4 do NAO, separadamente. Isso inclui um ambiente configurado para cada versão.</p>
+                </div><!--item-->
+            </div><!--flex-->
+        </section><!--section_2-->
+
+        <section id="section_3">
+            <h1>Mais do que apenas documentação</h1>
+            <div class="flex_3">
+                <div class="texto">
+                    <h2>Apoio à equipe UnBeatables</h2>
+                    <p>O <strong>Robo Connection</strong> possibilita um primeiro contato muito mais suave e eficiente com as tecnologias usadas nos NAOs. Ingressantes da equipe <strong>UnBeatables</strong> que <strong>gastavam semanas (e até meses)</strong> para instalar os programas e bibliotecas essenciais agora podem desfrutar da instalação dos componentes executando <strong>apenas um script</strong></br></br>Além disso, com os tutoriais de <strong>fácil entendimento e estruturação otimizada</strong> do Robo Connection, estudar a programação do NAO se torna <strong>muito mais fácil</strong>.</p>
+                </div>
+                
+                <img src="assets/images/unbeatables.jpg" loading="lazy" alt="Logo da UnBeatables">
+                
+            </div>
+    
+            <div class="flex_3">
+                <div style="order: 2;" class="texto">
+                    <h2>Solução para a SoftBank Robotics</h2>
+                    <p>A <strong>SoftBank Robotics</strong> é a <strong>líder mundial</strong> no mercado de robôs móveis domésticos, responsável pela produção e comercialização dos robôs NAO.</br>Entretanto, modelos novos e antigos apresentam <strong>problemas de compatibilidade e corrupção de arquivos</strong> (mesmo que através das fontes oficiais de distribuição), <strong>limitando imensamente</strong> a proposta original dos produtos.</br></br>O <strong>Robo Connection</strong> visa <strong>devolver o potencial dos NAOs</strong> através de soluções inteligentes. Com isso, <strong>o valor do produto será restaurado</strong>, reabrindo um mundo de possibilidades para os robôs humanoides da SoftBank Robotics.</p>
+                </div>
+    
+                <img src="assets/images/softbank.jpg" loading="lazy" alt="Imagem de um Robô apresentando a logo da softbank">
+
+            </div>
+        </section><!--section_3-->
+
+        <section id="section_4">
+            <h1>Comentários e Avaliações</h1>
+            <div class="flex_4">
+                <div class="coment">
+                    <img src="assets/icons/Bash.png" alt="#">
+                    <p>Lorem Ipsum</p>
+                    <p class="texto_coment">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere maxime tempora, possimus adipisci quasi amet esse explicabo asperiores rerum optio ab voluptatum id iure eveniet impedit quibusdam, quos accusantium labore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cupiditate tenetur rerum inventore necessitatibus dolore doloremque explicabo, veritatis hic.</p>
+                    <div class="stars">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                    </div><!--stars-->
+                </div><!--coment-->
+    
+                <div class="coment">
+                    <img src="assets/icons/Bash.png" alt="#">
+                    <p>Lorem Ipsum</p>
+                    <p class="texto_coment">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere maxime tempora, possimus adipisci quasi amet esse explicabo asperiores rerum optio ab voluptatum id iure eveniet impedit quibusdam, quos accusantium labore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cupiditate tenetur rerum inventore necessitatibus dolore doloremque explicabo, veritatis hic.</p>
+                    <div class="stars">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                    </div><!--stars-->
+                </div><!--coment-->
+    
+                <div class="coment">
+                    <img src="assets/icons/Bash.png" alt="#">
+                    <p>Lorem Ipsum</p>
+                    <p class="texto_coment">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere maxime tempora, possimus adipisci quasi amet esse explicabo asperiores rerum optio ab voluptatum id iure eveniet impedit quibusdam, quos accusantium labore. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit cupiditate tenetur rerum inventore necessitatibus dolore doloremque explicabo, veritatis hic.</p>
+                    <div class="stars">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                        <img src="assets/icons/estrela.png" alt="Icone de Estrela">
+                    </div><!--stars-->
+                </div><!--coment-->
+            </div><!--flex_4-->
+        </section><!--section_4-->
+    </main>
+  <!--Fim do Conteúdo da Página-->
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+{% endblock %}
+
+<!-- Application footer -->
+{% block footer %}
+
+<footer class="md-footer">
+    <nav class="md-footer__inner md-grid" aria-label="Rodapé">    
+        <a href="Instru%C3%A7%C3%B5es/Maquina_Virtual/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Máquina Virtual">
+          <div class="md-footer__title">
+                <span class="md-footer__direction">Próximo</span>
+                <div class="md-ellipsis">Máquina Virtual</div>
+            </div>
+            <div class="md-footer__button md-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"></path></svg></div>
+        </a>
+    </nav>
+  
+<div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+        <div class="md-copyright">
+            <div class="md-copyright__highlight">RoboConnection</br>Universidade de Brasília - UnB</br>Copyright © 2023 BRISA</div>
+            Made with
+            <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+        </div>
+    </div>
+</div>
+</footer>
+
+{% endblock %}

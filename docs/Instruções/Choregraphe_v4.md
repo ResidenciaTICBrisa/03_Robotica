@@ -3,6 +3,10 @@
 
 ## O que é o Choregraphe?
 
+<div align=center>
+<img src='../overrides/assets/icons/choregraphe.png'/>
+</div>
+
 **Choregraphe** é um programa da **Softbank Robotics** usado para:
 
 - Criar animações, comportamentos, diálogos,
@@ -36,7 +40,15 @@ Para baixar o Choregraphe 2.1.4, acesse o [site da Aldebaran Robotics](https://w
 
 Desça até o sub-menu Choregraphe, e na seção do **LINUX**, clique em `Former versions`.
 
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-1.jpeg'>
+</div>
+
 Na página que se abre, selecione o **setup** do Choregraphe na versão 2.1.4 (versão usada com o NAO v4).
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-2.jpg'>
+</div>
 
 O download será iniciado.
 
@@ -48,6 +60,10 @@ O download será iniciado.
 
 - Marque a caixa `Permitir a execução desse arquivo como um programa`.
 
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-3.jpg'>
+</div>
+
 - No terminal, abra o diretório onde o setup foi baixado.
 
 - Execute o setup com o seguinte código (supondo que o nome do arquivo baixado seja "choregraphe-suite-2.1.4.13-linux64-setup.run"):
@@ -55,12 +71,23 @@ O download será iniciado.
 ```
 sudo ./choregraphe-suite-2.1.4.13-linux64-setup.run
 ```
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-4.jpg'>
+</div>
 
 No wizard que se abre, aceite as permissões, selecione a opção **Quick install** e, quando for pedida a _license key_, insira o seguinte código:
 
 > 654e-4564-153c-6518-2f44-7562-206e-4c60-5f47-5f45
 
-- Deixe marcada a opção de iniciar (launch) o Choregraphe para testar se a instalação foi feita com sucesso.
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-5.jpg'>
+</div>
+
+- Deixe marcada a opção de iniciar (launch) o Choregraphe para testar se a instalação foi feita com sucesso e clique em `Finish`.
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-6.jpg'>
+</div>
 
 > Obs.: Como alternativa ao processo de instalação manual, pode-se executar o seguinte código:
 
@@ -81,3 +108,9 @@ Para executar o Choregraphe 2.1.4, existem duas maneiras diferentes.
 2. Pelo terminal
 
 > Execute o seguinte código: `"/opt/Aldebaran Robotics/Choregraphe Suite 2.1/bin/choregraphe_launcher"` (com as aspas).
+
+Caso a seguinte janela se abra, **parabéns**! Você **instalou o Choregraphe 2.1.4 com sucesso.**
+
+<div align=center>
+<img src='../overrides/assets/images/choregraphe_v4-7.jpg'>
+</div>
