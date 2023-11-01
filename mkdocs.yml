@@ -81,7 +81,7 @@ nav:
   - Trabalhando com o v4:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v4.md
     - Máquina Virtual com scripts: vms/ubuntu-14/README.md
-    - NAO Flahser: Instruções/NAO_Flasher.md
+    - NAO Flasher: Instruções/NAO_Flasher.md
     - SDK C++: Instruções/CPP_SDK_v4.md
     - Choregraphe: Instruções/Choregraphe_v4.md
   - Trabalhando com o v6:
