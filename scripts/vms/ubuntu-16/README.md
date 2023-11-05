@@ -62,11 +62,10 @@ using the `install-naov6.sh` script.
 
 ## Starting the Virtual Machine up for the first time
 
-The initial images are created by the `reset-*` scripts
-
-```
-./reset-main-drive.sh
-```
+The initial images are created by the `reset-main-drive.sh` and `first-boot.sh`
+scripts. The former creates a QCOW2 image that will perform as the virtual
+machine's or guest system's hard drive, and the latter will boot the VM with
+the Ubuntu 16 LTS installation disk.
 
 With the drives created, run the initialisation script and install a regular
 Ubuntu 16.04 LTS installation:
@@ -75,10 +74,6 @@ Ubuntu 16.04 LTS installation:
 - Erase disk and install Ubuntu
 - Timezone: Sao Paulo
 - User: softex
-
-```
-./first-boot.sh
-```
 
 ## Running the VM
 
