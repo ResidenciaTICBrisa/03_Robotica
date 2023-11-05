@@ -337,3 +337,62 @@ reconfiguration event.
 You should be able to reset nftables to its standard configuration using the
 command: `nft flush ruleset`. This will break the network for the containers
 until the machine or the Docker service unit are restarted.
+
+## How to manually add files to the Virtual Machine
+
+You may want to add files from the host system, your current machine, to the
+guest one, stored in the virtual machines. An usual way to do it is through SSH,
+but it requires configuring an SSH server in the guest and a client in the host.
+
+A quicker way is to add the files directly to the virtual machine images. This
+approach requires that the VMs must not be in execution, unlike the SSH-based
+one. It is most convenient to use `guestfish`, a system shell that specialises
+in manipulating virtual machine images, to manually add files to the VMs.
+
+You may create a script based on `inject-home.sh`, or use `guestfish` on its
+interactive mode, which works similarly to the usual system shell. Even though
+it requires more typing, the latter approach is more user-friendly and will be
+explored in this tutorial.
+
+Firstly, you must know the path to the files that you wish to add to your VM and
+their desired location in the virtual machine. These will be parameters that
+will be used in `guestfish`'s `copy-in` command, responsible for copying files
+*into* the VM.
+
+Then you must mount the virtual machine's partition that holds the output path.
+This is the more cumbersome stage, as it requires knowing which partitions are
+included in the virtual machine's image file. If you followed the previous
+instructions and installed the VM using the recommended settings, you will be
+able to use the following commands after executing `guestfish` on your terminal
+with the working directory pointing where the image is located:
+
+```
+<!. ./env-vars.sh > /dev/null; echo "add '${DISK_LOCATION}'"
+run
+mount '/dev/sda2' '/'
+```
+
+With the main partition mounted, you may use the `ls` command to list files and
+directories. Copying files into the VM is done though the `copy-in` command:
+
+```
+# copying a file or directory from the current host directory
+copy-in my-file-or-directory /home/softex
+# copying a file or directory from an absolute path in the host
+copy-in /absolute/path/in/the/host/something /desired/path/in/the/vm
+```
+
+The scripts use a more complicated syntax to automatically obtain the user that
+has been configured in the `env-vars.sh` file:
+
+```
+<!. ./env-vars.sh > /dev/null; echo "copy-in 'my-file' '/home/${VM_USER}/abc'"
+```
+
+After copying all the desired files, do not forget to unmount all the partitions
+and close `guestfish` before running the VM:
+
+```
+umount-all
+exit
+```
