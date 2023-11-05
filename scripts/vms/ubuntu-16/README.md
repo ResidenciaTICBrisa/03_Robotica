@@ -70,10 +70,10 @@ the Ubuntu 16 LTS installation disk.
 With the drives created, run the initialisation script and install a regular
 Ubuntu 16.04 LTS installation:
 
-- Language and keyboard layout: Português Brasileiro
+- Language and keyboard layout: Português Brasileiro (or other UTF-8 locale)
 - Erase disk and install Ubuntu
-- Timezone: Sao Paulo
-- User: softex
+- Timezone: Sao Paulo (or your local timezone)
+- User: softex (must be the one specified in `VM_USER` in `env-vars.sh`)
 
 ## Running the VM
 
