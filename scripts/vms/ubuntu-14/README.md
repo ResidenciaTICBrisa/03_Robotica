@@ -323,7 +323,29 @@ qibuild configure -c "${NAOQI_QIBUILD_CTC_CONFIG}"
 qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
 ```
 
-## Connecting to the Robot
+## Connecting to the simulated robot
+
+The simulated robot is an executable located in the C++ toolchain directory
+named `naoqi`. Provided that the tools were installed with the aforementioned
+scripts in their default configuration, it will be located at
+`/home/softex/NAO4/SDKs/cpp/naoqi-sdk-2.1.4.13-linux64/naoqi`.
+
+The simulated robot must always be initialised before running Choregraphe or
+your desired module. It will behave similarly to a physical robot, except by its
+lack of cameras, and it will by default initialise its *broker* at *localhost*,
+also known as IPv4 127.0.0.1, at the port 9559.
+
+### Simulating in Choregraphe
+
+If you wish to simulate your C++ module in Choregraphe, first you should start
+the simulated `naoqi`. After doing it, then you must open Choregraphe, and
+connect it to the broker available at 127.0.0.1 port 9559.
+
+After these steps you should see a 3D simulation of a NAO robot in the
+Robot View panel. At this stage you are ready to connect to the simulated robot
+and check how it behaves in the simplified simulation offered by Choregraphe.
+
+## Connecting to the robot
 
 There are three scripts that are used when connecting the Virtual Machine to
 your NAO:
