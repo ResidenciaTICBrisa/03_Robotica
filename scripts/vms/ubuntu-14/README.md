@@ -40,6 +40,14 @@ variable at the `env-vars.sh` script)
 
 [1]: https://releases.ubuntu.com/trusty/ubuntu-14.04.6-desktop-amd64.iso
 
+The GNU/Linux distribution for fully installing NAOv4's programming environment
+is Ubuntu 14.04 LTS. It is highly possible that one may be able to run it on the
+equivalent Debian release.
+
+If the user wishes to **only** develop programs using NAOv4's C++98 API, it
+*may* be possible to use a newer GNU/Linux distribution, provided that it has
+support for Python 2 and Pip 20.3.4.
+
 ### Creating the VM and preparing to compile NAOqi for NAOv4
 
 The user must run in their host machine the scripts inside this repository in
