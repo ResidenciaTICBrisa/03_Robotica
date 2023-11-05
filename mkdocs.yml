@@ -71,7 +71,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 
@@ -86,6 +86,7 @@ nav:
     - NAO Flasher: Instruções/NAO_Flasher.md
     - SDK C++: Instruções/CPP_SDK_v4.md
     - Choregraphe: Instruções/Choregraphe_v4.md
+    - Exemplos NAOqi C++: naoqi-2.1/cpp/about-the-examples.md
   - Trabalhando com o v6:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v6.md
     - Máquina Virtual com scripts: vms/ubuntu-16/README.md

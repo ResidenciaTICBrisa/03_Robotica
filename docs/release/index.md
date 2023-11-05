@@ -18,14 +18,14 @@ A Equipe RoboConnection tem o prazer de anunciar o lançamento da primeira relea
 
 - [x] Scripts automatizado de instalação do ROS1 e ROS2
 
-## Stackholders
+## Stakeholders
 
-- [x] Git Page para acompanhamento do Stackholders
+- [x] Git Page para acompanhamento do Stakeholders
 
-Para acessar a Release direto no GitHub use o link a seguir
+Para acessar a Release direto no GitHub use o link a seguir:
 </br>
 <center>
 
-[Realease 1 - V1.0](https://github.com/ResidenciaTICBrisa/03_Robotica/releases/tag/v1.0){ .md-button .md-button--primary }
+[Release 1 - V1.0](https://github.com/ResidenciaTICBrisa/03_Robotica/releases/tag/v1.0){ .md-button .md-button--primary }
 
 </center>
