@@ -81,8 +81,8 @@ Ubuntu 14.04 LTS installation:
 ### WARNING
 
 The scripts expect an *unified root* partition scheme. Do not split `/home` or
-other partitions unless you know how to modify the scripts that copy data into
-or from the virtual machine or guest system.
+other directories into other partitions unless you know how to modify the
+scripts that copy data into or from the virtual machine or guest system.
 
 ```
 ./first-boot.sh
