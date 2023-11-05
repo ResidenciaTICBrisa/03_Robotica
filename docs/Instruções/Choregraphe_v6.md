@@ -4,7 +4,7 @@
 ## O que é o Choregraphe?
 
 <div align=center>
-<img src='../overrides/assets/icons/choregraphe.png'/>
+<img src='../../overrides/assets/icons/choregraphe.png'/>
 </div>
 
 **Choregraphe** é um programa da **Softbank Robotics** usado para:
@@ -41,7 +41,7 @@ Para baixar o Choregraphe 2.8.7, acesse o [site da Aldebaran Robotics](https://w
 Desça até o sub-menu Choregraphe, e na seção "LINUX (2.8.7 and later)", selecione `Choregraphe 2.8.7 - Binaries`.
 
 <div align=center>
-<img src='../overrides/assets/images/choregraphe_v6-1.jpg'/>
+<img src='../../overrides/assets/images/choregraphe_v6-1.jpg'/>
 </div>
 
 Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório de sua escolha.
@@ -68,13 +68,13 @@ Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório d
 - Na tela que se abre quando se executa o Choregraphe, clique no botão verde com símbolo  de conexão (`Connect to...`).
 
 <div align=center>
-<img src='../overrides/assets/images/choregraphe_v6-2.jpg'/>
+<img src='../../overrides/assets/images/choregraphe_v6-2.jpg'/>
 </div>
 
 - Na janela que se abre, selecione o primeiro robô e clique em `Select`.
 
 <div align=center>
-<img src='../overrides/assets/images/choregraphe_v6-3.jpg'/>
+<img src='../../overrides/assets/images/choregraphe_v6-3.jpg'/>
 </div>
 
 - O robô que aparece por padrão é o **Pepper**, mas vamos mudá-lo para o **NAO**.
@@ -83,19 +83,19 @@ Quando o download for concluído, extraia o arquivo _**tar.gz**_ no diretório d
 - Clique em `Edit` e em `Preferences`.
 
 <div align=center>
-<img src='../overrides/assets/images/choregraphe_v6-4.jpg'/>
+<img src='../../overrides/assets/images/choregraphe_v6-4.jpg'/>
 </div>
 
 - Na aba "Virtual Robot", em "Robot Model", selecione `NAO H25 (V6)` e clique em `OK`. Na janela que se abre, confirme.
 
 <div align=center>
-<img src='../overrides/assets/images/choregraphe_v6-5.jpg'/>
+<img src='../../overrides/assets/images/choregraphe_v6-5.jpg'/>
 </div>
 
 - Espere um pouco e o robô virtual será reinicializado com o NAO v6.
 
 <div align=center>
-<img src='../overrides/assets/images/choregraphe_v6-6.jpg'/>
+<img src='../../overrides/assets/images/choregraphe_v6-6.jpg'/>
 </div>
 
 

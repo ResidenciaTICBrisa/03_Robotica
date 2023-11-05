@@ -14,7 +14,7 @@ O NAO Flasher é uma ferramenta que permite a realização de updates no sistema
 - Na aba "LINUX", clique no botão `NAO Flasher 2.1.0 - Setup`.
 
 <div align=center>
-    <img src='../overrides/assets/images/flasher.jpg'>
+    <img src='../../overrides/assets/images/flasher.jpg'>
 </div>
 
 - O download do NAO Flasher será iniciado.
