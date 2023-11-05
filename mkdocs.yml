@@ -80,14 +80,14 @@ nav:
   - Primeiros Passos: Instruções/Maquina_Virtual.md
   - Trabalhando com o v4:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v4.md
-    - Máquina Virtual com scripts: vms/ubuntu-14/how-to-use.md
+    - QEMU-based Virtual Machine and installation scripts: vms/ubuntu-14/how-to-use.md
     - NAO Flahser: Instruções/NAO_Flasher.md
     - SDK C++: Instruções/CPP_SDK_v4.md
     - Choregraphe: Instruções/Choregraphe_v4.md
     - C++ examples: naoqi-2.1/cpp/about-the-examples.md
   - Trabalhando com o v6:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v6.md
-    - Máquina Virtual com scripts: vms/ubuntu-16/how-to-use.md
+    - QEMU-based Virtual Machine and installation scripts: vms/ubuntu-16/how-to-use.md
     - Robot Settings: Instruções/Robot_Settings.md
     - SDK C++: Instruções/CPP_SDK_v6.md
     - Choregraphe: Instruções/Choregraphe_v6.md
