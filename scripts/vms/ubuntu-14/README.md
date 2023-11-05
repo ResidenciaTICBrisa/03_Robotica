@@ -64,11 +64,10 @@ download Pip, as it crashes the Python SDK.
 
 ## Starting the Virtual Machine up for the first time
 
-The initial images are created by the `reset-*` scripts
-
-```
-./reset-main-drive.sh
-```
+The initial images are created by the `reset-main-drive.sh` and `first-boot.sh`
+scripts. The former creates a QCOW2 image that will perform as the virtual
+machine's or guest system's hard drive, and the latter will boot the VM with
+the Ubuntu 14 LTS installation disk.
 
 With the drives created, run the initialisation script and install a regular
 Ubuntu 14.04 LTS installation:
@@ -83,10 +82,6 @@ Ubuntu 14.04 LTS installation:
 The scripts expect an *unified root* partition scheme. Do not split `/home` or
 other directories into other partitions unless you know how to modify the
 scripts that copy data into or from the virtual machine or guest system.
-
-```
-./first-boot.sh
-```
 
 ## Running the VM
 
