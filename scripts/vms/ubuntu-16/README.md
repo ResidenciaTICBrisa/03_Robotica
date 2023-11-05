@@ -75,6 +75,12 @@ Ubuntu 16.04 LTS installation:
 - Timezone: Sao Paulo (or your local timezone)
 - User: softex (must be the one specified in `VM_USER` in `env-vars.sh`)
 
+### WARNING
+
+The scripts expect an *unified root* partition scheme. Do not split `/home` or
+other directories into other partitions unless you know how to modify the
+scripts that copy data into or from the virtual machine or guest system.
+
 ## Running the VM
 
 Sometimes the Brazilian server takes too long to synchronise with the main
