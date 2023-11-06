@@ -1,4 +1,4 @@
-# Set up and run a VM for developing NAOv6-based solutions
+# Set up and run a VM for developing NAOv4-based solutions
 
 ## Setup
 
@@ -34,13 +34,21 @@ Even though these scripts can be modified easily, they expect the following
 directory structure in their current form:
 
 - `env-vars.sh`, a script to centralise the VM's configurations
-- an [image][1] from Ubuntu's installation disk version 16.04 named as
-`ubuntu-16.04-desktop-amd64.iso` (this can be altered in the `IMAGE_LOCATION`
+- an [image][1] from Ubuntu's installation disk version 14.04 named as
+`ubuntu-14.04-desktop-amd64.iso` (this can be altered in the `IMAGE_LOCATION`
 variable at the `env-vars.sh` script)
 
-[1]: https://releases.ubuntu.com/releases/xenial/ubuntu-16.04.7-desktop-amd64.iso
+[1]: https://releases.ubuntu.com/trusty/ubuntu-14.04.6-desktop-amd64.iso
 
-### Creating the VM and preparing to compile NAOqi for NAOv6
+The GNU/Linux distribution for fully installing NAOv4's programming environment
+is Ubuntu 14.04 LTS. It is highly possible that one may be able to run it on the
+equivalent Debian release.
+
+If the user wishes to **only** develop programs using NAOv4's C++98 API, it
+*may* be possible to use a newer GNU/Linux distribution, provided that it has
+support for Python 2 and Pip 20.3.4.
+
+### Creating the VM and preparing to compile NAOqi for NAOv4
 
 The user must run in their host machine the scripts inside this repository in
 the following order:
@@ -48,37 +56,40 @@ the following order:
 1. `reset-main-drive.sh`
 2. `first-boot.sh`
 
-After installing Ubuntu 16.04 in their virtual machine, the following scripts
+After installing Ubuntu 14.04 in their virtual machine, the following scripts
 must be executed in their host machine:
 
 1. `update-sources.sh`
 2. `inject-home.sh`
 
 Now, inside the virtual machine, also known as the guest machine, the user
-must run the `prepare-naoqi-requirements.sh` script to install Pip 20.3.4.
+must run the `prepare-naoqi-requirements.sh` script to compile Python 2.7.11
+and install Pip 20.3.4.
 
-Finally, the user will be able to install the NAOv6 development environment
-using the `install-naov6.sh` script.
+Finally, the user will be able to install the NAOv4 development environment
+using the `install-naov4.sh` script. The newer Python will be used only to
+download Pip, as it crashes the Python SDK.
 
 ## Starting the Virtual Machine up for the first time
 
-The initial images are created by the `reset-*` scripts
-
-```
-./reset-main-drive.sh
-```
+The initial images are created by the `reset-main-drive.sh` and `first-boot.sh`
+scripts. The former creates a QCOW2 image that will perform as the virtual
+machine's or guest system's hard drive, and the latter will boot the VM with
+the Ubuntu 14 LTS installation disk.
 
 With the drives created, run the initialisation script and install a regular
-Ubuntu 16.04 LTS installation:
+Ubuntu 14.04 LTS installation:
 
-- Language and keyboard layout: Português Brasileiro
+- Language and keyboard layout: Português Brasileiro (or other UTF-8 locale)
 - Erase disk and install Ubuntu
-- Timezone: Sao Paulo
-- User: softex
+- Timezone: Sao Paulo (or your local timezone)
+- User: softex (must be the one specified in `VM_USER` in `env-vars.sh`)
 
-```
-./first-boot.sh
-```
+### WARNING
+
+The scripts expect an *unified root* partition scheme. Do not split `/home` or
+other directories into other partitions unless you know how to modify the
+scripts that copy data into or from the virtual machine or guest system.
 
 ## Running the VM
 
@@ -91,8 +102,8 @@ archive:
 ./update-sources.sh
 ```
 
-Don't forget to update (`apt update`) and upgrade (`apt dist-upgrade`) if there
-are any updates available.
+Don't forget to update (`apt-get update`) and upgrade (`apt-get dist-upgrade`)
+if there are any updates available.
 
 ### How to reclaim unused memory from the Virtual Machine
 
@@ -137,12 +148,13 @@ This means that you should only try to recover **unused** memory from the
 VM when it has a healthy amount of free memory to keep running without needing
 to swap.
 
-## Preparing to install NAOqi for NAOv6
+## Preparing to install NAOqi for NAOv4
 
-Ubuntu 16.04 has an old version of `pip`. This requires an installation of the
-last Python 2 compatible release to be able to download the packages and their
-dependencies. These steps can be automated by sending a script to the user's
-home on the VM:
+Ubuntu 14.04 has an old version of Python 2.7. It lacks support to download data
+from websites that enforce HTTPS, such as the modern Python packages index
+(`pip`). This requires a compilation of a newer Python version and the
+installation of the last compatible `pip` release. These steps can be automated
+by sending a script to the user's home on the VM:
 
 ```
 ./inject-home.sh
@@ -150,21 +162,21 @@ home on the VM:
 
 After the script is sent to the user's home, it must be executed in the VM. It
 will propmpt for administrative privileges before updating the repository and
-installing dependencies for installing Pip:
+installing dependencies for compiling and installing Python 2 and Pip:
 
 ```
 ./prepare-naoqi-requirements.sh
 ```
 
-## Installing NAOv6 development environment
+## Installing NAOv4 development environment
 
 After running the preparation script, the installation one must be run on a
 new terminal session. If you wish to remain in the same session, you must reload
-your `.bashrc` (`source .bashrc`) to enable the modifications made to enable
-PIP2 and its binaries.
+your `.bashrc` (`source .bashrc`) to enable the modifications made to redirect
+Python 2 to a newer version and to enable PIP2 and its binaries.
 
 ```
-./install-naov6.sh
+./install-naov4.sh
 ```
 
 This script will also prompt for administrative rights, as it needs to install
@@ -172,7 +184,7 @@ packages used by the C++ and Python2 SDKs.
 
 ### Activating Choregraphe
 
-Choregraphe may prompt for its activation key on its first initialisation. This
+Choregraphe will prompt for its activation key on its first initialisation. This
 key is available in the installation script, and it will also be printed to the
 terminal after the script is executed.
 
@@ -311,7 +323,29 @@ qibuild configure -c "${NAOQI_QIBUILD_CTC_CONFIG}"
 qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
 ```
 
-## Connecting to the Robot
+## Connecting to the simulated robot
+
+The simulated robot is an executable located in the C++ toolchain directory
+named `naoqi`. Provided that the tools were installed with the aforementioned
+scripts in their default configuration, it will be located at
+`/home/softex/NAO4/SDKs/cpp/naoqi-sdk-2.1.4.13-linux64/naoqi`.
+
+The simulated robot must always be initialised before running Choregraphe or
+your desired module. It will behave similarly to a physical robot, except by its
+lack of cameras, and it will by default initialise its *broker* at *localhost*,
+also known as IPv4 127.0.0.1, at the port 9559.
+
+### Simulating in Choregraphe
+
+If you wish to simulate your C++ module in Choregraphe, first you should start
+the simulated `naoqi`. After doing it, then you must open Choregraphe, and
+connect it to the broker available at 127.0.0.1 port 9559.
+
+After these steps you should see a 3D simulation of a NAO robot in the
+Robot View panel. At this stage you are ready to connect to the simulated robot
+and check how it behaves in the simplified simulation offered by Choregraphe.
+
+## Connecting to the robot
 
 There are three scripts that are used when connecting the Virtual Machine to
 your NAO:
@@ -336,3 +370,62 @@ reconfiguration event.
 You should be able to reset nftables to its standard configuration using the
 command: `nft flush ruleset`. This will break the network for the containers
 until the machine or the Docker service unit are restarted.
+
+## How to manually add files to the Virtual Machine
+
+You may want to add files from the host system, your current machine, to the
+guest one, stored in the virtual machines. An usual way to do it is through SSH,
+but it requires configuring an SSH server in the guest and a client in the host.
+
+A quicker way is to add the files directly to the virtual machine images. This
+approach requires that the VMs must not be in execution, unlike the SSH-based
+one. It is most convenient to use `guestfish`, a system shell that specialises
+in manipulating virtual machine images, to manually add files to the VMs.
+
+You may create a script based on `inject-home.sh`, or use `guestfish` on its
+interactive mode, which works similarly to the usual system shell. Even though
+it requires more typing, the latter approach is more user-friendly and will be
+explored in this tutorial.
+
+Firstly, you must know the path to the files that you wish to add to your VM and
+their desired location in the virtual machine. These will be parameters that
+will be used in `guestfish`'s `copy-in` command, responsible for copying files
+*into* the VM.
+
+Then you must mount the virtual machine's partition that holds the output path.
+This is the more cumbersome stage, as it requires knowing which partitions are
+included in the virtual machine's image file. If you followed the previous
+instructions and installed the VM using the recommended settings, you will be
+able to use the following commands after executing `guestfish` on your terminal
+with the working directory pointing where the image is located:
+
+```
+<!. ./env-vars.sh > /dev/null; echo "add '${DISK_LOCATION}'"
+run
+mount '/dev/sda1' '/'
+```
+
+With the main partition mounted, you may use the `ls` command to list files and
+directories. Copying files into the VM is done though the `copy-in` command:
+
+```
+# copying a file or directory from the current host directory
+copy-in my-file-or-directory /home/softex
+# copying a file or directory from an absolute path in the host
+copy-in /absolute/path/in/the/host/something /desired/path/in/the/vm
+```
+
+The scripts use a more complicated syntax to automatically obtain the user that
+has been configured in the `env-vars.sh` file:
+
+```
+<!. ./env-vars.sh > /dev/null; echo "copy-in 'my-file' '/home/${VM_USER}/abc'"
+```
+
+After copying all the desired files, do not forget to unmount all the partitions
+and close `guestfish` before running the VM:
+
+```
+umount-all
+exit
+```
