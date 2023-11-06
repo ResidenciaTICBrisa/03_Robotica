@@ -48,16 +48,22 @@ problems on their joints or FSRs by checking if the robot has been able to
 approach the desired posture. This example also uses the NAOqi's abstraction
 to enable the use of the POSIX `sleep` or `msleep` functions.
 
+## How to find the examples
+
+1. Go to [Robo Connection repository](https://github.com/ResidenciaTICBrisa/03_Robotica).
+2. Enter the `03_Robotica/nao-programs/naoqi-2.1/cpp/` directory.
+3. All the examples should be listed  and separated by their specific folders.
+
 ## How to run the examples
 
-1. copy the desired example to your `qibuild` workspace. If you used our
+1. Copy the desired example to your `qibuild` workspace. If you used our
 scripts, it should be on `/home/softex/NAO4/workspace`.
-2. change the directory to the example you wish to run using the `cd`
+2. Change the directory to the example you wish to run using the `cd`
 command.
-3. configure the project's toolchain. If you used our scripts, the command
+3. Configure the project's toolchain. If you used our scripts, the command
 `qibuild configure -c "$NAOQI_CPP_QIBUILD_CONFIG"`.
-4. compile the project with `qibuild make` or `qibuild make --rebuild`.
-5. run the compiled program. It will usually be located inside a directory
+4. Compile the project with `qibuild make` or `qibuild make --rebuild`.
+5. Run the compiled program. It will usually be located inside a directory
 structure such as `build-${NAOQI_CPP_QIBUILD_CONFIG}/sdk/bin`. Most of the
 examples use arguments to set up a broker, and their order is usually NAO's
 broker IPv4 or hostname followed by its listening port, usually 9559.

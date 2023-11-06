@@ -2,7 +2,7 @@
 ---
 
 <div align=center>
-    <img src="../overrides/assets/icons/virt-manager.png" width=150px>
+    <img src="../../overrides/assets/icons/virt-manager.png" width=150px>
 </div>
 
 Os robôs NAO utilizam diversos programas para configuração, programação e manutenção. Porém, esses programas são compatíveis com diferentes versões do sistema Linux.
@@ -77,19 +77,19 @@ sudo systemctl enable libvirtd
 - Na aba arquivo, selecione a opção "Nova máquina virtual"
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-0.jpg">
+    <img src="../../overrides/assets/images/vm-0.jpg">
 </div>
 
 - Selecione "Mídia de instalação ISO ou CDROM" e clique em `Forward`. No próximo menu, clique em `Navegar` e procure a opção `Navegar localmente`
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-1.jpg">
+    <img src="../../overrides/assets/images/vm-1.jpg">
 </div>
 
 - Selecione o arquivo ISO do Ubuntu, deixe marcado "Detectar automaticamente a partir de mídia(...)" ou selecione a versão desejada manualmente
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-2.jpg">
+    <img src="../../overrides/assets/images/vm-2.jpg">
 </div>
 
 - Caso apareça uma prompt sobre permissão de acesso, clique em `Sim`
@@ -97,8 +97,8 @@ sudo systemctl enable libvirtd
 - Marque a opção "Habilitar armazenamento para esta máquina virtual" e reserve o espaço desejado (recomendação: pelo menos 20GB)
 
 <div align=center justify-content=center>
-    <img src="../overrides/assets/images/vm-3.jpg">
-    <img src="../overrides/assets/images/vm-4.jpg">
+    <img src="../../overrides/assets/images/vm-3.jpg">
+    <img src="../../overrides/assets/images/vm-4.jpg">
 </div>
 
 
@@ -106,7 +106,7 @@ sudo systemctl enable libvirtd
 - Clique em `Concluir` para criar a VM
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-5.jpg">
+    <img src="../../overrides/assets/images/vm-5.jpg">
 </div>
 
 
@@ -115,13 +115,13 @@ sudo systemctl enable libvirtd
 Para iniciar a VM, clique duas vezes sobre a listagem da VM no menu principal do Virt Manager.
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-6.jpg">
+    <img src="../../overrides/assets/images/vm-6.jpg">
 </div>
 
 Em seguida, clique no botão indicado para inicializar a máquina virtual selecionada:
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-7.jpg">
+    <img src="../../overrides/assets/images/vm-7.jpg">
 </div>
 
 ## Instalando Ubuntu na VM
@@ -157,13 +157,13 @@ Para criar os snapshots, siga os passos abaixo:
 - No menu acima (na janela da VM), existe um botão com o ícone de duas telas de computador (Gerenciar os snapshots da VM), clique nele.
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-8.jpg">
+    <img src="../../overrides/assets/images/vm-8.jpg">
 </div>
 
 - No canto inferior esquerdo, clique no botão com sinal de "+" (Criar novo snapshot)
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-9.jpg">
+    <img src="../../overrides/assets/images/vm-9.jpg">
 </div>
 
 - Dê um nome ao snapshot (sem espaços) e adicione uma descrição
@@ -174,12 +174,12 @@ Para criar os snapshots, siga os passos abaixo:
 Para acessar os snapshots criados, siga os passos abaixo:
 
 - Certifique-se de que o Virt Manager esteja sendo executado com uma VM aberta
-- No menu acima (na janela da VM), abra novamente o menu de snapshots com o botão    <img src="../overrides/assets/images/vm-11.jpg">
+- No menu acima (na janela da VM), abra novamente o menu de snapshots com o botão    <img src="../../overrides/assets/images/vm-11.jpg">
 - No navegador à esquerda, selecione o snapshot desejado
 - No canto inferior esquerdo, clique no botão com ícone de seta (Executar snapshot selecionado)
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-9.jpg">
+    <img src="../../overrides/assets/images/vm-9.jpg">
 </div>
 
 - Clique em `Sim` para confirmar e retornar ao snapshot selecionado
@@ -196,7 +196,7 @@ Para isso, siga os passos a seguir:
 - Selecione a opção `Redirecionar dispositivo USB` e selecione o dispositivo inserido
 
 <div align=center>
-    <img src="../overrides/assets/images/vm-10.jpg">
+    <img src="../../overrides/assets/images/vm-10.jpg">
 </div>
 
 - Confira no sistema da VM se o dispositivo foi adicionado

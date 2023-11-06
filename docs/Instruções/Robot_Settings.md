@@ -23,7 +23,7 @@ Os seguintes passos devem ser realizados dentro da VM com Ubuntu 16.04 ou em um 
 - Deixe selecionado "Save file" e clique em `OK`
 
 <div align=center>
-    <img src='../overrides/assets/images/robot_settings1.jpg'>
+    <img src='../../overrides/assets/images/robot_settings1.jpg'>
 </div>
 
 ### Instalação do Robot Settings

@@ -49,9 +49,6 @@ theme:
   favicon: assets/images/robo.png
   custom_dir: docs/overrides
 
-extra_css:
-  - stylesheets/style.css
-
 plugins:
   - search:
       lang:
@@ -71,29 +68,31 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 
 nav:
   - Home: index.md
-  - Primeiros Passos: Instruções/Maquina_Virtual.md
+  - Primeiros Passos: 
+    - Conceitos fundamentais: Instruções/Conceitos_Gerais.md
+    - Trabalhando com máquinas virtuais: Instruções/Maquina_Virtual.md
   - Trabalhando com o v4:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v4.md
-    - QEMU-based Virtual Machine and installation scripts: vms/ubuntu-14/how-to-use.md
-    - NAO Flahser: Instruções/NAO_Flasher.md
+    - Máquina Virtual e scripts de instalação (v4): vms/ubuntu-14/how-to-use.md
+    - NAO Flasher: Instruções/NAO_Flasher.md
     - SDK C++: Instruções/CPP_SDK_v4.md
     - Choregraphe: Instruções/Choregraphe_v4.md
-    - C++ examples: naoqi-2.1/cpp/about-the-examples.md
+    - Exemplos NAOqi C++: naoqi-2.1/cpp/about-the-examples.md
   - Trabalhando com o v6:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v6.md
-    - QEMU-based Virtual Machine and installation scripts: vms/ubuntu-16/how-to-use.md
+    - Máquina Virtual e scripts de instalação (v6): vms/ubuntu-16/how-to-use.md
     - Robot Settings: Instruções/Robot_Settings.md
     - SDK C++: Instruções/CPP_SDK_v6.md
     - Choregraphe: Instruções/Choregraphe_v6.md
   - Extra:
     - ROS1:
-      - Instruções: Instruções/ROS_1.md
+      - Instructions: Instruções/ROS_1.md
       - General: ros1/general-instructions.md
       - Precompiled: ros1/installing-precompiled-packages.md
       - Compiling: ros1/compiling-for-amd64-based-systems.md

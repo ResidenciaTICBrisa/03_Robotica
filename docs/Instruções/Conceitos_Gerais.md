@@ -3,7 +3,7 @@
 Antes de qualquer outro guia da **Robo Connection**, é importante entender alguns conceitos importantes sobre **Terminal do Linux e Scripts**. Esses conceitos servirão como ferramentas na conclusão de passos importantes para a programação do NAO.
 
 <div align=center>
-    <img src='../overrides/assets/images/conceitos_extra2.png' width=300px>
+    <img src='../../overrides/assets/images/conceitos_extra2.png' width=300px>
 </div>
 
 
@@ -22,7 +22,7 @@ Para abri-lo, aperte simultaneamente `CTRL`+`ALT`+`T`.
 Uma tela semelhante a essa se abrirá: 
 
 <div align=center>
-    <img src='../overrides/assets/images/conceitos1.jpg'>
+    <img src='../../overrides/assets/images/conceitos1.jpg'>
 </div>
 
 No terminal de exemplo acima:
@@ -55,7 +55,7 @@ Para ver os arquivos presentes na pasta atual, podemos digitar o comando `ls`. E
 **Por exemplo**:
 
 <div align=center>
-    <img src='../overrides/assets/images/conceitos2.jpg'>
+    <img src='../../overrides/assets/images/conceitos2.jpg'>
 </div>
 
 No exemplo acima, usamos o comando `ls` no diretório `~` (no caso, `/home/gustavo/`). Isso gerou uma lista de arquivos presentes nesse diretório.
@@ -69,7 +69,7 @@ Para navegar entre diretórios no terminal Linux, usamos o comando `cd <diretór
 **Por exemplo**:
 
 <div align=center>
-    <img src='../overrides/assets/images/conceitos_extra.jpg'>
+    <img src='../../overrides/assets/images/conceitos_extra.jpg'>
 </div>
 
 No exemplo acima, usamos o comando `ls` para listar os arquivos em `~`. Depois, usamos `cd Downloads` para acessar o diretório `~/Downloads/`. Em seguida, usamos o `cd ..` para retornarmos para o diretório "mãe". Ou seja, voltamos para `~`.
@@ -85,7 +85,7 @@ Assim, podemos usar o terminal do Linux para navegar em qualquer diretório do s
 Para chegarmos em `~/Downloads/Exemplo`, não precisamos acessar pasta a pasta. Podemos acessá-lo de qualquer diretório simplesmente usando o comando `cd ~/Downloads/Exemplo`.
 
 <div align=center>
-    <img src='../overrides/assets/images/conceitos4.jpg'>
+    <img src='../../overrides/assets/images/conceitos4.jpg'>
 </div>
 
 No exemplo acima, estávamos no diretório `~/Área de Trabalho/`. Usando o comando `cd ~/Downloads/Exemplo`, acessamos esse diretório diretamente.
@@ -99,7 +99,7 @@ Podemos usar esse comando para limpar o terminal. Basta digitar `clear` na linha
 **O que são scripts?**
 
 <div align=center>
-    <img src='../overrides/assets/icons/Bash.png' width=200px>
+    <img src='../../overrides/assets/icons/Bash.png' width=200px>
 </div>
 
 **Scripts** são instruções em sequência que executam alguma ação. Geralmente, utilizam um **_shell_** para executarem tais ações.
@@ -125,7 +125,7 @@ Para executar o script, precisamos seguir os seguintes passos:
 5. Com esses passos, o script será executado na sua máquina:
 
 <div align=center>
-    <img src='../overrides/assets/images/conceitos5.jpg'>
+    <img src='../../overrides/assets/images/conceitos5.jpg'>
 </div>
 
 > Nota: a permissão de **_superuser_ (ou _sudo_)**  é análogo ao ato de executar um programa como administrador (Windows). Isso garante que não haverão falhas de permissão na execução do programa. **Alguns programas exigirão** a permissão _sudo_ para serem executados.
