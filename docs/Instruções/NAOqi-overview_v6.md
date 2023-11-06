@@ -2,7 +2,11 @@
 
 Este é um guia de apresentação de conceitos-chave do framework NAOqi, conhecimento necessário para o início na programação dos robôs da **Aldebaran Robotics**.
 
+<center>
+
 <img src='../../overrides/assets/icons/NAO.png' width=300px>
+
+</center>
 
 ## O que é?
 

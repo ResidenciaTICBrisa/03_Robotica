@@ -2,21 +2,23 @@ hide:
     - navigation
     - toc
 
-# Release 1 - V1.0
-A Equipe RoboConnection tem o prazer de anunciar o lançamento da primeira release de nossas ferramentas e documentação para os projetos UnBeatables e EMA. Esta release inclui os seguintes recursos:
+# Release 2 - V2.0
+**Temos o prazer de anunciar o lançamento da segunda release do Robo Connection!**
 
 ## Documentação
 
-- [x] Documentação para Maquina Virtual (Virt Manager)
-- [x] Documentação para Robot Settings
-- [x] Documentação para NAO Flasher
-- [x] Documentação para Choregraphe (NAOv4 e NAOv6)
-- [x] Documentação para SDK de C++ (NAOv4 e NAOv6)
-- [x] Documentações para ROS1 (PC e Raspberry Pi), ROS2 (PC e Raspberry Pi)
+- [x] Imagens em guias que demandavam recursos visuais
+- [x] Novo rodapé
+- [x] Novo estilo de página
+- [x] Setorização intuitiva dos menus de navegação
+- [x] Correção de erros nas documentações
+- [x] Criação da página "Home", "Equipe" e "Sobre"
+- [x] Criação de guias de uso do SDK de C++, incluindo um Hello World testado no robô
+- [x] Recursos de versões anteriores
 
 ## Scripts
 
-- [x] Scripts automatizado de instalação do ROS1 e ROS2
+- [x] Scripts de programação do NAO v4 usando SDK C++ (2.1)
 
 ## Stakeholders
 
@@ -26,6 +28,6 @@ Para acessar a Release direto no GitHub use o link a seguir:
 </br>
 <center>
 
-[Release 1 - V1.0](https://github.com/ResidenciaTICBrisa/03_Robotica/releases/tag/v1.0){ .md-button .md-button--primary }
+[Release 2 - V2.0](#){ .md-button .md-button--primary }
 
 </center>

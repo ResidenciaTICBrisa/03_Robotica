@@ -49,9 +49,6 @@ theme:
   favicon: assets/images/robo.png
   custom_dir: docs/overrides
 
-extra_css:
-  - stylesheets/style.css
-
 plugins:
   - search:
       lang:
@@ -78,8 +75,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Primeiros Passos: 
-    - Trabalhando com máquinas virtuais: Instruções/Maquina_Virtual.md
     - Conceitos fundamentais: Instruções/Conceitos_Gerais.md
+    - Trabalhando com máquinas virtuais: Instruções/Maquina_Virtual.md
   - Trabalhando com o v4:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v4.md
     - Máquina Virtual com scripts: vms/ubuntu-14/README.md
