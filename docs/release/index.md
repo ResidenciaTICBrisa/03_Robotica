@@ -2,8 +2,12 @@ hide:
     - navigation
     - toc
 
+<center>
+
 # Release 2 - V2.0
 **Temos o prazer de anunciar o lançamento da segunda release do Robo Connection!**
+
+</center>
 
 ## Documentação
 
@@ -24,9 +28,10 @@ hide:
 
 - [x] Git Page para acompanhamento do Stakeholders
 
+<center>
+
 Para acessar a Release direto no GitHub use o link a seguir:
 </br>
-<center>
 
 [Release 2 - V2.0](#){ .md-button .md-button--primary }
 
