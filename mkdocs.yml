@@ -33,7 +33,7 @@ theme:
       toggle:
         icon: material/lightbulb
         name: switch to dark mode
-      primary: deep purple
+      primary: custom
       accent: cyan
 
     - media: "(prefers-color-scheme: dark)"
@@ -41,13 +41,16 @@ theme:
       toggle:
         icon: material/lightbulb-outline
         name: switch to light mode
-      primary: deep purple
+      primary: custom
       accent: cyan
   icon:
     logo: material/robot-industrial-outline
     repo: material/robot-industrial-outline
   favicon: assets/images/robo.png
   custom_dir: docs/overrides
+
+extra_css:
+  - stylesheets/extra.css
 
 plugins:
   - search:
