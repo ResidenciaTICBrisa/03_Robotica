@@ -33,6 +33,6 @@ hide:
 Para acessar a Release direto no GitHub use o link a seguir:
 </br>
 
-[Release 2 - V2.0](#){ .md-button .md-button--primary }
+[Release 2 - V2.0](https://github.com/ResidenciaTICBrisa/03_Robotica/releases/tag/v2.0){ .md-button .md-button--primary }
 
 </center>
