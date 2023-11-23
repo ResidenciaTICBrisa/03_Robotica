@@ -34,7 +34,7 @@ comando `kvm-ok`, que necessita de permissões de superusuário.
 Apesar da modificação fácil, os scripts esperam uma estrutura de diretório
 específica:
 
-- `env-vars.sh`, um scrtipt que centralisa as configurações da VM
+- `env-vars.sh`, um script que centraliza as configurações da VM
 - uma [imagem][1] do disco de instalação do Ubuntu versão 14.04 nomeada como
 `ubuntu-14.04-desktop-amd64.iso` (isto pode ser alterado na variável
 `IMAGE_LOCATION` do script `env-vars.sh`)
@@ -57,7 +57,7 @@ em que aparecem abaixo:
 1. `reset-main-drive.sh`
 2. `first-boot.sh`
 
-Depois de instalar o Ubuntu 14.04 n máquina virtual, ainda é necessário que os
+Depois de instalar o Ubuntu 14.04 na máquina virtual, ainda é necessário que os
 seguintes scripts sejam executados na máquina anfitriã:
 
 1. `update-sources.sh`
@@ -105,7 +105,7 @@ sistema para o arquivo principal do Ubuntu:
 ./update-sources.sh
 ```
 
-Não se esqueça de atualizar a lista de pacotes `apt-get update` e atualizá-los
+Não se esqueça de atualizar a lista de pacotes (`apt-get update`) e atualizá-los
 (`apt-get dist-upgrade`) sempre que houver atualizações disponíveis.
 
 ### Como recuperar memória não usada da máquina virtual
@@ -153,7 +153,7 @@ significa que só se deve tentar recuperar memória **sem uso** da máquina virt
 enquanto ela possuir uma quantidade suficiente de memória livre para continuar
 executando sem a necessidade de entrar e, swap.
 
-## Preparando para instalar p NAOqi para o NAOv4
+## Preparando para instalar o NAOqi para o NAOv4
 
 O Ubuntu 14.04 tem uma versão antiga do Python 2.7. Ela não consegue mais baixar
 dados de sites que exigem conexões HTTPS, como o índice de pacotes moderno do
@@ -273,7 +273,7 @@ este pode ser encontrado usando-se `command -v flasher`.
 O arcabouço Qibuild requer que todos os projetos estejam dentro de uma árvore de
 trabalho (*worktree*). O script de configuração cria uma árvore de trabalho no
 diretório `NAO4/worktree`. Ela já é configurada com o SDK C++ como ferramental
-padrão, e o CTC também está disponível caso o usuario deseje configurar os seus
+padrão, e o CTC também está disponível caso o usuário deseje configurar os seus
 projetos para usá-lo.
 
 O caminho da *worktree* é armazenado no `.bashrc` do usuário, na variável
@@ -327,8 +327,8 @@ CTC):
 cd "${NAO_QIBUILD_WORKSPACE}"
 qisrc create my-project
 cd my-project
-qibuild configure -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
-qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}" 
+qibuild configure -c "${NAOQI_QIBUILD_CTC_CONFIG}"
+qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}"
 ```
 
 ## Conectando ao robô simulado
