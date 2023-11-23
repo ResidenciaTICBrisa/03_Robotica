@@ -21,7 +21,7 @@ A esse conceito damos o nome de **interface**. Uma interface nada mais é do que
 
 <center>
 
-<img src="../overrides/assets/images/Circuito_interno.jpg" width=600px>
+<img src="../../overrides/assets/images/Circuito_interno.jpg" width=600px>
 
 </center>
 
@@ -35,7 +35,7 @@ Um **objeto** é uma instância da classe. Mas o que isso significa na prática?
 
 <center>
 
-<img src="../overrides/assets/images/Classe_Objeto.jpg" width=600px>
+<img src="../../overrides/assets/images/Classe_Objeto.jpg" width=600px>
 
 </center>
 
@@ -109,7 +109,7 @@ Observe o esquemático a seguir:
 
 <center>
 
-<img src="../overrides/assets/images/Esquematico_get.jpg" width=600px>
+<img src="../../overrides/assets/images/Esquematico_get.jpg" width=600px>
 
 </center>
 
@@ -151,7 +151,7 @@ Assim, completamos o seguinte diagrama para a classe `Pessoa`:
 
 <center>
 
-<img src="../overrides/assets/images/Classe_final.jpg" width=600px>
+<img src="../../overrides/assets/images/Classe_final.jpg" width=600px>
 
 </center>
 
