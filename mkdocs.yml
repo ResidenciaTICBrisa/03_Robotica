@@ -102,10 +102,10 @@ nav:
       - Compiling for SBCs: ros1/compiling-for-arm-based-systems.md
       - Native packages: ros1/installing-native-packages.md
     - ROS2:
-      - General: ros2/general-instructions.md
-      - Precompiled: ros2/installing-precompiled-packages.md
-      - Compiling: ros2/compiling-for-amd64-based-systems.md
-      - Compiling for SBCs: ros2/compiling-for-arm-based-systems.md
+      - Geral: ros2/general-instructions.md
+      - Pré-compilados: ros2/installing-precompiled-packages.md
+      - Compilando: ros2/compiling-for-amd64-based-systems.md
+      - Compilando para SBCs: ros2/compiling-for-arm-based-systems.md
   - Marcos: release/index.md
   - Equipe: sobre/equipe.md
   - Sobre: sobre/sobre.md
