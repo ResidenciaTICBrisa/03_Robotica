@@ -80,6 +80,7 @@ nav:
   - Primeiros Passos: 
     - Conceitos fundamentais: Instruções/Conceitos_Gerais.md
     - Trabalhando com máquinas virtuais: Instruções/Maquina_Virtual.md
+    - Introdução à programação orientada a objetos com C++: Instruções/Guia_POO.md
   - Trabalhando com o v4:
     - Introdução ao NAOqi: Instruções/NAOqi-overview_v4.md
     - Máquina Virtual e scripts de instalação (v4): vms/ubuntu-14/how-to-use.md
