@@ -25,7 +25,7 @@ para todas as distribuições GNU/Linux suportadas pelo `debootstrap`.
 Este passo é requerido caso queira compilar e instalar o ROS2 em um SBC baseado
 na arquitetura ARM.
 
-1. Execute, com privilégios de administrador, o script `bootstrap-chroot-32.sh
+1. Execute, com privilégios de administrador, o script `bootstrap-chroot-32.sh`
 ou `bootstrap-chroot-64.sh`, dependendo do sistema operacional instalado em seu
 *Single Board Computer*. Este passo terá sido executado com sucesso caso o Git
 consiga ser instalado corretamente após autorizar a sua instalação.
