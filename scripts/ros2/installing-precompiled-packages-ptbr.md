@@ -45,15 +45,13 @@ satisfeitas.
 
 ## Instruções para sistemas suportados
 
-### Bootstraping a chroot
-
 ### Inicializando um chroot
 
 Este passo só é necessário caso queira **testar** a instalação do ROS2 em um SBC
 ARM. O script pode ser modificado para testar a instalação em outras
 distribuições baseadas no Debian.
 
-1. Execute, com privilégios de administrador, o script `bootstrap-chroot-32.sh
+1. Execute, com privilégios de administrador, o script `bootstrap-chroot-32.sh`
 ou `bootstrap-chroot-64.sh`, dependendo do sistema operacional instalado em seu
 *Single Board Computer*. Este passo terá sido executado com sucesso caso o Git
 consiga ser instalado corretamente após autorizar a sua instalação.
@@ -67,7 +65,7 @@ Devido ao suporte limitado do ROS2, o repositório suporta apenas ARM de 64 bits
 ou AMD64. Os scripts podem ser facilmente modificados para suportarem outras
 arquiteturas tão logo estiverem disponíveis.
 
-1. Se estiver em um *chrrot*, favor executar os scripts
+1. Se estiver em um *chroot*, favor executar os scripts
 `ubuntu-install-ros2-64-base.sh` ou `ubuntu-install-ros2-64-desktop.sh` com
 privilégios administrativos dependendo dos pacotes ROS2 que quiser instalar. Se
 estiver em uma instalação padrão, favor executar os scripts
