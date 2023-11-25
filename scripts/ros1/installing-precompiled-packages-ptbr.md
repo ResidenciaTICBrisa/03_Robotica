@@ -34,11 +34,6 @@ ROS1.
 
 ### AVISO!
 
-ROS2 precompiled packages are notorious for breaking systems when installed
-without upgrading the system [1][1] [2][2]! Although the installation scripts
-follow the recommended procedures, and ROS1 does not cite that the same problem
-exists for their packages, the risk remains!
-
 Os pacotes pré-compilados do ROS2 são notórios por quebrar sistemas que não
 foram atualizados [1][1] [2][2]! Apesar dos scripts de instalação seguirem os
 procedimentos recomendados, e do ROS1 não citar que o mesmo problema existe para
