@@ -2,6 +2,6 @@
 
 - [English](./how-to-use-en.md)
 
-# Configurando e executando uma máquina virtual para desenvolver para o NAO4
+# Configurando e executando uma máquina virtual para desenvolver para o NAOv4
 
 - [Português](./how-to-use-ptbr.md)

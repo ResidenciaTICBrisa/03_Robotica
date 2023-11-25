@@ -77,7 +77,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Primeiros Passos: 
+  - Primeiros Passos:
     - Conceitos fundamentais: Instruções/Conceitos_Gerais.md
     - Trabalhando com máquinas virtuais: Instruções/Maquina_Virtual.md
     - Introdução à programação orientada a objetos com C++: Instruções/Guia_POO.md
@@ -96,17 +96,17 @@ nav:
     - Choregraphe: Instruções/Choregraphe_v6.md
   - Extra:
     - ROS1:
-      - Instructions: Instruções/ROS_1.md
-      - General: ros1/general-instructions.md
-      - Precompiled: ros1/installing-precompiled-packages.md
-      - Compiling: ros1/compiling-for-amd64-based-systems.md
-      - Compiling for SBCs: ros1/compiling-for-arm-based-systems.md
-      - Native packages: ros1/installing-native-packages.md
+      - Instruções: Instruções/ROS_1.md
+      - Geral: ros1/general-instructions.md
+      - Pré-compilados: ros1/installing-precompiled-packages.md
+      - Compilando: ros1/compiling-for-amd64-based-systems.md
+      - Compilando para SBCs: ros1/compiling-for-arm-based-systems.md
+      - Pacotes nativos: ros1/installing-native-packages.md
     - ROS2:
-      - General: ros2/general-instructions.md
-      - Precompiled: ros2/installing-precompiled-packages.md
-      - Compiling: ros2/compiling-for-amd64-based-systems.md
-      - Compiling for SBCs: ros2/compiling-for-arm-based-systems.md
+      - Geral: ros2/general-instructions.md
+      - Pré-compilados: ros2/installing-precompiled-packages.md
+      - Compilando: ros2/compiling-for-amd64-based-systems.md
+      - Compilando para SBCs: ros2/compiling-for-arm-based-systems.md
   - Marcos: release/index.md
   - Equipe: sobre/equipe.md
   - Sobre: sobre/sobre.md

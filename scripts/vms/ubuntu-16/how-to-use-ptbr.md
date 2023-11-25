@@ -1,4 +1,4 @@
-# Configurando e executando uma máquina virtual para desenvolver para o NAO4
+# Configurando e executando uma máquina virtual para desenvolver para o NAO6
 
 ## Configuração
 
@@ -35,21 +35,21 @@ Apesar da modificação fácil, os scripts esperam uma estrutura de diretório
 específica:
 
 - `env-vars.sh`, um script que centraliza as configurações da VM
-- uma [imagem][1] do disco de instalação do Ubuntu versão 14.04 nomeada como
-`ubuntu-14.04-desktop-amd64.iso` (isto pode ser alterado na variável
+- uma [imagem][1] do disco de instalação do Ubuntu versão 16.04 nomeada como
+`ubuntu-16.04-desktop-amd64.iso` (isto pode ser alterado na variável
 `IMAGE_LOCATION` do script `env-vars.sh`)
 
-[1]: https://releases.ubuntu.com/trusty/ubuntu-14.04.6-desktop-amd64.iso
+[1]: https://releases.ubuntu.com/releases/xenial/ubuntu-16.04.7-desktop-amd64.iso
 
-A distribuição GNU/Linux usada para instalar o ambiente completo do NAOv4 é o
-Ubuntu 14.04 LTS. É muito provável que o mesmo possa ser feito na versão
+A distribuição GNU/Linux usada para instalar o ambiente completo do NAOv6 é o
+Ubuntu 16.04 LTS. É muito provável que o mesmo possa ser feito na versão
 equivalente do Debian.
 
-Caso o usuário deseje desenvolver programas **apenas** na API C++98 do NAOv4,
+Caso o usuário deseje desenvolver programas **apenas** na API C++11 do NAOv6,
 pode ser possível usar uma distribuição GNU/Linux mais atualizada, contanto que
 tenha suporte para Python 2 e Pip 20.3.4.
 
-### Criando a VM e preparando para compilar o NAOqi do NAOv4
+### Criando a VM e preparando para compilar o NAOqi do NAOv6
 
 O usuário deve executar os seguintes scripts em sua máquina anfitrião na ordem
 em que aparecem abaixo:
@@ -57,28 +57,27 @@ em que aparecem abaixo:
 1. `reset-main-drive.sh`
 2. `first-boot.sh`
 
-Depois de instalar o Ubuntu 14.04 na máquina virtual, ainda é necessário que os
+Depois de instalar o Ubuntu 16.04 na máquina virtual, ainda é necessário que os
 seguintes scripts sejam executados na máquina anfitriã:
 
 1. `update-sources.sh`
 2. `inject-home.sh`
 
 Agora, dentro da máquina virtual, também conhecida como máquina hospedada, o
-usuário deve executar o script `prepare-naoqi-requirements.sh` para compilar o
-Python 2.7.11 e instalar o Pip 20.3.4.
+usuário deve executar o script `prepare-naoqi-requirements.sh` para instalar o
+Pip 20.3.4.
 
-Por fim, o usuário poderá instalar o ambiente de desenvolvimento do NAOv4
-executando o script `install-naov4.sh`. A versão mais nova do Python é usada
-apenas para baixar o Pip, pois ela é incompatível com o SDK Python do robô.
+Por fim, o usuário poderá instalar o ambiente de desenvolvimento do NAOv6
+executando o script `install-naov6.sh`.
 
 ## Inicializando a Máquina Virtual pela Primeira vez
 
 A imagem é inicializada com os scripts `reset-main-drive.sh` e `first-boot.sh`.
 O primeiro cria uma imagem QCOW2, que funciona como o disco rígido da máquina
 virtual ou sistema anfitrião, e o segundo inicializa a máquina virtual com o
-disco de instalação do Ubuntu 14.
+disco de instalação do Ubuntu 16.
 
-Com o disco criado, execute o script de inicialização e instale o Ubuntu 14 com
+Com o disco criado, execute o script de inicialização e instale o Ubuntu 16 com
 as configurações usuais:
 
 - Linguagem e leiaute do teclado: Português Brasileiro (ou putro *locale* UTF-8)
@@ -105,8 +104,8 @@ sistema para o arquivo principal do Ubuntu:
 ./update-sources.sh
 ```
 
-Não se esqueça de atualizar a lista de pacotes (`apt-get update`) e atualizá-los
-(`apt-get dist-upgrade`) sempre que houver atualizações disponíveis.
+Não se esqueça de atualizar a lista de pacotes (`apt update`) e atualizá-los
+(`apt dist-upgrade`) sempre que houver atualizações disponíveis.
 
 ### Como recuperar memória não usada da máquina virtual
 
@@ -153,36 +152,39 @@ significa que só se deve tentar recuperar memória **sem uso** da máquina virt
 enquanto ela possuir uma quantidade suficiente de memória livre para continuar
 executando sem a necessidade de entrar e, swap.
 
-## Preparando para instalar o NAOqi para o NAOv4
+## Preparando para instalar o NAOqi para o NAOv6
 
-O Ubuntu 14.04 tem uma versão antiga do Python 2.7. Ela não consegue mais baixar
-dados de sites que exigem conexões HTTPS, como o índice de pacotes moderno do
-Python (`pip`). Isso requer que se compile uma versão mais nova do Python e que
-se compile a última versão compatível do `pip`. Tais passos podem ser
-automatizados com o envio de um script para o diretório `home` do usuário na VM:
+Ubuntu 16.04 has an old version of `pip`. This requires an installation of the
+last Python 2 compatible release to be able to download the packages and their
+dependencies. These steps can be automated by sending a script to the user's
+home on the VM:
+
+O Ubuntu 16.04 tem uma versão antiga do `pip`. Ela não consegue mais baixar
+os pacotes e suas dependências. Isso requer que se instale a última versão
+compatível com o Python 2. Tais passos podem ser automatizados com o envio de um
+script para o diretório `home` do usuário na VM:
 
 ```
 ./inject-home.sh
 ```
 
 Depois do script ser enviado para o `home`, ele deve ser executado na VM. Ele
-irá pedir por privilégios administrativos antes de atualizar o repositório e
-instalar as dependências e compilar e instalar o Python 2 e o Pip:
+irá pedir por privilégios administrativos antes de atualizar o repositório,
+instalar as dependências e instalar o Pip:
 
 ```
 ./prepare-naoqi-requirements.sh
 ```
 
-## Instalando o ambiente de desenvolvimento do NAOv4
+## Instalando o ambiente de desenvolvimento do NAOv6
 
 Depois de executar o script de preparação, o instalador deve ser executado em
 uma nova sessão de terminal. Caso deseje permanecer na mesma sessão, deverá
 recarregar o `.bashrc` (`source .bashrc`) para habilitar as modificações feitas
-para redirecionar o Python 2 para uma nova versão e habilitar o PIP 2 e seus
-binários.
+para habilitar o PIP 2 e seus binários.
 
 ```
-./install-naov4.sh
+./install-naov6.sh
 ```
 
 O script de instalação também requer direitos administrativos, pois precisa de
@@ -190,9 +192,9 @@ instalar pacotes usados pelos SDKs C++ e Python 2.
 
 ### Ativando o Choregraphe
 
-O Choregraphe vai pedir por uma chave de ativação na sua primeira inicialização.
-Essa chave está disponível no script de instalação, e também será impressa no
-terminal depois da execução do script.
+O Choregraphe pode pedir por uma chave de ativação na sua primeira
+inicialização. Essa chave está disponível no script de instalação, e também será
+impressa no terminal depois da execução do script.
 
 ### Configurando o USB do anfitrião
 
@@ -272,7 +274,7 @@ este pode ser encontrado usando-se `command -v flasher`.
 
 O arcabouço Qibuild requer que todos os projetos estejam dentro de uma árvore de
 trabalho (*worktree*). O script de configuração cria uma árvore de trabalho no
-diretório `NAO4/worktree`. Ela já é configurada com o SDK C++ como ferramental
+diretório `NAO6/worktree`. Ela já é configurada com o SDK C++ como ferramental
 padrão, e o CTC também está disponível caso o usuário deseje configurar os seus
 projetos para usá-lo.
 
@@ -336,7 +338,7 @@ qibuild make -c "${NAOQI_QIBUILD_CTC_CONFIG}"
 O robô simulado é um executável chamado `naoqi`, e está localizado no diretório
 do ferramental C++. Considerando que as ferramentas foram instaladas usando os
 scripts supracitados nas suas configurações padrões, ele estará localizado em:
-`/home/softex/NAO4/SDKs/cpp/naoqi-sdk-2.1.4.13-linux64/naoqi`.
+`/home/softex/NAO6/SDKs/cpp/naoqi-sdk-2.8.5.10-linux64/naoqi`.
 
 O robô simulado sempre deve ser inicializado antes de se executar o Choregraphe
 ou o seu módulo desejado. Ele comportar-se-á de maneira similar ao robô físico,
