@@ -95,12 +95,12 @@ nav:
     - Choregraphe: Instruções/Choregraphe_v6.md
   - Extra:
     - ROS1:
-      - Instructions: Instruções/ROS_1.md
-      - General: ros1/general-instructions.md
-      - Precompiled: ros1/installing-precompiled-packages.md
-      - Compiling: ros1/compiling-for-amd64-based-systems.md
-      - Compiling for SBCs: ros1/compiling-for-arm-based-systems.md
-      - Native packages: ros1/installing-native-packages.md
+      - Instruções: Instruções/ROS_1.md
+      - Geral: ros1/general-instructions.md
+      - Pré-compilados: ros1/installing-precompiled-packages.md
+      - Compilando: ros1/compiling-for-amd64-based-systems.md
+      - Compilando para SBCs: ros1/compiling-for-arm-based-systems.md
+      - Pacotes nativos: ros1/installing-native-packages.md
     - ROS2:
       - Geral: ros2/general-instructions.md
       - Pré-compilados: ros2/installing-precompiled-packages.md
