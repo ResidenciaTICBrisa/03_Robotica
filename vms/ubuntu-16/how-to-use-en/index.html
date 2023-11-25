@@ -1,0 +1,2083 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://residenciaticbrisa.github.io/03_Robotica/vms/ubuntu-16/how-to-use-en/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/robo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
+    
+    
+      
+        <title>Set up and run a VM for developing NAOv6-based solutions - RoboConnection</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#set-up-and-run-a-vm-for-developing-naov6-based-solutions" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Não mostrar isso novamente">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+  <p>RoboConnection tem o prazer de anunciar o lançamento da segunda Release: <a href="https://github.com/ResidenciaTICBrisa/03_Robotica/releases/tag/v2.0" target="_blank"> Release V2.0</a></p>
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../../.." title="RoboConnection" class="md-header__button md-logo" aria-label="RoboConnection" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboConnection
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Set up and run a VM for developing NAOv6-based solutions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="cyan"  aria-label="switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan"  aria-label="switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ResidenciaTICBrisa/03_Robotica" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboConnection
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Instru%C3%A7%C3%B5es/Conceitos_Gerais/" class="md-tabs__link">
+          
+  
+    
+  
+  Primeiros Passos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Instru%C3%A7%C3%B5es/NAOqi-overview_v4/" class="md-tabs__link">
+          
+  
+    
+  
+  Trabalhando com o v4
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Instru%C3%A7%C3%B5es/NAOqi-overview_v6/" class="md-tabs__link">
+          
+  
+    
+  
+  Trabalhando com o v6
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Instru%C3%A7%C3%B5es/ROS_1/" class="md-tabs__link">
+          
+  
+    
+  
+  Extra
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../release/" class="md-tabs__link">
+        
+  
+    
+  
+  Marcos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../sobre/equipe/" class="md-tabs__link">
+        
+  
+    
+  
+  Equipe
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../sobre/sobre/" class="md-tabs__link">
+        
+  
+    
+  
+  Sobre
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="RoboConnection" class="md-nav__button md-logo" aria-label="RoboConnection" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+
+    </a>
+    RoboConnection
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ResidenciaTICBrisa/03_Robotica" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboConnection
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Primeiros Passos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Primeiros Passos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/Conceitos_Gerais/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conceitos fundamentais
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/Maquina_Virtual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trabalhando com máquinas virtuais
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/Guia_POO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução à programação orientada a objetos com C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Trabalhando com o v4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Trabalhando com o v4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/NAOqi-overview_v4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução ao NAOqi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ubuntu-14/how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Máquina Virtual e scripts de instalação (v4)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/NAO_Flasher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NAO Flasher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/CPP_SDK_v4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDK C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/Choregraphe_v4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Choregraphe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../naoqi-2.1/cpp/about-the-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemplos NAOqi C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Trabalhando com o v6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Trabalhando com o v6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/NAOqi-overview_v6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução ao NAOqi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Máquina Virtual e scripts de instalação (v6)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/Robot_Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/CPP_SDK_v6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDK C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/Choregraphe_v6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Choregraphe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Extra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Extra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ROS1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Instru%C3%A7%C3%B5es/ROS_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instruções
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros1/general-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geral
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros1/installing-precompiled-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pré-compilados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros1/compiling-for-amd64-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros1/compiling-for-arm-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando para SBCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros1/installing-native-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pacotes nativos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros2/general-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geral
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros2/installing-precompiled-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pré-compilados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros2/compiling-for-amd64-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ros2/compiling-for-arm-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando para SBCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../release/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Marcos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/equipe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Equipe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../sobre/sobre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expected directory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-vm-and-preparing-to-compile-naoqi-for-naov6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating the VM and preparing to compile NAOqi for NAOv6
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-the-virtual-machine-up-for-the-first-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting the Virtual Machine up for the first time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Starting the Virtual Machine up for the first time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      WARNING
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-reclaim-unused-memory-from-the-virtual-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to reclaim unused memory from the Virtual Machine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to reclaim unused memory from the Virtual Machine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-the-qemus-balloon-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use the QEMU's balloon driver
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preparing-to-install-naoqi-for-naov6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Preparing to install NAOqi for NAOv6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-naov6-development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing NAOv6 development environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing NAOv6 development environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activating-choregraphe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activating Choregraphe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-host-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring the host USB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring the host USB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-flasher-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      NAO Flasher permissions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-c-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiling C++ code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compiling C++ code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qibuild-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qibuild configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-project-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic project setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-simulated-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to the simulated robot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to the simulated robot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simulating-in-choregraphe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulating in Choregraphe
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-the-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connecting to the Robot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Connecting to the Robot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning-to-docker-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warning to Docker users
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-manually-add-files-to-the-virtual-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to manually add files to the Virtual Machine
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="set-up-and-run-a-vm-for-developing-naov6-based-solutions">Set up and run a VM for developing NAOv6-based solutions</h1>
+<h2 id="setup">Setup</h2>
+<p>The scripts are flexible, but they still have requirements in order to be run.</p>
+<h3 id="packages">Packages</h3>
+<p>These scripts need the following packages to be installed on the host's system
+(assuming a Debian GNU/Linux based distribution, such as Ubuntu, Linux Mint):</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qemu-system-x86</td>
+<td>6.2.0</td>
+</tr>
+<tr>
+<td>qemu-utils</td>
+<td>6.2.0</td>
+</tr>
+<tr>
+<td>qemu-system-gui</td>
+<td>6.2.0</td>
+</tr>
+<tr>
+<td>qemu-block-extra</td>
+<td>6.2.0</td>
+</tr>
+<tr>
+<td>ovmf</td>
+<td>2022.02</td>
+</tr>
+<tr>
+<td>libguestfs-tools</td>
+<td>1.46.2</td>
+</tr>
+<tr>
+<td>iproute2</td>
+<td>5.15</td>
+</tr>
+<tr>
+<td>nftables</td>
+<td>1.0.2</td>
+</tr>
+</tbody>
+</table>
+<p>The scripts assume that KVM-based accelerated virtualisation is enabled on the
+host machine. This requires a compatible processor and it may require a
+configuration in the UEFI/BIOS (AMD-V, AMD SVM, Intel VT, Intel VT-x,
+Intel VMX).</p>
+<p>The package <code>cpu-checker</code> is able to verify if KVM is correctly enabled: one
+only needs to run the command <code>kvm-ok</code> as superuser.</p>
+<h3 id="expected-directory-structure">Expected directory structure</h3>
+<p>Even though these scripts can be modified easily, they expect the following
+directory structure in their current form:</p>
+<ul>
+<li><code>env-vars.sh</code>, a script to centralise the VM's configurations</li>
+<li>an <a href="https://releases.ubuntu.com/releases/xenial/ubuntu-16.04.7-desktop-amd64.iso">image</a> from Ubuntu's installation disk version 16.04 named as
+<code>ubuntu-16.04-desktop-amd64.iso</code> (this can be altered in the <code>IMAGE_LOCATION</code>
+variable at the <code>env-vars.sh</code> script)</li>
+</ul>
+<p>The GNU/Linux distribution for fully installing NAOv6's programming environment
+is Ubuntu 16.04 LTS. It is highly possible that one may be able to run it on the
+equivalent Debian release.</p>
+<p>If the user wishes to <strong>only</strong> develop programs using NAOv6's C++11 API, it
+<em>may</em> be possible to use a newer GNU/Linux distribution, provided that it has
+support for Python 2 and Pip 20.3.4.</p>
+<h3 id="creating-the-vm-and-preparing-to-compile-naoqi-for-naov6">Creating the VM and preparing to compile NAOqi for NAOv6</h3>
+<p>The user must run in their host machine the scripts inside this repository in
+the following order:</p>
+<ol>
+<li><code>reset-main-drive.sh</code></li>
+<li><code>first-boot.sh</code></li>
+</ol>
+<p>After installing Ubuntu 16.04 in their virtual machine, the following scripts
+must be executed in their host machine:</p>
+<ol>
+<li><code>update-sources.sh</code></li>
+<li><code>inject-home.sh</code></li>
+</ol>
+<p>Now, inside the virtual machine, also known as the guest machine, the user
+must run the <code>prepare-naoqi-requirements.sh</code> script to install Pip 20.3.4.</p>
+<p>Finally, the user will be able to install the NAOv6 development environment
+using the <code>install-naov6.sh</code> script.</p>
+<h2 id="starting-the-virtual-machine-up-for-the-first-time">Starting the Virtual Machine up for the first time</h2>
+<p>The initial images are created by the <code>reset-main-drive.sh</code> and <code>first-boot.sh</code>
+scripts. The former creates a QCOW2 image that will perform as the virtual
+machine's or guest system's hard drive, and the latter will boot the VM with
+the Ubuntu 16 LTS installation disk.</p>
+<p>With the drives created, run the initialisation script and install a regular
+Ubuntu 16.04 LTS installation:</p>
+<ul>
+<li>Language and keyboard layout: Português Brasileiro (or other UTF-8 locale)</li>
+<li>Erase disk and install Ubuntu</li>
+<li>Timezone: Sao Paulo (or your local timezone)</li>
+<li>User: softex (must be the one specified in <code>VM_USER</code> in <code>env-vars.sh</code>)</li>
+</ul>
+<h3 id="warning">WARNING</h3>
+<p>The scripts expect an <em>unified root</em> partition scheme. Do not split <code>/home</code> or
+other directories into other partitions unless you know how to modify the
+scripts that copy data into or from the virtual machine or guest system.</p>
+<h2 id="running-the-vm">Running the VM</h2>
+<p>Sometimes the Brazilian server takes too long to synchronise with the main
+server, leading to failed installations or upgrades. In order to avoid this
+problem, please run the following script to set the repository to the main
+archive:</p>
+<div class="highlight"><pre><span></span><code>./update-sources.sh
+</code></pre></div>
+<p>Don't forget to update (<code>apt update</code>) and upgrade (<code>apt dist-upgrade</code>) if there
+are any updates available.</p>
+<h3 id="how-to-reclaim-unused-memory-from-the-virtual-machine">How to reclaim unused memory from the Virtual Machine</h3>
+<p>If you are running the virtual machine on a memory constrained host, we
+recommend you to use the included <code>virtio-balloon</code> functionality. This will
+recover unused memory from the virtual machine (the guest) and return it to your
+computer (the host).</p>
+<p>A balloon driver is a special driver included on the kernels of some operating
+systems that helps the hypervisors, programs used to run virtual machines, to
+recover unused memory from their guests. This drivers offers two operations: a
+balloon inflation and a deflation.</p>
+<p>The inflation procedure is used to reclaim unused memory: it orders the driver
+to create memory pressure on the guest machine, triggering a page update. This
+decreases the available memory in the guest, but it enables the host to reclaim
+any unused pages.</p>
+<p>The deflation procedure increases the available memory on the guest up its
+configured physical memory limit. It is commonly used after an inflation
+procedure to allow the virtual machine to use its configured physical memory.</p>
+<h4 id="how-to-use-the-qemus-balloon-driver">How to use the QEMU's balloon driver</h4>
+<p>The QEMU's balloon driver is controlled in the QEMU monitor on the
+implementation offered by the scripts. The <code>balloon</code> command takes an argument
+that specifies the target logical size of the virtual machine:</p>
+<ul>
+<li>if the argument is less than the physical memory configured for the VM, the
+balloon will be inflated in the guest, and any unused pages will be reclaimed;</li>
+<li>if the argument is equal or greater than the guest's physical memory, the
+balloon will be deflated until it no longer restricts the virtual machine's
+physical memory.</li>
+</ul>
+<p>Please be aware that the <code>virtio-balloon</code> does not require the installation of
+any external driver on most GNU/Linux-based guests, as it is included in the
+kernel since 2008 (version 2.6.25).</p>
+<p>It is important to always have in mind that the balloon inflation operation
+should only be performed when the virtual machine is not under memory pressure.
+This means that you should only try to recover <strong>unused</strong> memory from the
+VM when it has a healthy amount of free memory to keep running without needing
+to swap.</p>
+<h2 id="preparing-to-install-naoqi-for-naov6">Preparing to install NAOqi for NAOv6</h2>
+<p>Ubuntu 16.04 has an old version of <code>pip</code>. This requires an installation of the
+last Python 2 compatible release to be able to download the packages and their
+dependencies. These steps can be automated by sending a script to the user's
+home on the VM:</p>
+<div class="highlight"><pre><span></span><code>./inject-home.sh
+</code></pre></div>
+<p>After the script is sent to the user's home, it must be executed in the VM. It
+will propmpt for administrative privileges before updating the repository and
+installing dependencies for installing Pip:</p>
+<div class="highlight"><pre><span></span><code>./prepare-naoqi-requirements.sh
+</code></pre></div>
+<h2 id="installing-naov6-development-environment">Installing NAOv6 development environment</h2>
+<p>After running the preparation script, the installation one must be run on a
+new terminal session. If you wish to remain in the same session, you must reload
+your <code>.bashrc</code> (<code>source .bashrc</code>) to enable the modifications made to enable
+PIP2 and its binaries.</p>
+<div class="highlight"><pre><span></span><code>./install-naov6.sh
+</code></pre></div>
+<p>This script will also prompt for administrative rights, as it needs to install
+packages used by the C++ and Python2 SDKs.</p>
+<h3 id="activating-choregraphe">Activating Choregraphe</h3>
+<p>Choregraphe may prompt for its activation key on its first initialisation. This
+key is available in the installation script, and it will also be printed to the
+terminal after the script is executed.</p>
+<h3 id="configuring-the-host-usb">Configuring the host USB</h3>
+<p>The <code>env-vars.sh</code> script has four variables to control how the virtual machine
+will connect to the host USB device:</p>
+<ul>
+<li><code>USB_HOST_BUS</code>: the bus' ID, including leading zeros</li>
+<li><code>USB_HOST_ADDRESS</code>: the device's ID in the aforementioned bus, including
+leading zeros</li>
+<li><code>USB_VENDOR_ID</code>: the device's vendor ID in hexadecimal notation, that is, the
+device's vendor ID preceded by <code>0x</code></li>
+<li><code>USB_PRODUCT_ID</code>: the device's product ID in hexadecimal notation, that is,
+the device's product ID preceded by <code>0x</code></li>
+</ul>
+<p>The variables match the output of the <code>lsusb</code> command:</p>
+<div class="highlight"><pre><span></span><code>Bus $USB_HOST_BUS Device $USB_HOST_ADDRESS: ID $USB_VENDOR_ID:$USB_PRODUCT_ID MyUSB Device Thing
+</code></pre></div>
+<p>There are two scripts that will connect the host's device to the virtual
+machine:</p>
+<ul>
+<li><code>run-usb-productid.sh</code>: connects only the device with the matching vendor and
+product ID as long as it is connected to the specified port. It requires
+specifying all the four variables;</li>
+<li><code>run-usb-hostid.sh</code>: connects anything currenctly connected to the specified
+port. It requires specifying only the bus and the device.</li>
+</ul>
+<p>The virtualiser uses the <code>/dev/bus/usb</code> files to connect the VM to the host
+device. This requires superuser permissions on most machines. In order to
+connect a host USB device to the VM, the user must provide the script with the
+necessary privileges (run it as root, prefix with <code>sudo</code>) or change the
+permissions of the USB interface (changing its group with <code>chgrp</code> to a group
+that it user takes part in, or changing its owner with <code>chown</code>).</p>
+<h4 id="example">Example</h4>
+<p>Consider the following <code>lsusb</code> output:</p>
+<div class="highlight"><pre><span></span><code>Bus 001 Device 001: ID 0001:0001 USB Thing 1
+Bus 001 Device 002: ID 0001:0002 USB Thing 2
+Bus 001 Device 003: ID 0001:0001 USB Thing 1
+Bus 002 Device 001: ID 0002:0001 USB Device 1
+Bus 002 Device 002: ID 0002:0002 USB Device 2
+Bus 002 Device 003: ID 0002:0001 USB Device 1
+</code></pre></div>
+<p>If one wishes to connect the <code>USB Thing 1</code> connected at the <code>Bus 001</code> as the
+device numbered <code>003</code>, they should configure the variables at <code>env-vars.sh</code> as:</p>
+<div class="highlight"><pre><span></span><code>USB_HOST_BUS=&quot;001&quot;
+USB_HOST_ADDRESS=&quot;003&quot;
+USB_VENDOR_ID=&quot;0x0001&quot;
+USB_PRODUCT_ID=&quot;0x0001&quot;
+</code></pre></div>
+<p>Before running the desired script, the permissions must be set for the USB file
+(<code>chown the-user /dev/bus/usb/001/003</code>) or the script must be run with elevated
+privileges (<code>sudo</code> or run as root).</p>
+<p>Please be aware that in order to connect only the required device to the VM, one
+must run the VM using <code>run-usb-productid.sh</code>. Choosing the
+<code>run-usb-productid.sh</code> would connect all the devices connected to the <code>Bus 001</code>,
+the two <code>USB Thing 1</code> and the <code>USB Thing 2</code>.</p>
+<h3 id="nao-flasher-permissions">NAO Flasher permissions</h3>
+<p>NAO Flasher requires administrative permissions (<code>sudo</code> or execution as the
+<code>root</code> user) to write data. If <code>sudo</code> can't find the program's path, you may
+find it with <code>command -v flasher</code>.</p>
+<h2 id="compiling-c-code">Compiling C++ code</h2>
+<p>The qibuild framework requires that all projects must be based inside a
+worktree. The configuration script creates a worktree inside the
+<code>NAO6/worktree</code> directory. It is configured with the C++ SDK as the default
+toolchain, and the CTC is also available if the user wishes to set up their
+projects as so.</p>
+<p>The <em>worktree</em> path is stored in the user's <code>.bashrc</code> in the
+<code>NAO_QIBUILD_WORKSPACE</code> variable.</p>
+<h3 id="qibuild-configuration">Qibuild configuration</h3>
+<p>The script sets up the configurations' names in the user's <code>.bashrc</code>. The
+following environment variables hold data important for setting up qibuild-based
+projects:</p>
+<ul>
+<li><code>NAOQI_CPP_QIBUILD_TOOLCHAIN</code>: the name of the toolchain used when it was
+added to the <em>worktree</em>.</li>
+<li><code>NAOQI_CPP_QIBUILD_CONFIG</code>: the name of the configuration generated after the
+SDK was added to the <em>worktree</em>. It is the default toolchain configuration.</li>
+<li><code>NAOQI_QIBUILD_CTC</code>: the name of the cross toolchain in the <em>worktree</em>.</li>
+<li><code>NAOQI_QIBUILD_CTC_CONFIG</code>: the name of the configuration in the <em>worktree</em>.
+It can be used to replace the C++ SDK as the project's toolchain in order to
+create a binary that can be transfered to the robot.</li>
+</ul>
+<h3 id="basic-project-setup">Basic project setup</h3>
+<p>The following steps will create and build a C++ SDK-based project on the
+configured <em>worktree</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAO_QIBUILD_WORKSPACE</span><span class="si">}</span><span class="s2">&quot;</span>
+qisrc<span class="w"> </span>create<span class="w"> </span>my-project
+<span class="nb">cd</span><span class="w"> </span>my-project
+qibuild<span class="w"> </span>configure
+qibuild<span class="w"> </span>make
+</code></pre></div>
+<p>The C++ SDK is configured as the default toolchain. If you wish to set up a
+project with an explicit configuration and build setup, you may run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAO_QIBUILD_WORKSPACE</span><span class="si">}</span><span class="s2">&quot;</span>
+qisrc<span class="w"> </span>create<span class="w"> </span>my-project
+<span class="nb">cd</span><span class="w"> </span>my-project
+qibuild<span class="w"> </span>configure<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAOQI_CPP_QIBUILD_CONFIG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>my-project
+qibuild<span class="w"> </span>make<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAOQI_CPP_QIBUILD_CONFIG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>my-project
+</code></pre></div>
+<p>Compiling a project that will be run on the robot requires an explicit
+configuration to replace the default toolchain by the cross-compilation one
+(NAO CTC):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAO_QIBUILD_WORKSPACE</span><span class="si">}</span><span class="s2">&quot;</span>
+qisrc<span class="w"> </span>create<span class="w"> </span>my-project
+<span class="nb">cd</span><span class="w"> </span>my-project
+qibuild<span class="w"> </span>configure<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAOQI_QIBUILD_CTC_CONFIG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>
+qibuild<span class="w"> </span>make<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">NAOQI_QIBUILD_CTC_CONFIG</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>
+</code></pre></div>
+<h2 id="connecting-to-the-simulated-robot">Connecting to the simulated robot</h2>
+<p>The simulated robot is an executable located in the C++ toolchain directory
+named <code>naoqi</code>. Provided that the tools were installed with the aforementioned
+scripts in their default configuration, it will be located at
+<code>/home/softex/NAO6/SDKs/cpp/naoqi-sdk-2.8.5.10-linux64/naoqi</code>.</p>
+<p>The simulated robot must always be initialised before running Choregraphe or
+your desired module. It will behave similarly to a physical robot, except by its
+lack of cameras, and it will by default initialise its <em>broker</em> at <em>localhost</em>,
+also known as IPv4 127.0.0.1, at the port 9559.</p>
+<h3 id="simulating-in-choregraphe">Simulating in Choregraphe</h3>
+<p>If you wish to simulate your C++ module in Choregraphe, first you should start
+the simulated <code>naoqi</code>. After doing it, then you must open Choregraphe, and
+connect it to the broker available at 127.0.0.1 port 9559.</p>
+<p>After these steps you should see a 3D simulation of a NAO robot in the
+Robot View panel. At this stage you are ready to connect to the simulated robot
+and check how it behaves in the simplified simulation offered by Choregraphe.</p>
+<h2 id="connecting-to-the-robot">Connecting to the Robot</h2>
+<p>There are three scripts that are used when connecting the Virtual Machine to
+your NAO:</p>
+<ol>
+<li><code>enable-nat-bridge-network.sh</code>: this script must be run with elevated
+privileges to set a bridge with a bound DHCP server and a NAT masquerade up</li>
+<li><code>run-nat-bridge.sh</code>: this script executes the VM with connectivity to the
+previously configured bridge. This is achieved by a <code>tap</code> device that QEMU will
+automatically add to the bridge using <code>/usr/lib/qemu/qemu-bridge-helper</code> and
+<code>/etc/qemu/bridge.conf</code>. It may be executed by a common user.</li>
+<li><code>disable-nat-bridge-network.sh</code>: this script must be run with elevated
+privileges to undo all the modifications made by the NAT enabler script.</li>
+</ol>
+<h3 id="warning-to-docker-users">Warning to Docker users</h3>
+<p>Docker overrides all user firewall configurations. The scripts currently
+require a standard firewall configuration, so it will be necessary to remove
+all tables and rules created by Docker. It is recommended to stop Docker with
+<code>systemctl stop docker.service docker.socket</code> to avoid a surprise firewall
+reconfiguration event.</p>
+<p>You should be able to reset nftables to its standard configuration using the
+command: <code>nft flush ruleset</code>. This will break the network for the containers
+until the machine or the Docker service unit are restarted.</p>
+<h2 id="how-to-manually-add-files-to-the-virtual-machine">How to manually add files to the Virtual Machine</h2>
+<p>You may want to add files from the host system, your current machine, to the
+guest one, stored in the virtual machines. An usual way to do it is through SSH,
+but it requires configuring an SSH server in the guest and a client in the host.</p>
+<p>A quicker way is to add the files directly to the virtual machine images. This
+approach requires that the VMs must not be in execution, unlike the SSH-based
+one. It is most convenient to use <code>guestfish</code>, a system shell that specialises
+in manipulating virtual machine images, to manually add files to the VMs.</p>
+<p>You may create a script based on <code>inject-home.sh</code>, or use <code>guestfish</code> on its
+interactive mode, which works similarly to the usual system shell. Even though
+it requires more typing, the latter approach is more user-friendly and will be
+explored in this tutorial.</p>
+<p>Firstly, you must know the path to the files that you wish to add to your VM and
+their desired location in the virtual machine. These will be parameters that
+will be used in <code>guestfish</code>'s <code>copy-in</code> command, responsible for copying files
+<em>into</em> the VM.</p>
+<p>Then you must mount the virtual machine's partition that holds the output path.
+This is the more cumbersome stage, as it requires knowing which partitions are
+included in the virtual machine's image file. If you followed the previous
+instructions and installed the VM using the recommended settings, you will be
+able to use the following commands after executing <code>guestfish</code> on your terminal
+with the working directory pointing where the image is located:</p>
+<div class="highlight"><pre><span></span><code>&lt;!. ./env-vars.sh &gt; /dev/null; echo &quot;add &#39;${DISK_LOCATION}&#39;&quot;
+run
+mount &#39;/dev/sda2&#39; &#39;/&#39;
+</code></pre></div>
+<p>With the main partition mounted, you may use the <code>ls</code> command to list files and
+directories. Copying files into the VM is done though the <code>copy-in</code> command:</p>
+<div class="highlight"><pre><span></span><code># copying a file or directory from the current host directory
+copy-in my-file-or-directory /home/softex
+# copying a file or directory from an absolute path in the host
+copy-in /absolute/path/in/the/host/something /desired/path/in/the/vm
+</code></pre></div>
+<p>The scripts use a more complicated syntax to automatically obtain the user that
+has been configured in the <code>env-vars.sh</code> file:</p>
+<div class="highlight"><pre><span></span><code>&lt;!. ./env-vars.sh &gt; /dev/null; echo &quot;copy-in &#39;my-file&#39; &#39;/home/${VM_USER}/abc&#39;&quot;
+</code></pre></div>
+<p>After copying all the desired files, do not forget to unmount all the partitions
+and close <code>guestfish</code> before running the VM:</p>
+<div class="highlight"><pre><span></span><code>umount-all
+exit
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Última atualização:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-25T23:33:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      
+        <br>
+        Criado em:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-25T23:33:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      RoboConnection</br>Universidade de Brasília - UnB</br>Copyright &copy; 2023 BRISA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>

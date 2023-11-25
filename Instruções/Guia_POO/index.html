@@ -1,0 +1,1784 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://residenciaticbrisa.github.io/03_Robotica/Instru%C3%A7%C3%B5es/Guia_POO/">
+      
+      
+        <link rel="prev" href="../Maquina_Virtual/">
+      
+      
+        <link rel="next" href="../NAOqi-overview_v4/">
+      
+      
+      <link rel="icon" href="../../assets/images/robo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.12">
+    
+    
+      
+        <title>Introdução à programação orientada a objetos com C++ - RoboConnection</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="cyan">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introducao-a-programacao-orientada-a-objetos-em-c" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+              <button class="md-banner__button md-icon" aria-label="Não mostrar isso novamente">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+              </button>
+            
+            
+  <p>RoboConnection tem o prazer de anunciar o lançamento da segunda Release: <a href="https://github.com/ResidenciaTICBrisa/03_Robotica/releases/tag/v2.0" target="_blank"> Release V2.0</a></p>
+
+          </div>
+          
+            <script>var content,el=document.querySelector("[data-md-component=announce]");el&&(content=el.querySelector(".md-typeset"),__md_hash(content.innerHTML)===__md_get("__announce")&&(el.hidden=!0))</script>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="RoboConnection" class="md-header__button md-logo" aria-label="RoboConnection" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboConnection
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introdução à programação orientada a objetos com C++
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="cyan"  aria-label="switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="cyan"  aria-label="switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartilhar" aria-label="Compartilhar" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ResidenciaTICBrisa/03_Robotica" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboConnection
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Conceitos_Gerais/" class="md-tabs__link">
+          
+  
+    
+  
+  Primeiros Passos
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../NAOqi-overview_v4/" class="md-tabs__link">
+          
+  
+    
+  
+  Trabalhando com o v4
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../NAOqi-overview_v6/" class="md-tabs__link">
+          
+  
+    
+  
+  Trabalhando com o v6
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../ROS_1/" class="md-tabs__link">
+          
+  
+    
+  
+  Extra
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../release/" class="md-tabs__link">
+        
+  
+    
+  
+  Marcos
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sobre/equipe/" class="md-tabs__link">
+        
+  
+    
+  
+  Equipe
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../sobre/sobre/" class="md-tabs__link">
+        
+  
+    
+  
+  Sobre
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="RoboConnection" class="md-nav__button md-logo" aria-label="RoboConnection" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+
+    </a>
+    RoboConnection
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ResidenciaTICBrisa/03_Robotica" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 19h4.6L2.62 8.64C2.23 8 2 7.29 2 6.5a3.999 3.999 0 0 1 7.87-1H14V3c0-1.1.9-2 2-2v2.59L17.59 2H22v2h-3.59L16 6.41v.18L18.41 9H22v2h-4.41L16 9.41V12a2 2 0 0 1-2-2V7.5H9.87c-.1.39-.26.76-.46 1.1l6 10.4H20a2 2 0 0 1 2 2v1H2v-1c0-1.1.9-2 2-2m3.91-9c-.56.32-1.21.5-1.91.5l4.91 8.5h2.19l-5.19-9M6 4.5a2 2 0 0 0-2 2c0 1.11.89 2 2 2 1.11 0 2-.89 2-2a2 2 0 0 0-2-2Z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    RoboConnection
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Primeiros Passos
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Primeiros Passos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Conceitos_Gerais/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conceitos fundamentais
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Maquina_Virtual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Trabalhando com máquinas virtuais
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Introdução à programação orientada a objetos com C++
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Introdução à programação orientada a objetos com C++
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-o-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é o C++
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-programacao-orientada-a-objetos-poo" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é Programação Orientada a Objetos (POO)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-uma-classe-o-que-sao-objetos" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é uma classe? O que são objetos?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fim-do-tutorial-parabens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fim do tutorial! Parabéns!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dicas-importantes-para-uso-pratico-do-nao-avancado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dicas importantes para uso prático do NAO (Avançado):
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Trabalhando com o v4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Trabalhando com o v4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NAOqi-overview_v4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução ao NAOqi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vms/ubuntu-14/how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Máquina Virtual e scripts de instalação (v4)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NAO_Flasher/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NAO Flasher
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CPP_SDK_v4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDK C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Choregraphe_v4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Choregraphe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../naoqi-2.1/cpp/about-the-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exemplos NAOqi C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Trabalhando com o v6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Trabalhando com o v6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../NAOqi-overview_v6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução ao NAOqi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vms/ubuntu-16/how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Máquina Virtual e scripts de instalação (v6)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Robot_Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Settings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CPP_SDK_v6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SDK C++
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Choregraphe_v6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Choregraphe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Extra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Extra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ROS1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ROS_1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instruções
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros1/general-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geral
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros1/installing-precompiled-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pré-compilados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros1/compiling-for-amd64-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros1/compiling-for-arm-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando para SBCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros1/installing-native-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pacotes nativos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ROS2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/general-instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Geral
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/installing-precompiled-packages/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pré-compilados
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/compiling-for-amd64-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ros2/compiling-for-arm-based-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compilando para SBCs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../release/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Marcos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sobre/equipe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Equipe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sobre/sobre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sobre
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-o-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é o C++
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-programacao-orientada-a-objetos-poo" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é Programação Orientada a Objetos (POO)?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-e-uma-classe-o-que-sao-objetos" class="md-nav__link">
+    <span class="md-ellipsis">
+      O que é uma classe? O que são objetos?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fim-do-tutorial-parabens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fim do tutorial! Parabéns!
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dicas-importantes-para-uso-pratico-do-nao-avancado" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dicas importantes para uso prático do NAO (Avançado):
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="introducao-a-programacao-orientada-a-objetos-em-c">Introdução à programação orientada a objetos em C++</h1>
+<hr />
+<h2 id="o-que-e-o-c">O que é o C++</h2>
+<p>A <strong>linguagem de programação C++</strong> é uma extensão à linguagem <strong>C</strong>. Através dessa extensão, a programação orientada a objetos se tornou possível.</p>
+<p>Em comparação ao Python, a linguagem C (e, consequentemente, o C++) é bem mais rápida em tempo de execução. Isso significa que um código para o NAO feito em Python vai ser executado pelo robô muito mais lentamente em comparação ao mesmo código em C++. Entretanto, o C++ possui uma sintaxe um pouco mais complicada e minuciosa em comparação ao Python.</p>
+<p><center></p>
+<p><img src="https://miro.medium.com/v2/resize:fit:1120/1*PhBnHQQNCWUtx8KiKAidRA.png" width=400px></p>
+<p></center></p>
+<h2 id="o-que-e-programacao-orientada-a-objetos-poo">O que é Programação Orientada a Objetos (POO)?</h2>
+<p>A orientação a objetos é um <strong>paradigma de programação</strong>. Para que você entenda melhor, faremos uma analogia. É como se fosse um video-game. Se você criasse um console de video-game, construiria um aparelho com diversos <strong>atributos</strong>, como os circuitos internos, que <strong>não devem ser acessados pelo usuário (privado)</strong>. Em contrapartida, disponibilizaria <strong>métodos</strong> de acesso às funcionalidades do video-game pelo usuário <strong>(público)</strong>, como botões em um <em>joystick</em> que o controla.</p>
+<p>A esse conceito damos o nome de <strong>interface</strong>. Uma interface nada mais é do que a "casca" que isola os componentes internos (como os circuitos internos) e os componentes externos do software (como o joystick, no exemplo). Internamente, a interface possui partes que devem estar privadas ao usuário. Externamente, possui partes que podem ser usadas pelo usuário, ou seja, estão públicas.</p>
+<p><center></p>
+<p><img src="../../overrides/assets/images/Circuito_interno.jpg" width=600px></p>
+<p></center></p>
+<p>Em relação às permissões de uso, damos o nome de <strong>encapsulamento</strong>. Podemos ter o <strong>encapsulamento privado</strong> (apenas o video-game controla suas partes internas, e não o usuário) e o <strong>encapsulamento público</strong> (o usuário controla as partes internas do video-game pelos botões da interface). Além desses dois tipos, possuímos o <strong>encapsulamento protegido</strong>, que não está no escopo desse guia.</p>
+<h2 id="o-que-e-uma-classe-o-que-sao-objetos">O que é uma classe? O que são objetos?</h2>
+<p>Uma <strong>classe</strong> é uma estrutura essencial quando tratamos de POO. Usaremos um exemplo para tornar esse conceito mais claro. Se considerarmos uma classe <strong>Pessoa</strong>, podemos pensar em atributos (dados) que todas as pessoas têm. Todas as pessoas possuem um nome, uma idade, uma altura e um peso. Esses serão os atributos da nossa classe <code>Pessoa</code>.</p>
+<p>Um <strong>objeto</strong> é uma instância da classe. Mas o que isso significa na prática? Se temos a classe <code>Pessoa</code>, posso criar um objeto chamado <code>pessoa1</code> da classe <code>Pessoa</code>, que tenha nome "João", idade 33, altura 1,78m e peso 82,5kg. Em outras palavras, um objeto que instancia a classe <code>Pessoa</code> é um exemplar da classe <code>Pessoa</code>. Assim, o objeto terá os atributos exigidos pela classe, além de ter acesso aos métodos que estão nessa classe. Uma classe define, portanto, os atributos e métodos dos objetos que a instanciarão.</p>
+<p><center></p>
+<p><img src="../../overrides/assets/images/Classe_Objeto.jpg" width=600px></p>
+<p></center></p>
+<p>Resgatando a analogia do <strong>video-game</strong>, o objeto é o <em>joystick</em>, plataforma pela qual o usuário acessará e manipulará, <strong>indiretamente</strong>, os atributos da classe (<strong>circuito interno do video-game</strong>), que estão privados ao usuário. A classe, por sua vez, representa todo o video-game.</p>
+<blockquote>
+<p>Obs.: Em uma classe, os atributos devem ser privados (não acessíveis ao usuário).</p>
+</blockquote>
+<p>Para construir uma classe <code>Pessoa</code> que possua os atributos acima, podemos utilizar o C++ da seguinte forma:</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Pessoa</span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Aqui vamos colocar os atributos da classe</span>
+<span class="w">    </span><span class="c1">// Usamos &quot;private&quot; para declarar encapsulamento privado</span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span><span class="w"> </span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">nome</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idade</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Aqui vamos colocar os métodos da classe    </span>
+<span class="w">    </span><span class="c1">// Usamos &quot;public&quot; para declarar encapsulamento público</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span><span class="w"> </span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="n">inicializa_classe</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">weight</span><span class="p">){</span>
+<span class="w">            </span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">idade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<span class="w">            </span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">            </span><span class="n">peso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">Pessoa</span><span class="w"> </span><span class="n">pessoa1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Abaixo, colocamos os valores passados como parâmetros nos atributos de pessoa1</span>
+<span class="w">    </span><span class="n">pessoa1</span><span class="p">.</span><span class="n">inicializa</span><span class="p">(</span><span class="s">&quot;João&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="mf">1.78</span><span class="p">,</span><span class="w"> </span><span class="mf">82.5</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Na parte <strong>privada</strong> da classe <code>Pessoa</code>, <strong>definimos os atributos</strong> (também chamados de membros). Na parte <strong>pública</strong>, criamos um método <code>inicializa</code> que <strong>coloca valores nos atributos</strong>.</p>
+<p>Em seguida, na função main, criamos o objeto <code>pessoa1</code> da classe <code>Pessoa</code>. Através desse objeto, utilizamos o método <code>inicializa</code>, definido dentro da classe <code>Pessoa</code> como um método público, ou seja, o usuário pode utilizar através do objeto.</p>
+<p>A sintaxe para utilizar um método através do objeto de uma classe em C++ é: <code>objeto.metodo(parametro1, parametro2, ...)</code>. Nesse caso, utilizamos <code>pessoa1.inicializa("João", 33, 1.78, 82.5)</code>.</p>
+<p><strong>Ok, mas o que podemos fazer com os atributos?</strong></p>
+<p>Para responder essa questão, temos que analisar as especificidades de nossa classe. No caso de <code>Pessoa</code>, suponha que estamos usando essa classe para cadastrar pessoas em um sistema de uma rede de academias. Cada pessoa cadastrada deverá ter seu nome, idade, altura e peso registrados para melhor acompanhamento.</p>
+<p>Além de armazenar informações, podemos utilizar a POO para realizar operações utilizando os atributos. A classe <code>Pessoa</code> pode, por exemplo, ter um método que calcule e imprima o IMC dos clientes da academia, baseada nos atributos. Um outro método poderia calcular uma previsão de peso corporal caso a pessoa frequente a academia por certo período.</p>
+<p>Assim, fica claro que a POO pode ajudar bastante na organização de sistemas. O NAO utiliza esse paradigma para organizar suas classes e métodos, realizando operações no robô através de objetos de classes diversas.</p>
+<p><strong>Getters e Setters</strong></p>
+<p>Exemplo:</p>
+<p>Maria, de 19 anos, foi cadastrada com 1.60m de altura e 63kg de peso. Porém, após o primeiro mês de academia, Maria perdeu 3kg. Além disso, mediu sua altura novamente e percebeu que possuía, na verdade, 1.62m de altura.</p>
+<p>Portanto, precisamos mudar esses atributos no objeto de Maria. Porém, os atributos são privados na classe <code>Pessoa</code>. Isso significa que o objeto não pode acessar diretamente os atributos da classe. Por conta disso, precisamos de um método público dentro da classe, que possa mudar esses atributos. </p>
+<p>Dessa forma, o objeto <strong>NÃO</strong> está acessando <strong>diretamente</strong> o atributo da classe, mas sim <strong>indiretamente</strong>, <strong>através de um método</strong> que, por sua vez, acessa diretamente esses atributos, evitando problemas de permissão.</p>
+<p>Observe o esquemático a seguir:</p>
+<p><center></p>
+<p><img src="../../overrides/assets/images/Esquematico_get.jpg" width=600px></p>
+<p></center></p>
+<p>Faremos isso utilizando <strong>getters e setters</strong>. Os métodos <strong>get</strong> e <strong>set</strong> são muito usadas na POO. Mas não se assuste, são métodos como qualquer outro. A única diferença é que nomeamos os métodos dessa forma padronizada. Esses métodos serão os mediadores entre o objeto e os atributos. Confira a seguir o seu uso:</p>
+<ul>
+<li><strong>get</strong>: retorna o valor de um atributo. Exemplo: <code>nome = objeto.get_nome()</code>.</li>
+<li>
+<p><strong>set</strong>: muda o valor de um atributo. Exemplo: <code>objeto.set_idade(20)</code>.</p>
+</li>
+<li>
+<p>No exemplo do <strong>get</strong>, colocamos na variável "nome" o valor retornado pelo método get_nome() de <code>objeto</code>. </p>
+</li>
+<li>No exemplo do <strong>set</strong>, colocamos o atributo "idade" no valor 20, através do parâmetro inserido.</li>
+</ul>
+<p>Então, para resolvermos o problema de Maria, cujos dados estão errados, basta utilizarmos métodos setters e getters para consertarmos, certo? Vamos fazer isso no bloco de código a seguir:</p>
+<p><strong>Parte pública da classe <code>Pessoa</code>:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">public</span><span class="o">:</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="n">inicializa_classe</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">weight</span><span class="p">){</span>
+<span class="w">            </span><span class="n">nome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">            </span><span class="n">idade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+<span class="w">            </span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">height</span><span class="p">;</span>
+<span class="w">            </span><span class="n">peso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">;</span>
+<span class="w">        </span><span class="p">};</span>
+
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="nf">get_altura</span><span class="p">()</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">altura</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="nf">get_peso</span><span class="p">()</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">peso</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_altura</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">h</span><span class="p">)</span>
+<span class="w">            </span><span class="n">altura</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="nf">set_peso</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">w</span><span class="p">)</span>
+<span class="w">            </span><span class="n">peso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
+</code></pre></div>
+<p>Assim, completamos o seguinte diagrama para a classe <code>Pessoa</code>:</p>
+<p><center></p>
+<p><img src="../../overrides/assets/images/Classe_final.jpg" width=600px></p>
+<p></center></p>
+<p><strong>Programa principal:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">){</span>
+<span class="w">    </span><span class="n">Pessoa</span><span class="w"> </span><span class="n">maria</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">maria</span><span class="p">.</span><span class="n">inicializa</span><span class="p">(</span><span class="s">&quot;Maria&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mf">1.60</span><span class="p">,</span><span class="w"> </span><span class="mi">63</span><span class="p">);</span><span class="w"> </span><span class="c1">// valores antigos</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;A altura de Maria atualmente e: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">maria</span><span class="p">.</span><span class="n">get_altura</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;O peso de Maria atualmente e: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">maria</span><span class="p">.</span><span class="n">get_peso</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">maria</span><span class="p">.</span><span class="n">set_altura</span><span class="p">(</span><span class="mf">1.62</span><span class="p">);</span><span class="w"> </span><span class="c1">// arrumando altura</span>
+<span class="w">    </span><span class="n">maria</span><span class="p">.</span><span class="n">set_peso</span><span class="p">(</span><span class="mi">60</span><span class="p">);</span><span class="w"> </span><span class="c1">// arrumando peso</span>
+
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;A nova altura de Maria e: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">maria</span><span class="p">.</span><span class="n">get_altura</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;O novo peso de Maria e: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">maria</span><span class="p">.</span><span class="n">get_peso</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Aqui, mostramos apenas a parte <strong>pública</strong> da classe e o <strong>programa principal</strong>, para fins didáticos. O resto da classe (parte privada) ainda existe!</p>
+</blockquote>
+<h2 id="fim-do-tutorial-parabens">Fim do tutorial! Parabéns!</h2>
+<p><em>Mas e agora, qual é o próximo passo?</em></p>
+<p>Para programar o NAO, é necessário que você entenda os conceitos apresentados nesse guia. <strong>O NAO utiliza métodos que pertencem a classes definidas pelos desenvolvedores do robô</strong>.</p>
+<p>Além disso, você também pode criar <strong>novas classes</strong> com métodos que podem, inclusive, utilizar métodos de outras classes.</p>
+<p>Dessa forma, o(a) incentivamos a continuar aprofundando seus estudos em POO (faça cursos para se aprofundar!), na interface do NAO e no SDK (Software Development Kit) do NAO (consulte nossos guias).</p>
+<h2 id="dicas-importantes-para-uso-pratico-do-nao-avancado">Dicas importantes para uso prático do NAO (Avançado):</h2>
+<ul>
+<li>O NAO (v4) tem pouca memória e processador fraco, o que significa que deve-se limitar o uso de herança;</li>
+<li>Lembre-se de usar shared_ptr para evitar vazamento de memória;</li>
+<li>O NAO (v4) usa C++98, portanto depende muito mais da Boost para funcionalidades básicas;</li>
+<li>O NAO (v6) tem o C++11, usando muitos conteúdos que já estão na biblioteca padrão.</li>
+<li>O Robo Connection auxilia o usuário a contornar várias "pegadinhas" do C++ nos exemplos do NAOv4. Muitas coisas podem confundir usuários do Java, principalmente na burocracia em relação ao uso dos atributos <strong>static</strong> e <strong>const</strong>.</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Última atualização:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-25T23:33:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      
+        <br>
+        Criado em:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-25T23:33:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="../Maquina_Virtual/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Trabalhando com máquinas virtuais">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Trabalhando com máquinas virtuais
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../NAOqi-overview_v4/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Introdução ao NAOqi">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Introdução ao NAOqi
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      RoboConnection</br>Universidade de Brasília - UnB</br>Copyright &copy; 2023 BRISA
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  </body>
+</html>
