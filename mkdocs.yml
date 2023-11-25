@@ -77,7 +77,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Primeiros Passos: 
+  - Primeiros Passos:
     - Conceitos fundamentais: Instruções/Conceitos_Gerais.md
     - Trabalhando com máquinas virtuais: Instruções/Maquina_Virtual.md
   - Trabalhando com o v4:
